@@ -1,0 +1,13 @@
+<template name="bookInfoBase">
+  <view class="book">
+    <view class="book-img">
+      <image src="../../../images/jiazai.png"></image>
+    </view>
+    <view class="book-info">
+      <view class="text-oneline margin-top-5">书名书名书名书名书名书名书名书名书名书名书名书名</view>
+      <view class="text-oneline margin-top-5">蓝天出版社 / 刘传</view>
+      <view class="text-oneline margin-top-5">平装 / 92页 / 评分 8.7分</view>
+      <view class="text-threeline margin-top-5 grey-font ">为什么不断有一个又一个国家骤然兴盛，成为所向无敌的霸主?为何历史上的强国都只能维持一个世纪左右的霸权?这其中到底有着怎样的规律和共性，中国从中究竟应领悟到什么经验或教训? 今天，中国的复兴和崛起已经成为举世瞩目的不争现实。如何从历史上主要大国的兴衰历程中得到有益的借鉴，如何顺应世界发展大势寻求现代化的有效途径，已经成为十分重大的战略问题。 本书正是从这一目的出发，试图站在人类文明发展的高度，以历史的眼光和全球的视野，通过解读15世纪以来世界性大国崛起的历史，追踪和研究世界性大国兴起轨迹，总结大国崛起的个性特征和基本规律，探索新形势下中国发展的战略选择，为中国的发展寻找镜鉴，以期有利于中华民族复兴这一宏伟目标的实现。</view>
+    </view>
+  </view>
+</template>

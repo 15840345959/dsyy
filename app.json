@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/admin/cbook/cbook",
+    "pages/templates/bookInfoTpl/bookInfoTpl",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "读书有益",
+    "enablePullDownRefresh": true,
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8"
+  },
+  "debug": true
+}
