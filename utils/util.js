@@ -2,7 +2,7 @@ var TESTMODE = false;
 
 //服务器地址
 var SERVER_URL = "https://isart.me/DSYYServer";
-var DEBUG_URL = "http://localhost";
+var DEBUG_URL = "http://localhost/DSYYServer";
 var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 
 
@@ -84,9 +84,11 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     method: method,
     success: function (res) {
       successCallback(res)
+      hideLoading()
     },
     fail: function (err) {
-      console.log("wxRequest fail:" + JSON.stringify(err));
+      console.log("wxRequest fail:" + JSON.stringify(err))
+      hideLoading()
     }
   });
 }
@@ -118,7 +120,35 @@ function getADs(param, successCallback, errorCallback) {
 
 //通过ISBN码获取图书信息
 function getBookInfoByISBN(param, successCallback, errorCallback) {
-  wxRequest(SERVER_URL + '/APP/getBookInfoByISBN.do.do', param, "GET", successCallback, errorCallback);
+  wxRequest(SERVER_URL + '/APP/getBookInfoByISBN.do', param, "GET", successCallback, errorCallback);
+}
+
+//更新图书信息
+function updateBookInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/updateBookInfoById.do', param, "GET", successCallback, errorCallback);
+}
+
+
+//新建图书对象
+function createBookObj(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/createBookObj.do', param, "GET", successCallback, errorCallback);
+}
+
+
+//获取首页数据
+function getIndexPage(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getIndexPage.do', param, "GET", successCallback, errorCallback);
+}
+
+
+//获取条件获取图书信息
+function getBookObjByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookObjByCon.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据位置获取图书信息
+function getBarInfoByPos(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBarInfoByPos.do', param, "GET", successCallback, errorCallback);
 }
 
 
@@ -208,7 +238,38 @@ function showToast(msg, img) {
       image: img
     })
   }
+}
 
+//展示modal
+function showModal(title, content, confirmCallBack, cancelCallBack) {
+  wx.showModal({
+    title: title,
+    content: content,
+    success: function (res) {
+      if (res.confirm) {
+        console.log('用户点击确定')
+        confirmCallBack(res)
+      } else if (res.cancel) {
+        console.log('用户点击取消')
+        cancelCallBack(res)
+      }
+    }
+  })
+}
+
+//错误modal
+function showErrorModal(msg) {
+  wx.showModal({
+    title: '调用失败',
+    content: msg,
+    success: function (res) {
+      if (res.confirm) {
+        console.log('用户点击确定')
+      } else if (res.cancel) {
+        console.log('用户点击取消')
+      }
+    }
+  })
 }
 
 //展示loadding
@@ -250,6 +311,7 @@ function convertEnNameToChiName(name) {
   return name;
 }
 
+//判断是否为空图
 function judgeIsNullImg(img_url) {
   if (judgeIsAnyNullStr(img_url)) {
     return true
@@ -259,6 +321,16 @@ function judgeIsNullImg(img_url) {
   }
   return false
 }
+
+//判断图书类型是否为空
+function judgeNoBookType(book_type) {
+  if (book_type.indexOf('其他') >= 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
 
 function judgeIsAnyNullStrImp(obj) {
   if (obj.length > 0) {
@@ -338,11 +410,36 @@ function clone(myObj) {
 
 function getErrorMsg(error_code) {
   switch (error_code) {
-    case "405":
-      return "已经点赞"
+    case "999":
+      return "调用失败"
   }
   return "未知错误";
 }
+
+/*
+** randomWord 产生任意长度随机字母数字组合
+** randomFlag-是否任意长度 min-任意长度最小位[固定位数] max-任意长度最大位
+** xuanfeng 2014-08-28
+** 生成3-32位随机串：randomWord(true, 3, 32)
+** 生成43位随机串：randomWord(false, 43)
+*/
+
+function randomWord(randomFlag, min, max) {
+  var str = "",
+    range = min,
+    arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+  // 随机产生
+  if (randomFlag) {
+    range = Math.round(Math.random() * (max - min)) + min;
+  }
+  for (var i = 0; i < range; i++) {
+    var pos = Math.round(Math.random() * (arr.length - 1));
+    str += arr[pos];
+  }
+  return str;
+}
+
 
 
 module.exports = {
@@ -352,12 +449,16 @@ module.exports = {
   showLoading: showLoading,
   hideLoading: hideLoading,
   showToast: showToast,
+  showModal: showModal,
+  showErrorModal: showErrorModal,
   navigateBack: navigateBack,
   conStr: conStr,
   clone: clone,
   getDateStr: getDateStr,
+  randomWord: randomWord,
   judgeIsAnyNullStr: judgeIsAnyNullStr,
   judgeIsAnyNullStrImp: judgeIsAnyNullStrImp,
+  judgeNoBookType: judgeNoBookType,
   isLocalImg: isLocalImg,
   getImgRealUrl: getImgRealUrl,
   qiniuUrlTool: qiniuUrlTool,
@@ -366,5 +467,12 @@ module.exports = {
   getErrorMsg: getErrorMsg,
   getOpenId: getOpenId,
   getQnToken: getQnToken,
-  login: login
+  getADs: getADs,
+  login: login,
+  getBookInfoByISBN: getBookInfoByISBN,
+  updateBookInfo: updateBookInfo,
+  createBookObj: createBookObj,
+  getIndexPage: getIndexPage,
+  getBookObjByCon: getBookObjByCon,
+  getBarInfoByPos: getBarInfoByPos
 }

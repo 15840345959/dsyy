@@ -1,20 +1,94 @@
-<!--index.wxml-->
-<view class="container">
-  <view bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto" bindtap="getLocation">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
+<import src="../templates/barInfoTpl/barInfoTpl.wxml" />
 
-  <view bindtap="chooseLocation">
-    <text class="user-motto">chooseLocation</text>
-  </view>
-  <view bindtap="chooseShouhuo">
-    <text class="user-motto">chooseShouhuo</text>
-  </view>
-  <view bindtap="openLocation">
-    <text class="user-motto">openLocation</text>
+<view class="page">
+  <!--页头-->
+  <view class="page__hd"></view>
+  <!--主体-->
+  <view class="page__bd page__bd_spacing">
+    <!-- 推荐 -->
+    <view class="navbar white-bg">
+      <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx" data-idx="{{idx}}" bindtap="swichNav">
+        <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">{{item}}</text>
+      </view>
+    </view>
+    <!--占位用80rpx-->
+    <view style="height:80rpx;"></view>
+
+    <swiper class="swiper" current="{{currentNavbar}}" duration="300" style="height:{{systemInfo.windowHeight}}px">
+      <!--推荐部分-->
+      <swiper-item>
+        <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="">
+          <!--轮播广告图-->
+          <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
+            <block wx:for="{{swipers}}">
+              <swiper-item>
+                <image src="{{item.img}}" class="slide-image" width="750rpx" />
+              </swiper-item>
+            </block>
+          </swiper>
+
+          <view wx:if="{{indexPage.bookInfos}}" class="line-text margin-top-5">
+            推荐图书
+          </view>
+          <view class="white-bg">
+            <block wx:for="{{indexPage.bookInfos}}">
+              <template is="bookInfoIndex" data="{{...item}}" />
+            </block>
+          </view>
+          <view wx:if="{{indexPage.barInfos}}" class="line-text margin-top-5">
+            旗舰书吧
+          </view>
+          <view class="white-bg">
+            <block wx:for="{{indexPage.barInfos}}">
+              <template is="barInfoIndex" data="{{...item}}" />
+            </block>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!--图书部分-->
+      <swiper-item>
+        <!--搜索框-->
+        <view class="weui-search-bar top-search-bar">
+          <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                <icon type="clear" size="14"></icon>
+              </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+              <icon class="weui-icon-search" type="search" size="14"></icon>
+              <view class="weui-search-bar__text">搜索</view>
+            </label>
+          </view>
+          <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <!--图书列表-->
+        <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMoreDatas">
+          <view class="white-bg">
+            <block wx:for="{{bookInfos}}">
+              <template is="bookInfoIndex" data="{{...item}}" />
+            </block>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!--书吧部分-->
+      <swiper-item>
+        <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMoreDatas">
+          <view class="line-text margin-top-5">
+            旗舰书吧
+          </view>
+          <view class="white-bg">
+            <block wx:for="{{barInfos}}">
+              <template is="barInfoIndex" data="{{...item}}" />
+            </block>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
   </view>
 </view>

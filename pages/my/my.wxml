@@ -1,0 +1,6 @@
+<view class="container">
+  我的
+  <view class="classname" bindtap="clickCreateBook">
+    录入图书
+  </view>
+</view>

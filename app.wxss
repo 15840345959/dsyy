@@ -1,6 +1,7 @@
 /**app.wxss**/
 @import './style/weui.wxss';
 @import './pages/templates/bookInfoTpl/bookInfoTpl.wxss';
+@import './pages/templates/barInfoTpl/barInfoTpl.wxss';
 
 page {
   height: 100%;
@@ -18,6 +19,10 @@ page {
   align-items: center;
   padding: 0;
   box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
 }
 
 .font-size-10 {
@@ -176,6 +181,11 @@ page {
   height: 16px;
 }
 
+.opt-icon-12 {
+  width: 12px;
+  height: 12px;
+}
+
 .border-right {
   border-right: 1px solid #d0d0d0;
 }
@@ -189,10 +199,6 @@ page {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.border-bottom-lg {
   border-bottom: 1px solid #f0f0f0;
 }
 

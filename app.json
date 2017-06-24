@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/read/read",
+    "pages/my/my",
     "pages/admin/cbook/cbook",
     "pages/templates/bookInfoTpl/bookInfoTpl",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
@@ -12,6 +14,32 @@
     "enablePullDownRefresh": true,
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f8f8"
+  },
+  "tabBar": {
+    "color": "#8A8A8A",
+    "borderStyle": "white",
+    "selectedColor": "#1296DB",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home_n.png",
+        "selectedIconPath": "images/home_r.png"
+      },
+      {
+        "pagePath": "pages/read/read",
+        "text": "读书",
+        "iconPath": "images/dushu_n.png",
+        "selectedIconPath": "images/dushu_r.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/user_n.png",
+        "selectedIconPath": "images/user_r.png"
+      }
+    ]
   },
   "debug": true
 }

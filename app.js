@@ -1,22 +1,26 @@
 //app.js
 const util = require('./utils/util.js')
 
+var vm = null
+
 App({
   onLaunch: function () {
+    //获取vm
+    vm = this
     //获取用户缓存数据
     var userInfo = wx.getStorageSync("userInfo");
     console.log("local storage userInfo:" + JSON.stringify(userInfo));
     //如果没有缓存
     if (userInfo == null || userInfo == undefined || userInfo == "") {
       //调用登录接口
-      this.login(null);
+      vm.login(null);
     } else {
-      this.globalData.userInfo = wx.getStorageSync("userInfo");
-      console.log("this.globalData.userInfo:" + JSON.stringify(this.globalData.userInfo));
+      vm.globalData.userInfo = wx.getStorageSync("userInfo");
+      console.log("vm.globalData.userInfo:" + JSON.stringify(vm.globalData.userInfo));
     }
   },
   login: function (callBack) {
-    var that = this;
+
     wx.login({
       success: function (res) {
         console.log("wx.login:" + JSON.stringify(res));
@@ -36,7 +40,7 @@ App({
                 }
                 util.login(param, function (ret) {
                   console.log("login:" + JSON.stringify(ret));
-                  that.storeUserInfo(ret.data.obj);
+                  vm.storeUserInfo(ret.data.obj);
                 }, null);
               },
               fail: function (res) {
@@ -47,7 +51,7 @@ App({
                 }
                 util.login(param, function (ret) {
                   console.log("login:" + JSON.stringify(ret));
-                  that.storeUserInfo(ret.data.obj);
+                  vm.storeUserInfo(ret.data.obj);
                 }, null);
               },
               complete: function (res) {
@@ -65,26 +69,28 @@ App({
       key: "userInfo",
       data: obj
     });
-    this.globalData.userInfo = obj;
+    vm.globalData.userInfo = obj;
   },
   getUserInfo: function (cb) {
-    typeof cb == "function" && cb(this.globalData.userInfo)
+    typeof cb == "function" && cb(vm.globalData.userInfo)
   },
   getSystemInfo: function (cb) {
-    var that = this
-    if (that.globalData.systemInfo) {
-      typeof cb == "function" && cb(that.globalData.systemInfo)
+
+    if (vm.globalData.systemInfo) {
+      typeof cb == "function" && cb(vm.globalData.systemInfo)
     } else {
       wx.getSystemInfo({
         success: function (res) {
-          that.globalData.systemInfo = res
-          typeof cb == "function" && cb(that.globalData.systemInfo)
+          vm.globalData.systemInfo = res
+          typeof cb == "function" && cb(vm.globalData.systemInfo)
         }
       })
     }
   },
+  //全局变量
   globalData: {
     userInfo: null,
-    systemInfo: null
+    systemInfo: null,
+    bookTypeArr: ['儿童读物', '历史文化', '文学小说', '考试教育', '医疗养生', '心灵鸡汤']
   }
 })
