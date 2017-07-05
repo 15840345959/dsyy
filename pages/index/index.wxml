@@ -83,8 +83,8 @@
             旗舰书吧
           </view>
           <view class="white-bg">
-            <block wx:for="{{barInfos}}">
-              <template is="barInfoIndex" data="{{...item}}" />
+            <block wx:for="{{barInfos}}" >
+              <template is="barInfoIndex" data="{{...item}}"   />
             </block>
           </view>
         </scroll-view>
