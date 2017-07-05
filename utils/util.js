@@ -150,6 +150,10 @@ function getBookObjByCon(param, successCallback, errorCallback) {
 function getBarInfoByPos(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBarInfoByPos.do', param, "GET", successCallback, errorCallback);
 }
+//根据标题获取图书信息
+function getBookInfosByTitle(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookInfosByTitle.do', param, "GET", successCallback, errorCallback);
+}
 
 
 /////////基本方法///////////////////////////////////////////
@@ -474,5 +478,6 @@ module.exports = {
   createBookObj: createBookObj,
   getIndexPage: getIndexPage,
   getBookObjByCon: getBookObjByCon,
-  getBarInfoByPos: getBarInfoByPos
+  getBarInfoByPos: getBarInfoByPos,
+  getBookInfosByTitle: getBookInfosByTitle
 }

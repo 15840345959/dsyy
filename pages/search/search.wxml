@@ -1,0 +1,22 @@
+<import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
+<view class="weui-search-bar top-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" bindinput="inputTyping"/>
+    </view>
+  </view>
+  <view class="weui-search-bar__cancel-btn" catchtap="hideInput">取消</view>
+</view>
+<view class="weui-grids" hidden="{{change}}">
+  <block wx:for="{{hotword}}">
+    <button style="color:{{item.color}};margin:5px" class="weui-btn mini-btn" size="mini" catchtap="search_bt" data-search="{{item.text}}">{{item.text}}</button>
+  </block>
+</view>
+<scroll-view scroll-y style="height:{{systemInfo.windowHeight}}" hidden="{{!change}}">
+    <view class="white-bg">
+    <block wx:for="{{bookInfos}}">
+      <template is="bookInfoBase" data="{{...item}}"></template>
+    </block>
+    </view>
+</scroll-view>
