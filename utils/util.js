@@ -9,7 +9,7 @@ var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 ///////七牛相关///////////////////////////////////
 //根据key值获取图片真实链接
 function getImgRealUrl(key_v) {
-  return "http://7xku37.com2.z0.glb.qiniucdn.com/" + key_v;
+  return "http://book.isart.me/" + key_v;
 }
 
 
