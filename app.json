@@ -5,7 +5,9 @@
     "pages/my/my",
     "pages/admin/cbook/cbook",
     "pages/templates/bookInfoTpl/bookInfoTpl",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/barpage/barpage",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

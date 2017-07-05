@@ -75,6 +75,13 @@ function getHeadIconA(dir, hi) {
 //进行接口调用的基本方法
 function wxRequest(url, param, method, successCallback, errorCallback) {
   console.log("wxRequest url:" + JSON.stringify(url) + " param:" + JSON.stringify(param));
+    if (!judgeIsAnyNullStr(getApp().globalData.userInfo)) {
+      //user_id未设置
+      if (judgeIsAnyNullStr(param.user_id)) {
+        param.user_id = getApp().globalData.userInfo.id;
+      }
+      param.token = getApp().globalData.userInfo.token;
+    }
   wx.request({
     url: url,
     data: param,
@@ -150,7 +157,20 @@ function getBookObjByCon(param, successCallback, errorCallback) {
 function getBarInfoByPos(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBarInfoByPos.do', param, "GET", successCallback, errorCallback);
 }
+//根据标题获取图书信息
+function getBookInfosByTitle(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookInfosByTitle.do', param, "GET", successCallback, errorCallback);
+}
 
+//根据书吧id获取书吧页面
+function getBarPageByBarId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBarPageByBarId.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据标题获取图书信息
+function getBookInfosByTitle(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookInfosByTitle.do', param, "GET", successCallback, errorCallback);
+}
 
 /////////基本方法///////////////////////////////////////////
 //跳转到inputText页面
@@ -474,5 +494,7 @@ module.exports = {
   createBookObj: createBookObj,
   getIndexPage: getIndexPage,
   getBookObjByCon: getBookObjByCon,
-  getBarInfoByPos: getBarInfoByPos
+  getBarInfoByPos: getBarInfoByPos,
+  getBarPageByBarId: getBarPageByBarId,
+  getBookInfosByTitle: getBookInfosByTitle
 }

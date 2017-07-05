@@ -75,16 +75,14 @@ Page({
   //获取首页数据
   getIndexPage: function (e) {
     console.log(JSON.stringify(e))
-    var param = {
-      user_id: app.globalData.userInfo.id,
-    }
+    var param = {}
     console.log(JSON.stringify(param))
     util.showLoading("加载首页");
     util.getIndexPage(param, function (ret) {
       console.log(JSON.stringify(ret))
       if (ret.data.code == "200") {
         //整理书吧图片
-        vm.setDataWithRes(0, ret.data.obj)
+         vm.setDataWithRes(0, ret.data.obj)
 
       } else {
 
@@ -97,6 +95,9 @@ Page({
       start: start_o,
       num: num_o,
       con: "normal"
+    }
+    if (loading_flag_o) {
+      return;
     }
     loading_flag_o = true //避免下拉时重复加载
     console.log(JSON.stringify(param))
@@ -198,6 +199,21 @@ Page({
     console.log(JSON.stringify(e))
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.phonenum
+    })
+  },
+
+  //根据书吧id获取书吧页面
+  bardetail: function (e) {
+    console.log(JSON.stringify("barid:" + e.currentTarget.dataset.barid))
+    var barid = e.currentTarget.dataset.barid
+    wx.navigateTo({
+      url: '/pages/barpage/barpage?barid=' + barid
+    })
+  },
+  //点击跳转搜索页面
+  clickSearch:function(e){
+    wx.navigateTo({
+      url: '/pages/search/search',
     })
   }
 })
