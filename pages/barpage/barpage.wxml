@@ -1,0 +1,43 @@
+<import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
+<view class="page">
+  <view wx:if="{{barInfo.name.length>0}}">
+    <!--书吧信息-->
+    <view class="weui-flex white-bg padding-top-10 padding-bottom-10">
+      <view class="bar-img weui-flex__item margin-left-5">
+        <image src="{{barInfo.picture}}" class="bar-img-nor-barbook" mode="aspectFill"></image>
+      </view>
+      <view class="weui-flex__item  margin-right-5">
+        <view class="text-oneline bar-font-weight">{{barInfo.name}}</view>
+        <view class="text-oneline bar-text margin-top-5 grey-font">{{barInfo.address}}</view>
+        <view class="text-oneline bar-icon margin-top-5 grey-font" bindtap="callPhonenum" data-phonenum="{{barInfo.phonenum}}">
+          <image src="../../images/tel_icon.png" class="opt-icon-sma"></image>
+          <text class="margin-left-5 bar-font-weight">{{barInfo.phonenum}}</text>
+        </view>
+        <view class="text-oneline bar-icon margin-top-5 grey-font" bindtap="getmapposition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
+          <image src="../../images/location.png" class="opt-icon-sma"></image>
+          <text class="margin-left-5 bar-font-weight" style="color:#ff0033">查看地图</text>
+        </view>
+      </view>
+    </view>
+    <!--搜索-->
+    <view class="page__bd">
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <input type="text" class="weui-search-bar__input" />
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+          </label>
+        </view>
+      </view>
+    </view>
+    <!--图书推荐-->
+    <view class="white-bg">
+      <block wx:for="{{bookInfos}}">
+        <template is="bookInfoIndex" data="{{...item}}" />
+      </block>
+    </view>
+  </view>
+</view>
