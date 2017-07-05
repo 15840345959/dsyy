@@ -82,7 +82,7 @@ Page({
       console.log(JSON.stringify(ret))
       if (ret.data.code == "200") {
         //整理书吧图片
-        vm.setDataWithRes(0, ret.data.obj)
+         vm.setDataWithRes(0, ret.data.obj)
 
       } else {
 
@@ -208,6 +208,12 @@ Page({
     var barid = e.currentTarget.dataset.barid
     wx.navigateTo({
       url: '/pages/barpage/barpage?barid=' + barid
+    })
+  },
+  //点击跳转搜索页面
+  clickSearch:function(e){
+    wx.navigateTo({
+      url: '/pages/search/search',
     })
   }
 })

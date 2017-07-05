@@ -13,7 +13,7 @@
           <image src="../../images/tel_icon.png" class="opt-icon-sma"></image>
           <text class="margin-left-5 bar-font-weight">{{barInfo.phonenum}}</text>
         </view>
-        <view class="text-oneline bar-icon margin-top-5 grey-font" bindtap="getmapposition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
+        <view class="text-oneline bar-icon margin-top-5 grey-font" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
           <image src="../../images/location.png" class="opt-icon-sma"></image>
           <text class="margin-left-5 bar-font-weight" style="color:#ff0033">查看地图</text>
         </view>
