@@ -7,11 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputVal:[],
-    change:false,
+    inputVal:"",
     bookInfos:[],
-    search_book:[],
-    hotword: getApp().globalData.bookTypeArr,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -26,6 +23,14 @@ Page({
     if (bar_id == null) {
       vm.inputTyping
     }
+    if (util.judgeIsAnyNullStr(bar_id)){
+      bar_id=""
+    }
+    console.log("书吧传来的值："+bar_id)
+    //初始化type
+    vm.setData({
+      hotword: getApp().globalData.bookTypeArr,
+    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -49,14 +54,10 @@ Page({
   hideInput:function(){
     vm.setData({
       inputVal:"",
-      change:false
     })
   },
   
-  search_bt:function(e){
-    vm.setData({
-      inputVal: e.target.dataset.search,
-    })
+  searcBook:function(e){
     var param = {
       type: e.target.dataset.search,
       bar_id:bar_id
@@ -70,15 +71,11 @@ Page({
       if (ret.data.code == "200") {
         vm.setData({
           bookInfos: ret.data.obj,
-          change: true
         })
       }
     })
   },
   inputTyping:function(e){
-      vm.setData({
-        inputVal: e.detail.value,
-      })
       var param = {
         title: e.detail.value,
         bar_id:bar_id
@@ -92,7 +89,6 @@ Page({
         if (ret.data.code == "200") {
           vm.setData({
             bookInfos: ret.data.obj,
-            change: true
           })
         }
       })
