@@ -27,9 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options = { //测试数据
-      barid: 2
-    }
+    // options = { //测试数据
+    //   barid: 2
+    // }
     if (util.judgeIsAnyNullStr(options.barid)) {
       return;
     }
@@ -85,8 +85,10 @@ Page({
     });
   },
   SearchBook:function(){
+    console.log("我要传的值：" + JSON.stringify(vm.data.barInfo))
+    console.log('/pages/search/search?barInfo=' + JSON.stringify(vm.data.barInfo))
     wx.navigateTo({
-      url: '/pages/search/search?barid='+bar_id+"&barname="+bar_name,
+      url: '/pages/search/search?barInfo=' + JSON.stringify(vm.data.barInfo)
     })
   }
 })

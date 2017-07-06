@@ -7,11 +7,11 @@
     <view class="bar-info">
       <view class="text-oneline font-weight margin-bottom-10 bar-title-font">{{name}}</view>
       <view class="text-oneline margin-bottom-10 bar-font">{{address}}</view>
-      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{phonenum}}">
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
         <text class="margin-left-10">{{phonenum}}</text>
       </view>
-      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" >
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
         <text class="margin-left-10">{{address}}</text>
       </view>
@@ -32,11 +32,11 @@
     <view class="bar-info">
       <view class="text-oneline font-weight margin-bottom-10 bar-title-font">{{name}}</view>
       <view class="text-oneline margin-bottom-10 bar-font">{{address}}</view>
-      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{phonenum}}">
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
         <text class="margin-left-10">{{phonenum}}</text>
       </view>
-      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" >
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
         <text class="margin-left-10">{{address}}</text>
       </view>

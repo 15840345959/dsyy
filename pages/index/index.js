@@ -231,5 +231,6 @@ Page({
     wx.navigateTo({
       url: '/pages/search/search',
     })
+      currentNavbar:1
   }
 })

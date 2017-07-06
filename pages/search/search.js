@@ -16,6 +16,7 @@ Page({
   onLoad: function (options) {
     vm=this
     bar_id = options.barid
+
     if (util.judgeIsAnyNullStr(bar_id)){
       bar_id=""
     }
@@ -24,7 +25,6 @@ Page({
     vm.setData({
       hotword: getApp().globalData.bookTypeArr,
     })
-  
   },
   /**
    * 生命周期函数--监听页面显示
