@@ -6,12 +6,12 @@
     "pages/admin/cbook/cbook",
     "pages/templates/bookInfoTpl/bookInfoTpl",
     "pages/logs/logs",
-    "pages/barpage/barpage",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/barpage/barpage"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "读书有益",
     "enablePullDownRefresh": true,
     "navigationBarTextStyle": "black",
@@ -20,7 +20,7 @@
   "tabBar": {
     "color": "#8A8A8A",
     "borderStyle": "white",
-    "selectedColor": "#1296DB",
+    "selectedColor": "#36BE7A",
     "backgroundColor": "white",
     "list": [
       {

@@ -1,18 +1,48 @@
 <!--该模板用于首页展示-->
 <template name="barInfoIndex">
-  <view class="bar border-bottom margin-left-10 margin-right-10 padding-top-10 padding-bottom-10" style="position:relative;" bindtap="bardetail" data-barid="{{id}}">
-    <view class="grey-font font-size-12" style="position:absolute;right:10px;top:15px;">
-      0.5km
-    </view>
+  <view class="bar border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25" style="position:relative;" bindtap="bardetail" data-barid="{{id}}">
     <view class="bar-img">
       <image src="{{picture}}" class="bar-img-nor" mode="aspectFill"></image>
     </view>
     <view class="bar-info">
-      <view class="text-oneline margin-top-5">{{name}}</view>
-      <view class="text-oneline margin-top-5 grey-font">{{address}}</view>
-      <view class="text-oneline margin-top-5 grey-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{phonenum}}">
-        <image src="../../images/tel_icon.png" class="opt-icon-sma"></image>
-        <text class="margin-left-5">{{phonenum}}</text>
+      <view class="text-oneline font-weight margin-bottom-10 bar-title-font">{{name}}</view>
+      <view class="text-oneline margin-bottom-10 bar-font">{{address}}</view>
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{phonenum}}">
+        <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
+        <text class="margin-left-10">{{phonenum}}</text>
+      </view>
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" >
+        <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
+        <text class="margin-left-10">{{address}}</text>
+      </view>
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
+        <image src="../../images/ic_distance.png" class="opt-icon-sma"></image>
+        <text class="margin-left-10">0.5米</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--该模板用于首页书吧页面展示-->
+<template name="barInfoIndexs">
+  <view class="bar border-bottom padding-top-25 padding-bottom-25 margin-top-20 white-bg" style="position:relative;" bindtap="bardetail" data-barid="{{id}}">
+    <view class="bar-img">
+      <image src="{{picture}}" class="bar-img-nor" mode="aspectFill"></image>
+    </view>
+    <view class="bar-info">
+      <view class="text-oneline font-weight margin-bottom-10 bar-title-font">{{name}}</view>
+      <view class="text-oneline margin-bottom-10 bar-font">{{address}}</view>
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{phonenum}}">
+        <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
+        <text class="margin-left-10">{{phonenum}}</text>
+      </view>
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" >
+        <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
+        <text class="margin-left-10">{{address}}</text>
+      </view>
+      <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
+        <image src="../../images/ic_distance.png" class="opt-icon-sma"></image>
+        <text class="margin-left-10">0.5米</text>
       </view>
     </view>
   </view>

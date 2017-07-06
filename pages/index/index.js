@@ -201,6 +201,22 @@ Page({
       phoneNumber: e.currentTarget.dataset.phonenum
     })
   },
+  
+  //查看位置
+  getMapPosition: function (e) {
+    console.log("lon lat：" + JSON.stringify(e.currentTarget.dataset))
+    var lon = e.currentTarget.dataset.lon
+    var lat = e.currentTarget.dataset.lat
+    var name = e.currentTarget.dataset.name
+    var address = e.currentTarget.dataset.address
+    wx.openLocation({
+      latitude: lon,
+      longitude: lat,
+      scale: 28,
+      name: name,
+      address: address
+    })
+  },
 
   //根据书吧id获取书吧页面
   bardetail: function (e) {

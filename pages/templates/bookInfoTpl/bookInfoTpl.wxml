@@ -15,14 +15,15 @@
 
 <!--该模板用于首页展示-->
 <template name="bookInfoIndex">
-  <view class="book border-bottom margin-left-10 margin-right-10 padding-top-10 padding-bottom-10">
+  <view class="book border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25">
     <view class="book-img">
       <image src="{{bookInfo.images_large}}" class="book-img-sml" mode="aspectFill"></image>
     </view>
     <view class="book-info">
-      <view class="text-oneline margin-top-5">{{bookInfo.title}}</view>
-      <view class="text-oneline margin-top-5">{{bookInfo.publisher}} {{bookInfo.author}}</view>
-      <view class="text-oneline margin-top-5">{{bookInfo.type}} / {{bookInfo.pubdate}} / {{bookInfo.pages}}页</view>
+      <view class="text-oneline font-weight margin-bottom-10 book-title-font">{{bookInfo.title}}</view>
+      <view class="text-oneline margin-bottom-10 book-font">作者： {{bookInfo.author}}</view>
+      <view class="text-oneline margin-bottom-10 book-font">页数：{{bookInfo.pages}}页</view>
+      <view class="text-oneline margin-bottom-10 book-font">出版社：{{bookInfo.publisher}}</view>
     </view>
   </view>
 </template>

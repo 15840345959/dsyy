@@ -8,12 +8,12 @@
   <view class="page__bd page__bd_spacing">
     <!-- 推荐 -->
     <view class="navbar white-bg">
-      <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx" data-idx="{{idx}}" bindtap="swichNav">
+      <view class="navbar-item font-size-14" wx:for="{{navbar}}" wx:for-index="idx" data-idx="{{idx}}" bindtap="swichNav">
         <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">{{item}}</text>
       </view>
     </view>
     <!--占位用80rpx-->
-    <view style="height:80rpx;"></view>
+    <view style="height:100rpx;"></view>
 
     <swiper class="swiper" current="{{currentNavbar}}" duration="300" style="height:{{systemInfo.windowHeight}}px">
       <!--推荐部分-->
@@ -27,22 +27,27 @@
               </swiper-item>
             </block>
           </swiper>
-
-          <view wx:if="{{indexPage.bookInfos}}" class="line-text margin-top-5">
-            推荐图书
+          <view class="white-bg margin-top-20">
+            <view wx:if="{{indexPage.bookInfos}}" class="book border-bottom margin-left-40 margin-right-40 padding-top-10 padding-bottom-10 margin-top-10 line-text weui-flex font-weight">
+              <view class="weui-flex__item">新书推荐</view>
+              <view class="weui-flex__item text-right">></view>
+            </view>
+            <view>
+              <block wx:for="{{indexPage.bookInfos}}">
+                <template is="bookInfoIndex" data="{{...item}}" />
+              </block>
+            </view>
           </view>
-          <view class="white-bg">
-            <block wx:for="{{indexPage.bookInfos}}">
-              <template is="bookInfoIndex" data="{{...item}}" />
-            </block>
-          </view>
-          <view wx:if="{{indexPage.barInfos}}" class="line-text margin-top-5">
-            旗舰书吧
-          </view>
-          <view class="white-bg">
-            <block wx:for="{{indexPage.barInfos}}">
-              <template is="barInfoIndex" data="{{...item}}" />
-            </block>
+          <view class="white-bg margin-top-20">
+            <view wx:if="{{indexPage.barInfos}}" class="book border-bottom margin-left-40 margin-right-40 padding-top-10 padding-bottom-10 margin-top-10 line-text weui-flex font-weight">
+              <view class="weui-flex__item">附近书吧</view>
+              <view class="weui-flex__item text-right">></view>
+            </view>
+            <view>
+              <block wx:for="{{indexPage.barInfos}}">
+                <template is="barInfoIndex" data="{{...item}}" />
+              </block>
+            </view>
           </view>
         </scroll-view>
       </swiper-item>
@@ -50,16 +55,21 @@
       <!--图书部分-->
       <swiper-item>
         <!--搜索框-->
-        <view class="weui-search-bar top-search-bar" catchtap="clickSearch">
-          <view class="weui-search-bar__form">
-            <view class="weui-search-bar__box text-center">
-              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-              <text class="font-size-14 grey-font" >搜索</text>
+        <view class="index-search-botton white-bg margin-top-20"  catchtap="clickSearch">
+          <view class="index-search-input">
+            <view class="index-search-bar__box weui-flex">
+              <view class="bar-img weui-flex__item">
+                <text class="index-search-font">搜索你喜欢的书籍</text>
+              </view>
+              <view class="bar-img weui-flex__item text-right padding-top-5" >
+                <image src="../../images/search_icon.png" class="opt-icon-sma"></image>
+              </view>
             </view>
           </view>
         </view>
+        <!--<view style="height:50rpx;"></view>-->
         <!--图书列表-->
-        <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMoreDatas">
+        <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight-80}}px;" scroll-y="true" bindscrolltolower="loadMoreDatas">
           <view class="white-bg">
             <block wx:for="{{bookInfos}}">
               <template is="bookInfoIndex" data="{{...item}}" />
@@ -71,14 +81,9 @@
       <!--书吧部分-->
       <swiper-item>
         <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMoreDatas">
-          <view class="line-text margin-top-5">
-            旗舰书吧
-          </view>
-          <view class="white-bg">
-            <block wx:for="{{barInfos}}" >
-              <template is="barInfoIndex" data="{{...item}}"   />
-            </block>
-          </view>
+          <block wx:for="{{barInfos}}">
+            <template is="barInfoIndexs" data="{{...item}}" />
+          </block>
         </scroll-view>
       </swiper-item>
     </swiper>

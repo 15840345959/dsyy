@@ -1,38 +1,10 @@
-/* barbook.wxss */
 .bar-img-nor-barbook{
-  width:300rpx;
-  height:180rpx;
+  width:100%;
+
 }
-.bar-info-barbook
-{
-  padding-left: 40rpx;
-  width: 460rpx;
-  font-size: 12pt;
-}
-.bar-font-weight
-{
-  font-weight: bold;
-}
-.bar-icon
-{
-  display:flex;
-  align-items:center;
-  font-size:10pt
-}
-.bar-text
-{
-  font-size:10pt;
-}
-.bar-supplement
-{
-  position:relative;
-  background-color:#fff;
-}
-.bar-recommend
-{
-  text-align:center;
-  font-size: 10pt;
-  line-height: 20pt;
-  height:20pt;
-  font-weight:bold;
+.bar-text{
+  /*font-family: .PingFang-SC-Regular;*/
+  font-size: 26rpx;
+  color: #646464;
+  letter-spacing: -0.68rpx;
 }

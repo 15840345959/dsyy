@@ -10,7 +10,7 @@
 </view>
 <view class="weui-grids" hidden="{{change}}">
   <block wx:for="{{hotword}}">
-    <button style="color:{{item.color}};margin:5px" class="weui-btn mini-btn" size="mini" catchtap="search_bt" data-search="{{item.text}}">{{item.text}}</button>
+    <button style="margin:5px" class="weui-btn mini-btn" size="mini" catchtap="search_bt" data-search="{{item}}">{{item}}</button>
   </block>
 </view>
 <scroll-view scroll-y style="height:{{systemInfo.windowHeight}}" hidden="{{!change}}">

@@ -12,7 +12,6 @@ var bar_name=null
 //书吧图书列表相关加载参数
 var start_b = 0
 var num_b = 12
-var loading_flag_b = false
 
 Page({
 
@@ -81,6 +80,7 @@ Page({
           bookInfos: ret.data.obj.bookInfos,
         })
         bar_name = ret.data.obj.barInfo.name
+        wx.setNavigationBarTitle({ title: bar_name })
       }
     });
   },
@@ -89,5 +89,4 @@ Page({
       url: '/pages/search/search?barid='+bar_id+"&barname="+bar_name,
     })
   }
-
 })

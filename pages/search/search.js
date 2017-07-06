@@ -7,12 +7,7 @@ Page({
    */
   data: {
     inputVal:[],
-    hotword: [
-      { color: "#96CDCD", text: "明朝那些事儿" }, 
-      { color: "#8B658B", text: "不完美，才美" }, 
-      { color: "#FF6A6A", text: "高手过招" },
-      { color: "#698B69", text: "睡眠革命" },
-      { color: "#8B7355", text: "情商高就是说话让人舒服" },],
+    hotword: app.globalData.bookTypeArr,
     change:false,
     bookInfos:[],
     search_book:[]

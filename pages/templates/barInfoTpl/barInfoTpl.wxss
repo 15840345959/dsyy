@@ -3,7 +3,7 @@
 .bar {
   display: flex;
   flex-direction: row;
-  padding: 10rpx 20rpx;
+  padding: 10rpx 0rpx;
   border-bottom: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
@@ -12,8 +12,9 @@
 }
 
 .bar-img-nor {
-  width: 200rpx;
-  height: 120rpx;
+  width: 240rpx;
+  height: 300rpx;
+  border-radius: 5%;
 }
 
 .bar-info {
@@ -21,4 +22,18 @@
   float: left;
   width: 460rpx;
   font-size: 14px;
+}
+
+.bar-title-font{
+  /*font-family: .PingFang-SC-Regular;*/
+  font-size: 32rpx;
+  color: #646464;
+  letter-spacing: -0.77rpx;
+}
+
+.bar-font{
+  font-family: PingFangSC-Light;
+  font-size: 26rpx;
+  color: #646464;
+  letter-spacing: -0.63rpx;
 }

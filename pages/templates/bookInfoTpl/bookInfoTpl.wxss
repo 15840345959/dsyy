@@ -3,7 +3,7 @@
 .book {
   display: flex;
   flex-direction: row;
-  padding: 10rpx 20rpx;
+  padding: 10rpx 0rpx;
   border-bottom: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
@@ -17,8 +17,9 @@
 }
 
 .book-img-sml {
-  width: 120rpx;
-  height: 185rpx;
+  width: 200rpx;
+  height: 300rpx;
+  border-radius: 5%;
 }
 
 .book-info {
@@ -26,4 +27,18 @@
   float: left;
   width: 460rpx;
   font-size: 14px;
+}
+
+.book-title-font{
+  /*font-family: .PingFang-SC-Regular;*/
+  font-size: 34rpx;
+  color: #323232;
+  letter-spacing: -0.82rpx;
+}
+
+.book-font{
+ /*font-family: .PingFang-SC-Regular;*/
+  font-size: 28rpx;
+  color: #646464;
+  letter-spacing: -0.68rpx;
 }
