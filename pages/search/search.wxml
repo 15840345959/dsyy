@@ -1,9 +1,9 @@
 <import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
-<view class="weui-search-bar top-search-bar">
+<view class="weui-search-bar top-search-bar search_input">
   <view class="weui-search-bar__form">
     <view class="weui-search-bar__box">
       <icon class="weui-icon-search_in-box" type="search" size="14"   ></icon>
-      <input type="text" class="weui-search-bar__input" placeholder="搜索你喜欢的书籍" value="{{inputVal}}" bindinput="inputTyping"/>
+      <input type="text" class="weui-search-bar__input search-font" placeholder="搜索你喜欢的书籍" value="{{inputVal}}" bindinput="inputTyping" style="width:100%"/>
     </view>
   </view>
   <view class="weui-search-bar__cancel-btn" catchtap="hideInput">取消</view>
@@ -11,15 +11,15 @@
 
 
 
-<view class="weui-grids" hidden="{{change}}" style="margin:17rpx 12rpx;border:0">
+<view class="weui-grids search_button">
   <block wx:for="{{hotword}}">
-    <button style="margin:9rpx 21rpx;padding-top:8rpx;height:70rpx;width:200rpx" class="weui-btn mini-btn" size="mini" catchtap="search_bt" data-search="{{item}}">{{item}}</button>
+    <button style="margin:9rpx 21rpx;padding-top:8rpx;height:70rpx;width:200rpx" class="weui-btn mini-btn" size="mini" catchtap="searcBook" data-search="{{item}}">{{item}}</button>
   </block>
 </view>
 
 
 
-<scroll-view scroll-y style="height:{{systemInfo.windowHeight}}" hidden="{{!change}}">
+<scroll-view scroll-y style="height:{{systemInfo.windowHeight}}">
     <view class="white-bg">
     <block wx:for="{{bookInfos}}">
       <template is="bookInfoBase" data="{{...item}}"></template>
