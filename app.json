@@ -31,7 +31,7 @@
       },
       {
         "pagePath": "pages/read/read",
-        "text": "读书",
+        "text": "书友圈",
         "iconPath": "images/dushu_n.png",
         "selectedIconPath": "images/dushu_r.png"
       },
