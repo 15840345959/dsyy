@@ -5,7 +5,9 @@ var app = getApp()
 
 var vm = null
 
-var barid = 0
+var bar_id = 0
+
+var bar_name=null
 
 //书吧图书列表相关加载参数
 var start_b = 0
@@ -33,7 +35,7 @@ Page({
       return;
     }
     vm = this
-    barid = options.barid
+    bar_id = options.barid
     util.showLoading('加载中...');
     vm.loadBarPage()
   },
@@ -66,7 +68,7 @@ Page({
     var param = {
       start: start_b,
       num: num_b,
-      bar_id: barid
+      bar_id: bar_id
     }
     console.log(JSON.stringify(param))
     util.getBarPageByBarId(param, function (ret) {
@@ -78,9 +80,14 @@ Page({
           barInfo: ret.data.obj.barInfo,
           bookInfos: ret.data.obj.bookInfos,
         })
-
+        bar_name = ret.data.obj.barInfo.name
       }
     });
+  },
+  SearchBook:function(){
+    wx.navigateTo({
+      url: '/pages/search/search?barid='+bar_id+"&barname="+bar_name,
+    })
   }
 
 })

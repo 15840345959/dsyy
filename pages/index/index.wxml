@@ -54,7 +54,7 @@
           <view class="weui-search-bar__form">
             <view class="weui-search-bar__box text-center">
               <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-              <text class="font-size-14 grey-font">搜索</text>
+              <text class="font-size-14 grey-font" >搜索</text>
             </view>
           </view>
         </view>
