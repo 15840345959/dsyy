@@ -171,6 +171,10 @@ function getBarPageByBarId(param, successCallback, errorCallback) {
 function getBookInfosByTitle(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBookInfosByTitle.do', param, "GET", successCallback, errorCallback);
 }
+//根据类型获取图书信息
+function getBookInfosByType(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookInfosByType.do', param, "GET", successCallback, errorCallback);
+}
 
 /////////基本方法///////////////////////////////////////////
 //跳转到inputText页面
@@ -496,5 +500,6 @@ module.exports = {
   getBookObjByCon: getBookObjByCon,
   getBarInfoByPos: getBarInfoByPos,
   getBarPageByBarId: getBarPageByBarId,
-  getBookInfosByTitle: getBookInfosByTitle
+  getBookInfosByTitle: getBookInfosByTitle,
+  getBookInfosByType: getBookInfosByType
 }
