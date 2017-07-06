@@ -19,10 +19,12 @@ Page({
   onLoad: function (options) {
     vm=this
     bar_id = options.barid
+
+    console.log("option:" + options.barInfo)
     if (bar_id =="undefined"||bar_id==null||bar_id==""){
       bar_id=""
     }
-    console.log("书吧传来的值："+bar_id)
+    
     if (bar_id == null) {
       vm.inputTyping
     }

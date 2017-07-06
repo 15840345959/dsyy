@@ -7,8 +7,8 @@
       <image src="{{barInfo.picture}}" class="bar-img-nor-barbook" mode="aspectFill"></image>
     </view>
     <!--搜索-->
-    <view class="index-search-botton white-bg" catchtap="clickSearch">
-      <view class="index-search-input">
+    <view class="index-search-botton white-bg">
+      <view class="index-search-input" bindtap="SearchBook">
         <view class="index-search-bar__box weui-flex">
           <view class="bar-img weui-flex__item">
             <text class="index-search-font">搜索你喜欢的书籍</text>
