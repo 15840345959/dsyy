@@ -28,7 +28,7 @@
             </block>
           </swiper>
           <view class="white-bg margin-top-20">
-            <view wx:if="{{indexPage.bookInfos}}" class="book border-bottom margin-left-40 margin-right-40 padding-top-10 padding-bottom-10 margin-top-10 line-text weui-flex font-weight" bindtap="SeeMoreBook">
+            <view wx:if="{{indexPage.bookInfos}}" class="book border-bottom margin-left-40 margin-right-40 padding-top-10 padding-bottom-10 margin-top-10 line-text weui-flex font-weight" bindtap="seeMoreBook">
               <view class="weui-flex__item">新书推荐</view>
               <view class="weui-flex__item text-right">></view>
             </view>
@@ -39,7 +39,7 @@
             </view>
           </view>
           <view class="white-bg margin-top-20">
-            <view wx:if="{{indexPage.barInfos}}" class="book border-bottom margin-left-40 margin-right-40 padding-top-10 padding-bottom-10 margin-top-10 line-text weui-flex font-weight" bindtap="SeeMoreBar">
+            <view wx:if="{{indexPage.barInfos}}" class="book border-bottom margin-left-40 margin-right-40 padding-top-10 padding-bottom-10 margin-top-10 line-text weui-flex font-weight" bindtap="seeMoreBar">
               <view class="weui-flex__item">附近书吧</view>
               <view class="weui-flex__item text-right">></view>
             </view>

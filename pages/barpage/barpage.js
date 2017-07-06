@@ -84,7 +84,7 @@ Page({
       }
     });
   },
-  SearchBook:function(){
+  searchBook:function(){
     console.log("我要传的值：" + JSON.stringify(vm.data.barInfo))
     console.log('/pages/search/search?barInfo=' + JSON.stringify(vm.data.barInfo))
     wx.navigateTo({

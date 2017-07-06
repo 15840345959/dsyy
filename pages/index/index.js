@@ -232,7 +232,7 @@ Page({
       url: '/pages/search/search',
     })
   },
-  SeeMoreBook:function(e){
+  seeMoreBook:function(e){
     vm.setData({
       currentNavbar:1
     })
@@ -240,7 +240,7 @@ Page({
       vm.loadMoreDatas()
     }
   },
-  SeeMoreBar:function(e){
+  seeMoreBar:function(e){
     vm.setData({
       currentNavbar: 2
     })
