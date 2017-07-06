@@ -25,7 +25,7 @@
 
 <!--该模板用于首页书吧页面展示-->
 <template name="barInfoIndexs">
-  <view class="bar border-bottom padding-top-25 padding-bottom-25 margin-top-20 white-bg" style="position:relative;" bindtap="bardetail" data-barid="{{id}}">
+  <view class="bar border-bottom padding-top-25 padding-bottom-25 margin-top-20 white-bg padding-left-40 padding-right-40" style="position:relative;" bindtap="bardetail" data-barid="{{id}}">
     <view class="bar-img">
       <image src="{{picture}}" class="bar-img-nor" mode="aspectFill"></image>
     </view>
