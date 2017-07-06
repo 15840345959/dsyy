@@ -231,6 +231,21 @@ Page({
     wx.navigateTo({
       url: '/pages/search/search',
     })
+  },
+  SeeMoreBook:function(e){
+    vm.setData({
       currentNavbar:1
+    })
+    if (vm.needLoadNewDataAfterSwiper()) {
+      vm.loadMoreDatas()
+    }
+  },
+  SeeMoreBar:function(e){
+    vm.setData({
+      currentNavbar: 2
+    })
+    if (vm.needLoadNewDataAfterSwiper()) {
+      vm.loadMoreDatas()
+    }
   }
 })
