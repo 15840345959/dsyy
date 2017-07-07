@@ -30,7 +30,7 @@
           <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
           <text class="margin-left-10">{{barInfo.phonenum}}</text>
         </view>
-        <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}">
+        <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
           <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
           <text class="margin-left-10">{{barInfo.address}}</text>
         </view>

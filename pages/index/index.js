@@ -247,5 +247,22 @@ Page({
     if (vm.needLoadNewDataAfterSwiper()) {
       vm.loadMoreDatas()
     }
+  },
+
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: navigationBarTitleText,
+      path: '/pages/index/index',
+      success: function (res) {
+        
+      },
+      fail: function (res) {
+        
+      }
+    }
   }
 })

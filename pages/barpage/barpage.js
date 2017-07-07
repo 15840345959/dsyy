@@ -90,5 +90,21 @@ Page({
     wx.navigateTo({
       url: '/pages/search/search?barInfo=' + JSON.stringify(vm.data.barInfo)
     })
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: navigationBarTitleText,
+      path: '/pages/barpage/barpage?barid=' + bar_id,
+      success: function (res) {
+
+      },
+      fail: function (res) {
+
+      }
+    }
   }
 })
