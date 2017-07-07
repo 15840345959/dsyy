@@ -1,7 +1,8 @@
 var util = require('../../utils/util.js')
 var app=getApp()
 var vm = null
-var bar_id = 0
+var barInfo=null
+var bar_id=0
 Page({
   /**
    * 页面的初始数据
@@ -15,22 +16,18 @@ Page({
    */
   onLoad: function (options) {
     vm = this
-    bar_id = options.barid
-    if (bar_id == "undefined" || bar_id == null || bar_id == "") {
-      bar_id = ""
+    barInfo = options.barInfo
+
+    console.log("我要接收的值：" + barInfo)
+
+    if (util.judgeIsAnyNullStr(options.barInfo)){
+      barInfo:""
     }
-    console.log("书吧传来的值：" + bar_id)
-    if (bar_id == null) {
-      vm.inputTyping
-    }
-    if (util.judgeIsAnyNullStr(bar_id)){
-      bar_id=""
-    }
-    console.log("书吧传来的值："+bar_id)
     //初始化type
     vm.setData({
       hotword: getApp().globalData.bookTypeArr,
     })
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -51,19 +48,14 @@ Page({
 
     
   },
-  hideInput:function(){
-    vm.setData({
-      inputVal:"",
-    })
-  },
-  
-  searcBook:function(e){
+  //根据type查找书籍分类
+  searchBookByType:function(e){
     var param = {
       type: e.target.dataset.search,
-      bar_id:bar_id
+      bar_id: barInfo.id
     }
     //如果为零属于重新加载
-    if (vm.data.bookInfos == "" || vm.data.bookInfos == null || vm.data.bookInfos == undefined) {
+    if (util.judgeIsAnyNullStr(vm.data.bookInfos)) {
       util.showLoading('加载图书');
     }
     util.getBookInfosByType(param, function (ret) {
@@ -75,23 +67,24 @@ Page({
       }
     })
   },
-  inputTyping:function(e){
-      var param = {
-        title: e.detail.value,
-        bar_id:bar_id
+  //根据输入框中的值查找指定书籍
+  searchBookByTitle:function(e){
+    var param = {
+      title: e.detail.value,
+      bar_id: barInfo.id
+    }
+    //如果为零属于重新加载
+    if (util.judgeIsAnyNullStr(vm.data.bookInfos)) {
+      util.showLoading('加载图书');
+    }
+    util.getBookInfosByTitle(param, function (ret) {
+      console.log("输出：" + JSON.stringify(ret))
+      if (ret.data.code == "200") {
+        vm.setData({
+          bookInfos: ret.data.obj,
+        })
       }
-      //如果为零属于重新加载
-      if (vm.data.bookInfos == "" || vm.data.bookInfos == null || vm.data.bookInfos == undefined) {
-        util.showLoading('加载图书');
-      }
-      util.getBookInfosByTitle(param, function (ret) {
-        console.log("输出：" + JSON.stringify(ret))
-        if (ret.data.code == "200") {
-          vm.setData({
-            bookInfos: ret.data.obj,
-          })
-        }
-      })
+    })
   }
   
 })

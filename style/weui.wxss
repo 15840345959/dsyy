@@ -1145,7 +1145,7 @@ icon {
 
 .weui-icon-search_in-box {
   position: absolute;
-  left: 10px;
+  right: 10px;
   top: 7px;
 }
 

@@ -1,22 +1,23 @@
 <import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
-<view class="weui-search-bar top-search-bar search_input">
-  <view class="weui-search-bar__form">
-    <view class="weui-search-bar__box">
-      <icon class="weui-icon-search_in-box" type="search" size="14"   ></icon>
-      <input type="text" class="weui-search-bar__input search-font" placeholder="搜索你喜欢的书籍" value="{{inputVal}}" bindinput="inputTyping" style="width:100%"/>
+<view class="index-search-botton white-bg search-padding">
+      <view class="index-search-input">
+        <view class="index-search-bar__box weui-flex">
+          <view class="bar-img weui-flex__item serach-input_box">
+            <input type="text" class="index-search-font font-size-14 padding-top-10 search-input" bindinput="searchBookByTitle" placeholder="搜索你喜欢的书籍" value="{{inputVal}}"/>
+          </view>
+          <view class="bar-img weui-flex__item text-right padding-top-5">
+            <image src="../../images/search_icon.png" class="opt-icon-sma"></image>
+          </view>
+        </view>
+      </view>
     </view>
+
+
+<view class="weui-flex search-padding" style="padding-top:-6rpx">
+  <view class="weui-flex__item">
+    <view class="placeholder font-size-14 grey-h10-div search_type" wx:for="{{hotword}}" style="{{index%3==0?'margin-left:0;':''}}" catchtap="searchBookByType">{{item}}</view>
   </view>
-  <view class="weui-search-bar__cancel-btn" catchtap="hideInput">取消</view>
 </view>
-
-
-
-<view class="weui-grids search_button">
-  <block wx:for="{{hotword}}">
-    <button style="margin:9rpx 21rpx;padding-top:8rpx;height:70rpx;width:200rpx" class="weui-btn mini-btn" size="mini" catchtap="searcBook" data-search="{{item}}">{{item}}</button>
-  </block>
-</view>
-
 
 
 <scroll-view scroll-y style="height:{{systemInfo.windowHeight}}">
