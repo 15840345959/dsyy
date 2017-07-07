@@ -49,8 +49,7 @@
   display:-webkit-box;
   display:-webkit-flex;
   display:flex;
-  box-sizing:border-box;
-
+  box-sizing:border-box;   
 }
 .index-search-input{
   position:relative;
