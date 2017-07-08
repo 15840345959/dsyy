@@ -45,6 +45,17 @@ function qiniuUrlTool(img_url, type) {
   return qn_img_url;
 }
 
+//获取真实的七牛云存储链接
+function getRealImgUrl(img_url) {
+  //如果img_url为空
+  if (judgeIsAnyNullStr(img_url)) {
+    return img_url
+  }
+  var pos = img_url.indexOf("?");
+  return img_url.substring(0, pos)
+}
+
+
 //跳转到登录页面
 function navigateToLogin(param) {
 
@@ -75,13 +86,13 @@ function getHeadIconA(dir, hi) {
 //进行接口调用的基本方法
 function wxRequest(url, param, method, successCallback, errorCallback) {
   console.log("wxRequest url:" + JSON.stringify(url) + " param:" + JSON.stringify(param));
-    if (!judgeIsAnyNullStr(getApp().globalData.userInfo)) {
-      //user_id未设置
-      if (judgeIsAnyNullStr(param.user_id)) {
-        param.user_id = getApp().globalData.userInfo.id;
-      }
-      param.token = getApp().globalData.userInfo.token;
+  if (!judgeIsAnyNullStr(getApp().globalData.userInfo)) {
+    //user_id未设置
+    if (judgeIsAnyNullStr(param.user_id)) {
+      param.user_id = getApp().globalData.userInfo.id;
     }
+    param.token = getApp().globalData.userInfo.token;
+  }
   wx.request({
     url: url,
     data: param,
@@ -486,6 +497,7 @@ module.exports = {
   isLocalImg: isLocalImg,
   getImgRealUrl: getImgRealUrl,
   qiniuUrlTool: qiniuUrlTool,
+  getRealImgUrl: getRealImgUrl,
   judgeIsNullImg: judgeIsNullImg,
   chooseImage: chooseImage,
   getErrorMsg: getErrorMsg,

@@ -7,7 +7,7 @@ var vm = null
 
 var bar_id = 0
 
-var bar_name=null
+var bar_name = null
 
 //书吧图书列表相关加载参数
 var start_b = 0
@@ -84,11 +84,15 @@ Page({
       }
     });
   },
-  searchBook:function(){
-    console.log("我要传的值：" + JSON.stringify(vm.data.barInfo))
-    console.log('/pages/search/search?barInfo=' + JSON.stringify(vm.data.barInfo))
+  searchBook: function () {
+    var barInfo = vm.data.barInfo
+    //获取真实pictrue，不被七牛云存储处理的图片链接
+    barInfo.picture = util.getRealImgUrl(barInfo.picture)
+    console.log("我要传的值：" + JSON.stringify(barInfo))
+    var target_url = '/pages/search/search?barInfo=' + JSON.stringify(barInfo)
+    console.log(target_url)
     wx.navigateTo({
-      url: '/pages/search/search?barInfo=' + JSON.stringify(vm.data.barInfo)
+      url: target_url
     })
   },
   onShareAppMessage: function (res) {

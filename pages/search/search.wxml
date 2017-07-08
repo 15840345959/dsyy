@@ -1,16 +1,16 @@
 <import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
 <view class="index-search-botton white-bg search-padding">
-      <view class="index-search-input">
-        <view class="index-search-bar__box weui-flex">
-          <view class="bar-img weui-flex__item serach-input_box">
-            <input type="text" class="index-search-font font-size-14 padding-top-10 search-input" bindinput="searchBookByTitle" placeholder="搜索你喜欢的书籍" value="{{inputVal}}"/>
-          </view>
-          <view class="bar-img weui-flex__item text-right padding-top-5">
-            <image src="../../images/search_icon.png" class="opt-icon-sma"></image>
-          </view>
-        </view>
+  <view class="index-search-input">
+    <view class="index-search-bar__box weui-flex">
+      <view class="bar-img weui-flex__item serach-input_box">
+        <input type="text" class="index-search-font font-size-14 padding-top-10 search-input" bindinput="searchBookByTitle" placeholder="搜索你喜欢的书籍" value="{{inputVal}}" />
+      </view>
+      <view class="bar-img weui-flex__item text-right padding-top-5">
+        <image src="../../images/search_icon.png" class="opt-icon-sma"></image>
       </view>
     </view>
+  </view>
+</view>
 
 
 <view class="weui-flex search-padding" style="padding-top:-6rpx">
@@ -21,9 +21,9 @@
 
 
 <scroll-view scroll-y style="height:{{systemInfo.windowHeight}}">
-    <view class="white-bg">
+  <view class="white-bg">
     <block wx:for="{{bookInfos}}">
       <template is="bookInfoBase" data="{{...item}}"></template>
     </block>
-    </view>
+  </view>
 </scroll-view>
