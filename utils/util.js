@@ -187,6 +187,12 @@ function getBookInfosByType(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBookInfosByType.do', param, "GET", successCallback, errorCallback);
 }
 
+
+//微信预下单
+function wxPrepay(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/wxPrepay.do', param, "GET", successCallback, errorCallback);
+}
+
 /////////基本方法///////////////////////////////////////////
 //跳转到inputText页面
 
@@ -513,5 +519,6 @@ module.exports = {
   getBarInfoByPos: getBarInfoByPos,
   getBarPageByBarId: getBarPageByBarId,
   getBookInfosByTitle: getBookInfosByTitle,
-  getBookInfosByType: getBookInfosByType
+  getBookInfosByType: getBookInfosByType,
+  wxPrepay: wxPrepay
 }
