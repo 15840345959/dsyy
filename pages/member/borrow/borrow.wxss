@@ -1,0 +1,64 @@
+.borrow-code{
+  width:20%;
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 32rpx;
+  color: #323232;
+  letter-spacing: -0.31rpx;
+  float:left;
+  line-height: 60rpx;
+}
+.borrow-frame{
+  width:70%;
+  height:58rpx;
+  border: 1rpx solid #DCDCDC;
+  border-radius: 4rpx;
+  float:right;
+  line-height: 58rpx;
+}
+.borrow-frame-left{
+  width:292rpx;
+  height:40rpx;
+}
+.borrow-frame-left-code{
+  float:left;
+  font-size: 32rpx;
+  color: #323232;
+  letter-spacing: -0.31rpx;
+  line-height: 58rpx;
+}
+.borrow-frame-left-lab{
+  float:left;
+  font-size: 28rpx;
+  color: #DCDCDC;
+  letter-spacing: 1rpx;
+  line-height: 58rpx;
+}
+.borrow-frame-right{
+  float:right;
+  height:42rpx;
+  margin:8rpx;
+  font-size: 28rpx;
+  color: #09BB07;
+  letter-spacing: -0.31rpx;
+  line-height: 42rpx;
+  padding-left:16rpx;
+}
+.borrow-prompt{
+  width:100%;
+  text-align: center;
+}
+.borrow-prompt-image{
+  width:39.9rpx;
+  height:37.1rpx;
+}
+.borrow-text{
+  width:380rpx;
+  height:80rpx;
+  text-align: center;
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 26rpx;
+  color: #646464;
+  letter-spacing: 0.93rpx;
+  line-height: 40rpx;
+  margin:0 auto;
+}

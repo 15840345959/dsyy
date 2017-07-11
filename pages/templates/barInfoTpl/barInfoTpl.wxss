@@ -14,7 +14,7 @@
 .bar-img-nor {
   width: 240rpx;
   height: 300rpx;
-  border-radius: 5%;
+  border-radius: 10rpx;
 }
 
 .bar-info {

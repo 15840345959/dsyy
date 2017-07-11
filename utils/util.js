@@ -182,9 +182,30 @@ function getBarPageByBarId(param, successCallback, errorCallback) {
 function getBookInfosByTitle(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBookInfosByTitle.do', param, "GET", successCallback, errorCallback);
 }
+
 //根据类型获取图书信息
 function getBookInfosByType(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBookInfosByType.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据用户id获取所属书吧列表
+function getBarListByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBarListByUserId.do', param, "GET", successCallback, errorCallback);
+}
+
+//意见反馈
+function createSuggestion(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/createSuggestion.do', param, "GET", successCallback, errorCallback);
+}
+
+//更新用户信息
+function updateUserInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/updateUserInfo.do', param, "GET", successCallback, errorCallback);
+}
+
+//更新用户信息
+function createBorrowCode(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/createBorrowCode.do', param, "GET", successCallback, errorCallback);
 }
 
 /////////基本方法///////////////////////////////////////////
@@ -513,5 +534,9 @@ module.exports = {
   getBarInfoByPos: getBarInfoByPos,
   getBarPageByBarId: getBarPageByBarId,
   getBookInfosByTitle: getBookInfosByTitle,
-  getBookInfosByType: getBookInfosByType
+  getBookInfosByType: getBookInfosByType,
+  getBarListByUserId: getBarListByUserId,
+  createSuggestion: createSuggestion,
+  updateUserInfo: updateUserInfo,
+  createBorrowCode: createBorrowCode
 }
