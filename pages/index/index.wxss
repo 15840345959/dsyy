@@ -37,7 +37,7 @@
 }
 
 .line-text {
-  /*ont-family: .PingFang-SC-Regular;*/
+  /*ont-family: PingFang-SC-Regular;*/
   font-size: 28rpx;
   color: #323232;
   letter-spacing: -0.68rpx;
@@ -58,12 +58,12 @@
   flex:auto;
   background:#fff;
   border:1rpx solid #e6e6ea;
-  border-radius: 3%;
+  border-radius: 10rpx;
   height:80rpx;
   line-height: 80rpx;
 }
 .index-search-font{
-  /*font-family: .PingFang-SC-Regular;*/
+  /*font-family: PingFang-SC-Regular;*/
   font-size: 30rpx;
   color: #969696;
   letter-spacing: -0.72rpx;

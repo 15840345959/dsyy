@@ -1,0 +1,19 @@
+<view wx:if="{{code!=''}}">
+  <view class="page" style="height:20rpx;"></view>
+  <view class="margin-top-30 margin-left-30 margin-bottom-30 borrow-word">借书码</view>
+  <view>
+    <button class="borrow-code">{{code}}</button>
+  </view>
+  <view>
+    <view class="borrow-time padding-left-10 margin-top-30 margin-left-30">提示：此码有效期为5分钟</view>
+    <button bindtap="getCode" class="borrow-button margin-top-30 margin-right-30">刷新</button>
+  </view>
+  <view class="clear"></view>
+  <view class="borrow-prompt">
+    <image src="{{image}}" class="borrow-prompt-image margin-top-50"></image>
+    <text class="borrow-text">
+      将本码展示给店员进行图书借阅 
+      您还可以借阅{{count}}本书
+    </text>
+  </view>
+</view>

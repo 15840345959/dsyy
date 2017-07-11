@@ -27,6 +27,10 @@ page {
   display: none;
 }
 
+.float-left{
+  float:left;
+}
+
 .font-size-10 {
   font-size: 10px;
 }
@@ -75,6 +79,10 @@ page {
   margin-left:20rpx;
 }
 
+.margin-left-30{
+  margin-left:30rpx;
+}
+
 .margin-left-40{
   margin-left:40rpx;
 }
@@ -99,8 +107,16 @@ page {
   margin-right:20rpx;
 }
 
+.margin-right-30{
+  margin-right:30rpx;
+}
+
 .margin-right-40{
   margin-right:40rpx;
+}
+
+.margin-right-50{
+  margin-right:50rpx;
 }
 
 .margin-top-5 {
@@ -127,6 +143,10 @@ page {
   margin-top: 30rpx;
 }
 
+.margin-top-50 {
+  margin-top: 50rpx;
+}
+
 .margin-bottom-5 {
   margin-bottom: 5rpx;
 }
@@ -147,6 +167,10 @@ page {
   margin-bottom: 30rpx;
 }
 
+.margin-bottom-50 {
+  margin-bottom: 50rpx;
+}
+
 .padding-left-5 {
   padding-left: 5rpx;
 }
@@ -165,6 +189,18 @@ page {
 
 .padding-left-40 {
   padding-left: 40rpx;
+}
+
+.padding-right-10 {
+  padding-right: 10rpx;
+}
+
+.padding-right-20 {
+  padding-right: 20rpx;
+}
+
+.padding-right-30 {
+  padding-right: 30rpx;
 }
 
 .padding-right-40 {
@@ -379,4 +415,8 @@ page {
   -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.clear{
+  clear: both;
 }

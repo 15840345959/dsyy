@@ -1,0 +1,62 @@
+.borrow-word{
+  /*font-family: PingFang-SC-Regular;*/
+  width:100%;
+  font-size: 32rpx;
+  color: #323232;
+  letter-spacing: -0.31rpx;
+  float:left;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.borrow-code{
+  width:690rpx;
+  height:112rpx;
+  background: #36BE7A;
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 50rpx;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+  line-height: 112rpx;
+}
+.borrow-time{
+  width:65%;
+  height:58rpx;
+  border: 1px solid #DCDCDC;
+  border-radius: 4px;
+  float:left;
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 28rpx;
+  color: #969696;
+  letter-spacing: 0;
+  line-height: 58rpx;
+}
+.borrow-button{
+  width:20%;
+  height:58rpx;
+  background: #36BE7A;
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 28rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 58rpx;
+  float:right;
+}
+.borrow-prompt{
+  width:100%;
+  text-align: center;
+}
+.borrow-prompt-image{
+  width:39.9rpx;
+  height:37.1rpx;
+}
+.borrow-text{
+  width:380rpx;
+  height:80rpx;
+  text-align: center;
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 26rpx;
+  color: #646464;
+  letter-spacing: 0.93rpx;
+  line-height: 40rpx;
+  margin:0 auto;
+}

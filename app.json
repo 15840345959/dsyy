@@ -8,7 +8,11 @@
     "pages/templates/bookInfoTpl/bookInfoTpl",
     "pages/logs/logs",
     "pages/search/search",
-    "pages/barpage/barpage"
+    "pages/barpage/barpage",
+    "pages/admin/about/about",
+    "pages/member/feedback/feedback",
+    "pages/member/borrow/borrow",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",

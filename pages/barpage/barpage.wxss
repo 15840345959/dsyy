@@ -3,7 +3,7 @@
 
 }
 .bar-text{
-  /*font-family: .PingFang-SC-Regular;*/
+  /*font-family: PingFang-SC-Regular;*/
   font-size: 26rpx;
   color: #646464;
   letter-spacing: -0.68rpx;

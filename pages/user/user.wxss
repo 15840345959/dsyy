@@ -1,0 +1,38 @@
+.user-view{
+  height:131rpx;
+}
+.user-view-word{
+  /*font-family: PingFangSC-Regular;*/
+  font-size: 30rpx;
+  color: #323232;
+  letter-spacing: -0.72rpx;
+  line-height: 131rpx;
+  float:left;
+}
+.user-view-img{
+  float:right;
+  padding-top:25rpx;
+}
+.user-view-photo{
+  width:88rpx;
+  height:88rpx;
+  border-radius: 100%;
+}
+.user-list{
+  height:77rpx;
+}
+.user-list-word{
+  /*font-family: PingFangSC-Regular;*/
+  font-size: 30rpx;
+  color: #323232;
+  letter-spacing: -0.72rpx;
+  line-height: 77rpx;
+  float:left;
+}
+.user-input{
+  float:right;
+  height:77rpx;
+  line-height: 77rpx;
+  padding-top:10rpx;
+  text-align: right;
+}

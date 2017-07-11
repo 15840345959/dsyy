@@ -1,0 +1,27 @@
+<view>
+  <view class="page" style="height:20rpx;"></view>
+  <view class="user-view border-bottom margin-left-30 margin-right-30">
+    <view class="user-view-word">头像</view>
+    <view class="user-view-img" bindtap="editImg">
+      <image src="{{avatar}}" class="user-view-photo"></image>
+    </view>
+  </view>
+  <view class="user-list border-bottom margin-left-30 margin-right-30">
+    <view class="user-list-word">姓名</view>
+    <view class="user-input">
+      <input bindinput="editInfo" data-field="nick_name" placeholder="{{nick_name==''?'请填写姓名':nick_name}}" />
+    </view>
+  </view>
+  <view class="user-list border-bottom margin-left-30 margin-right-30">
+    <view class="user-list-word">电话</view>
+    <view class="user-input" style="float:right">
+      <input bindinput="editInfo" data-field="phonenum"  placeholder="{{phonenum==''?'请填写电话':phonenum}}" />
+    </view>
+  </view>
+  <view class="user-list border-bottom margin-left-30 margin-right-30">
+    <view class="user-list-word">性别</view>
+    <view class="user-input">
+      <input bindinput="editInfo" data-field="gender"  placeholder="{{gender==1?'男':'女'}}" />
+    </view>
+  </view>
+</view>
