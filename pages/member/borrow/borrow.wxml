@@ -1,16 +1,12 @@
-<view>
+<view wx:if="{{code!=''}}">
   <view class="page" style="height:20rpx;"></view>
-  <view class="margin-top-30 margin-left-30 margin-right-30">
-    <view class="borrow-code">借书码</view>
-    <view class="borrow-frame padding-left-20 padding-right-20">
-      <view clss="borrow-frame-left">
-        <view class="borrow-frame-left-code">{{code}}</view>
-        <view class="borrow-frame-left-lab">（有效期5分钟）</view>
-      </view>
-      <view class="borrow-frame-right border-left" bindtap="getCode">
-        刷新
-      </view>
-    </view>
+  <view class="margin-top-30 margin-left-30 margin-bottom-30 borrow-word">借书码</view>
+  <view>
+    <button class="borrow-code">{{code}}</button>
+  </view>
+  <view>
+    <view class="borrow-time padding-left-10 margin-top-30 margin-left-30">提示：此码有效期为5分钟</view>
+    <button bindtap="getCode" class="borrow-button margin-top-30 margin-right-30">刷新</button>
   </view>
   <view class="clear"></view>
   <view class="borrow-prompt">
