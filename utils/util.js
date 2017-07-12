@@ -189,6 +189,12 @@ function getBookInfosByType(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBookInfosByType.do', param, "GET", successCallback, errorCallback);
 }
 
+
+//微信预下单
+function wxPrepay(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/wxPrepay.do', param, "GET", successCallback, errorCallback);
+}
+
 //根据用户id获取所属书吧列表
 function getBarListByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getBarListByUserId.do', param, "GET", successCallback, errorCallback);
@@ -513,6 +519,22 @@ function randomWord(randomFlag, min, max) {
 }
 
 
+/* 时间戳产生函数   */
+function createTimeStamp() {
+  return parseInt(new Date().getTime() / 1000) + ''
+}
+
+/* 随机数 */
+function randomString() {
+  var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+  /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+  var maxPos = chars.length;
+  var pwd = '';
+  for (var i = 0; i < 32; i++) {
+    pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+  }
+  return pwd;
+}
 
 module.exports = {
   INDEX_PAGE: "/pages/index/index",
@@ -551,11 +573,14 @@ module.exports = {
   getBarPageByBarId: getBarPageByBarId,
   getBookInfosByTitle: getBookInfosByTitle,
   getBookInfosByType: getBookInfosByType,
+  wxPrepay: wxPrepay,
   getBarListByUserId: getBarListByUserId,
   createSuggestion: createSuggestion,
   updateUserInfo: updateUserInfo,
   createBorrowCode: createBorrowCode,
   getUserInfoByBorrowCode: getUserInfoByBorrowCode,
   getBookInfosByBarIdAndISBN: getBookInfosByBarIdAndISBN,
-  borrowBook: borrowBook
+  borrowBook: borrowBook,
+  createTimeStamp: createTimeStamp,
+  randomString: randomString
 }
