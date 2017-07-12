@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/payment/payment",
     "pages/index/index",
     "pages/read/read",
     "pages/my/my",
@@ -14,7 +13,8 @@
     "pages/admin/return/return",
     "pages/member/feedback/feedback",
     "pages/member/borrow/borrow",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/payment/payment"
   ],
   "window": {
     "backgroundTextStyle": "light",

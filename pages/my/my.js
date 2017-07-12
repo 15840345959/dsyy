@@ -52,7 +52,7 @@ Page({
       ],
       myNotice: [
         { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/admin/about/about" },
-        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "" }
+        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/member/feedback/feedback" }
       ]
     })
     var title = vm.data.title
