@@ -5,12 +5,14 @@ var app = getApp()
 Page({
   data: {
     title : "资料修改",
-    user_name:"",
+    nick_name : "",
     passwd:"",
     avatar:"",
     phonenum:"",
     gender: "",
-    type: ""
+    type: 0,
+    toastHidden: true,
+    notice_str: ""
   },
   onLoad: function (options) {
     vm=this
@@ -27,7 +29,8 @@ Page({
       nick_name: nick_name,
       avatar: avatar,
       phonenum: phonenum,
-      gender: gender
+      gender: gender,
+      type: type
     })
     //结束加载
     setTimeout(function () {
@@ -47,16 +50,14 @@ Page({
       }
     })
   },
-
   //更改用户信息
-  editInfo:function(e){
-    console.log(JSON.stringify(e))
-    var edit_field = e.currentTarget.dataset.field
-    console.log("field：" + edit_field)
-    var nick_name = edit_field == "nick_name" ? e.detail.value : vm.data.nick_name    //判断更改的是否是姓名字段，如果是赋新值
-    var phonenum = edit_field == "phonenum" ? e.detail.value : vm.data.phonenum  //判断更改的是否是电话字段，如果是赋新值
-    phonenum = phonenum == "" ? "" : phonenum
-    var gender = (edit_field == "gender" ? e.detail.value : vm.data.gender)=="男"?1:2  //判断更改的是否是性别字段，如果是赋新值
+  formSubmit: function (e) {
+    console.log('form submit：', e.detail.value)
+    var nick_name = e.detail.value.nick_name == "" ? vm.data.nick_name : e.detail.value.nick_name
+    nick_name == "" ? "匿名" : nick_name
+    var phonenum = e.detail.value.phonenum == "" ? vm.data.phonenum : e.detail.value.phonenum
+    var gender = e.detail.value.gender == "" ? vm.data.gender : e.detail.value.gender
+    gender = gender=="男"?"1":"2"
     var passwd = vm.data.passwd
     var avatar = vm.data.avatar
     var type = vm.data.type == "" ? "" : vm.data.type
@@ -66,8 +67,7 @@ Page({
       phonenum: phonenum,
       gender: gender
     })
-    nick_name == "" ? "匿名" : nick_name
-    var param={
+    var param = {
       nick_name: nick_name,
       passwd: passwd,
       avatar: avatar,
@@ -77,8 +77,33 @@ Page({
       token: token
     }
     console.log(JSON.stringify(param))
-    util.updateUserInfo(param,function(ret){
-      console.log("更新用户信息："+JSON.stringify(ret))
+    util.updateUserInfo(param, function (ret) {
+      console.log("更新用户信息：" + JSON.stringify(ret))
+      if(ret.data.code=="200")
+      {
+        var userInfo = app.globalData.userInfo
+        console.log("获取缓存：" + JSON.stringify(userInfo))
+        userInfo.nick_name = vm.data.nick_name
+        userInfo.passwd = vm.data.passwd
+        userInfo.avatar = vm.data.avatar
+        userInfo.phonenum = vm.data.phonenum
+        userInfo.gender = vm.data.gender
+        userInfo.type = vm.data.type
+        userInfo.token = vm.data.token
+        app.globalData.userInfo = userInfo
+        console.log("new userInfo：" + JSON.stringify(app.globalData.userInfo))   
+        vm.setData({
+          toastHidden: false,
+          notice_str: "提交成功"
+        })
+      }
+    })
+
+  },
+  toastChange: function (e) {
+    vm.setData({
+      toastHidden: true,
+      notice_str: ""
     })
   }
 })

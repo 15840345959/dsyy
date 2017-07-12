@@ -13,6 +13,6 @@
   </form>
 </view>
 <!-- 黑框提示并消失 -->  
-<toast hidden="{{toast1Hidden}}" bindchange="toastChange">  
+<toast hidden="{{toastHidden}}" bindchange="toastChange">  
     {{notice_str}}  
 </toast>  

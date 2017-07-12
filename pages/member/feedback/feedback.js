@@ -9,7 +9,7 @@ Page({
    */
   data: {
     title:"意见反馈",
-    toast1Hidden:true,
+    toastHidden:true,
     notice_str:""
   },
   onLoad: function (){
@@ -32,22 +32,15 @@ Page({
       if (ret.data.code == "200")
       {
         vm.setData({
-          toast1Hidden: false,
+          toastHidden: false,
           notice_str: "提交成功"
-        })
-      }
-      else 
-      {
-        vm.setData({
-          toast1Hidden: false,
-          notice_str: "提交失败"
         })
       }
     })
   },
   toastChange:function(e){
     vm.setData({
-      toast1Hidden: true,
+      toastHidden: true,
       notice_str: ""
     })
   }

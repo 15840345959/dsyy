@@ -29,10 +29,10 @@
   line-height: 77rpx;
   float:left;
 }
-.user-input{
-  float:right;
-  height:77rpx;
-  line-height: 77rpx;
-  padding-top:10rpx;
-  text-align: right;
+.user-button{
+  background: #36BE7A;
+  /*font-family: PingFang-SC-Medium;*/
+  font-size: 32rpx;
+  color: #FFFFFF;
+  line-height: 80rpx;
 }

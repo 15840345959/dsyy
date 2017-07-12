@@ -6,7 +6,7 @@ Page({
   data: {
     title: "我要借阅",  //页面标题
     image:"/images/prompt.png",
-    code:"",
+    code:"000",
     count:"1"
   },
   onLoad: function (options) {

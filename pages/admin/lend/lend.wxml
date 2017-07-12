@@ -1,0 +1,84 @@
+<view class="lend-bg" style="height:{{system_height-60}}px">
+  <view class="page" style="height:20rpx;"></view>
+  <view class="margin-left-30 margin-right-30">
+    <view class="border-bottom ">
+      <view class="margin-top-30 margin-bottom-30 lend-word">
+        请输入借书码
+      </view>
+      <view class="margin-bottom-30">
+        <input type="text" class="lend-code padding-left-30" bindinput="judgeUser" placeholder="向用户索要借书码" />
+      </view>
+      <view class="margin-bottom-30" hidden="{{userHidden}}">
+        <view class="lend-user-photo margin-right-20">
+          <image src="{{user_photo}}" class="lend-photo"></image>
+        </view>
+        <view class="lend-user-info">
+          <view>{{user_name}}</view>
+          <view>{{user_tel}}</view>
+        </view>
+        <view class="clear"></view>
+      </view>
+    </view>
+    <view class=" margin-top-30 margin-bottom-30">
+      <view class="lend-word">借出图书</view>
+      <view class="lend-bar">（{{bar_name}}）</view>
+    </view>
+    <view class="clear"></view>
+    <!-- 无信息 -->
+    <view hidden="{{searchHidden}}">
+      <view class="weui-flex padding-top-30">
+        <view>
+          <view class="placeholder">
+            <image src="../../../images/ewm_icon.png" class="opt-icon-28 margin-left-10" bindtap="scanBook"></image>
+          </view>
+        </view>
+        <view class="weui-flex__item border-bottom">
+          <view class="placeholder">
+            <input class="weui-input" type="text" value="{{isbn}}" placeholder="如无法扫描ISBN号，请手动输入" class="margin-left-15 font-size-14" bindinput="inputISBN" />
+          </view>
+        </view>
+        <view class="border-bottom">
+          <view class="placeholder">
+            <image src="../../../images/search_icon.png" class="opt-icon-nor margin-right-15" bindtap="searchISBN"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 有信息 -->
+    <view hidden="{{!searchHidden}}">
+      <view class="book padding-top-25 padding-bottom-25">
+        <view class="book-img">
+          <image src="{{bookDetail.images_large}}" class="book-img-sml" mode="aspectFill"></image>
+        </view>
+        <view class="book-info">
+          <view class="text-oneline font-weight margin-bottom-10 book-title-font">{{bookDetail.title}}</view>
+          <view class="text-oneline margin-bottom-10 book-font">作者： {{bookDetail.author}}</view>
+          <view class="text-oneline margin-bottom-10 book-font">页数：{{bookDetail.pages}}页</view>
+          <view class="text-oneline margin-bottom-10 book-font">出版社：{{bookDetail.publisher}}</view>
+          <view class="text-oneline margin-bottom-10 book-font">数量：{{bookObj.length}}本</view>
+        </view>
+      </view>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <scroll-view scroll-y style="height: 170px;" >
+          <view wx:for="{{bookObj}}">
+            <view wx:if="{{item.status==0}}">
+              <view class="book-sale margin-right-30">图书编码：{{item.book_code}}</view>
+              <view class="book-sale">在架</view>
+              <radio class="book-radio" value="{{item.id}}" checked="{{item.checked}}" />
+            </view>
+            <view wx:else>
+              <view class="book-lend margin-right-30">图书编码：{{item.book_code}}</view>
+              <view class="book-lend">借出</view>
+            </view>
+            <view class="clear"></view>
+          </view>
+        </scroll-view>
+      </radio-group>
+    </view>
+  </view>
+  <view hidden="{{!searchHidden}}" class="lend-button" bindtap="lendBook">借出</view>
+</view>
+<!-- 黑框提示并消失 -->
+<toast hidden="{{toastHidden}}" bindchange="toastChange">
+  {{notice_str}}
+</toast>

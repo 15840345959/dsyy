@@ -87,10 +87,66 @@ App({
       })
     }
   },
+  //如果是书吧管理员判断并选择书吧
+  getBarId: function () {
+    var param = {}
+    util.getBarListByUserId(param, function (ret) {
+      console.log("书吧：" + JSON.stringify(ret))
+      var barInfo_id = []
+      var barInfo_name = []
+      if (ret.data.code == "200") {
+        console.log(ret.data.obj.length)
+        if (ret.data.obj.length > 0) {
+          if (ret.data.obj.length > 1) {
+            for (var i = 0; i < ret.data.obj.length; i++) {
+              barInfo_id[i] = ret.data.obj[i].barInfo.id
+              barInfo_name[i] = ret.data.obj[i].barInfo.name
+            }
+            console.log("barInfo_id：" + JSON.stringify(barInfo_id))
+            console.log("barInfo_name：" + JSON.stringify(barInfo_name))
+            //选择书吧
+            wx.showActionSheet({
+              itemList: barInfo_name,
+              success: function (res) {
+                console.log("res: " + JSON.stringify(res))
+                console.log(res.tapIndex)
+                if (res.cancel) {
+                  vm.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
+                  vm.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
+                  console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
+                }
+                else {
+                  var bar_id = barInfo_id[res.tapIndex]
+                  var bar_name = barInfo_name[res.tapIndex]
+                  vm.globalData.barDetail.barid = bar_id
+                  vm.globalData.barDetail.barname = bar_name
+                  console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
+                }
+              },
+              fail: function (res) {
+                vm.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
+                vm.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
+                console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
+              }
+            })
+          }
+          else {
+            vm.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
+            vm.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
+            console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
+          }
+        }
+      }
+    })
+  },
   //全局变量
   globalData: {
     userInfo: null,
     systemInfo: null,
-    bookTypeArr: ['儿童读物', '历史文化', '文学小说', '考试教育', '医疗养生', '心灵鸡汤']
+    bookTypeArr: ['儿童读物', '历史文化', '文学小说', '考试教育', '医疗养生', '心灵鸡汤'],
+    barDetail: {
+      barid:"",
+      barname:""
+    }
   }
 })

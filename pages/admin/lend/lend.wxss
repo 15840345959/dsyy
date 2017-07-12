@@ -1,0 +1,86 @@
+.lend-bg{
+  position:relative;
+}
+.lend-word{
+  /*font-family: PingFang-SC-Regular;*/
+  font-size: 32rpx;
+  color: #323232;
+  letter-spacing: -0.31rpx;
+  float:left;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.lend-bar{
+  font-size: 30rpx;
+  color: #646464;
+  letter-spacing: -0.31rpx;
+  float:left;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.lend-code{
+  width:660rpx;
+  height:80rpx;
+  border: 1px solid #36BE7A;
+  border-radius: 4px;
+}
+.lend-user-photo{
+  float:left;
+}
+.lend-photo{
+  width:88rpx;
+  height:88rpx;
+  border-radius: 100%;
+}
+.lend-user-info{
+  float:left;
+  /*font-family: PingFangSC-Regular;*/
+  font-size: 26rpx;
+  color: #323232;
+  letter-spacing: -0.63rpx;
+  line-height: 44rpx;
+}
+.lend-scan-button{
+  background: #36BE7A;
+  /*font-family: PingFang-SC-Medium;*/
+  font-size: 32rpx;
+  color: #FFFFFF;
+  letter-spacing: -0.41rpx;
+  line-height: 80rpx;
+}
+.lend-scan{
+  width:34rpx;
+  height:34rpx;
+}
+.book-sale{
+  /* font-family: PingFang-SC-Regular; */
+  font-size: 30rpx;
+  color: #1E1E1E;
+  letter-spacing: 1.07rpx;
+  float:left;
+  line-height: 60rpx;
+}
+.book-lend{
+  /* font-family: PingFang-SC-Regular; */
+  font-size: 30rpx;
+  color: #969696;
+  letter-spacing: 1.07rpx;
+  float:left;
+  line-height: 60rpx;
+}
+.book-radio{
+  float:right;
+}
+.lend-button{
+  width:100%;
+  height:90rpx;
+  position:absolute;
+  bottom:0;
+  background: #36BE7A;
+  /*font-family: PingFang-SC-Medium;*/
+  font-size: 32rpx;
+  color: #FFFFFF;
+  letter-spacing: -0.41rpx;
+  line-height: 90rpx;
+  text-align: center;
+}

@@ -93,6 +93,7 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     }
     param.token = getApp().globalData.userInfo.token;
   }
+  console.log("param："+JSON.stringify(param))
   wx.request({
     url: url,
     data: param,
@@ -203,9 +204,24 @@ function updateUserInfo(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/updateUserInfo.do', param, "GET", successCallback, errorCallback);
 }
 
-//更新用户信息
+//生成借阅码
 function createBorrowCode(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/createBorrowCode.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据借书码获取用户
+function getUserInfoByBorrowCode(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getUserInfoByBorrowCode.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据书吧id和isbn号获取图书列表
+function getBookInfosByBarIdAndISBN(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookInfosByBarIdAndISBN.do', param, "GET", successCallback, errorCallback);
+}
+
+//借阅图书
+function borrowBook(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/borrowBook.do', param, "GET", successCallback, errorCallback);
 }
 
 /////////基本方法///////////////////////////////////////////
@@ -538,5 +554,8 @@ module.exports = {
   getBarListByUserId: getBarListByUserId,
   createSuggestion: createSuggestion,
   updateUserInfo: updateUserInfo,
-  createBorrowCode: createBorrowCode
+  createBorrowCode: createBorrowCode,
+  getUserInfoByBorrowCode: getUserInfoByBorrowCode,
+  getBookInfosByBarIdAndISBN: getBookInfosByBarIdAndISBN,
+  borrowBook: borrowBook
 }

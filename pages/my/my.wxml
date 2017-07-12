@@ -7,7 +7,7 @@
       <view class="my-name">{{myName}}</view>
     </view>
   </view>
-  <view wx:if="{{mytype==1}}" class="white-bg my-nav  margin-bottom-20">
+  <view wx:if="{{myType==1}}" class="white-bg my-nav  margin-bottom-20">
     <view wx:for="{{myNav}}">
       <view class="my-nav-block margin-top-30 margin-left-30" data-url="{{item.url}}" bindtap="jumpUrl">
         <button class="my-nav-button">

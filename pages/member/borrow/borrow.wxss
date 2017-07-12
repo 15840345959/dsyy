@@ -21,14 +21,14 @@
 .borrow-time{
   width:65%;
   height:58rpx;
-  border: 1px solid #DCDCDC;
-  border-radius: 4px;
+  text-align: center;
   float:left;
   /*font-family: PingFang-SC-Regular;*/
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #969696;
   letter-spacing: 0;
   line-height: 58rpx;
+  font-weight: bold;
 }
 .borrow-button{
   width:20%;

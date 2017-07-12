@@ -9,6 +9,8 @@
     "pages/search/search",
     "pages/barpage/barpage",
     "pages/admin/about/about",
+    "pages/admin/lend/lend",
+    "pages/admin/return/return",
     "pages/member/feedback/feedback",
     "pages/member/borrow/borrow",
     "pages/user/user"

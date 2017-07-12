@@ -187,6 +187,10 @@ page {
   padding-left: 20rpx;
 }
 
+.padding-left-30 {
+  padding-left: 30rpx;
+}
+
 .padding-left-40 {
   padding-left: 40rpx;
 }
