@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/payment/payment",
     "pages/index/index",
     "pages/read/read",
     "pages/my/my",
