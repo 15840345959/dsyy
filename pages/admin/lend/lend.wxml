@@ -61,19 +61,19 @@
           </view>
         </view>
         <radio-group class="radio-group" bindchange="radioChange">
-          <scroll-view scroll-y style="height:120px;">
+          <scroll-view scroll-y style="height:150px;">
             <view wx:for="{{bookObj}}">
               <view wx:if="{{item.status==0}}" class=" weui-flex">
-                <view class="book-sale margin-right-30 weui-flex__item">图书编码：</view>
-                <view class="book-sale margin-right-30 weui-flex__item">{{item.book_code}}</view>
-                <view class="book-sale weui-flex__item">在架</view>
-                <radio class="book-radio weui-flex__item" value="{{item.id}}" checked="{{item.checked}}" />
+                <view class="book-sale margin-right-10 lend-width-190">图书编码：</view>
+                <view class="book-sale margin-right-10 lend-width-160">{{item.book_code}}</view>
+                <view class="book-sale lend-width-160">在架</view>
+                <radio class="book-radio lend-width-160" value="{{item.id}}" checked="{{item.checked}}" />
               </view>
               <view wx:else  class=" weui-flex">
-                <view class="book-lend margin-right-30 weui-flex__item">图书编码：</view>
-                <view class="book-lend margin-right-30 weui-flex__item">{{item.book_code}}</view>
-                <view class="book-lend weui-flex__item">借出</view>
-                <view class="weui-flex__item"></view>
+                <view class="book-lend margin-right-10 lend-width-190">图书编码：</view>
+                <view class="book-lend margin-right-10 lend-width-160">{{item.book_code}}</view>
+                <view class="book-lend lend-width-160">借出</view>
+                <view class="lend-width-160"></view>
               </view>
               <view class="clear"></view>
             </view>

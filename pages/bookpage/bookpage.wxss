@@ -37,4 +37,10 @@
   background: #36be7a;
   color: #fff;
   border-radius:0%;
+  height: 90rpx;
+  /*font-family: PingFang-SC-Medium;*/
+  font-size: 30rpx;
+  letter-spacing: -0.34rpx;
+  line-height: 90rpx;
+  text-align: center;
 }

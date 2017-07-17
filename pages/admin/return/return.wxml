@@ -61,8 +61,8 @@
               </view>
               <view wx:for="{{lendBookObj}}" wx:for-item="lendItem" class="weui-flex">
                  <view wx:if="{{lendItem.borrowInfo.book_obj_id==item.id}}"> 
-                  <view class="book-lend margin-right-10 lend-width-180">用户昵称占位</view>
-                  <view class="book-lend-time margin-right-10 lend-width-330">借书时间：{{lendItem.borrowInfo.borrow_time}}</view>
+                  <view class="text-oneline book-lend margin-right-10 lend-width-180">用户昵称占位</view>
+                  <view class="text-oneline book-lend-time margin-right-10 lend-width-330">借书时间：{{lendItem.borrowInfo.borrow_time}}</view>
                   <view class="book-sale lend-width-160">
                     <button class="weui-btn mini-btn text-right return-unused-button" type="primary" size="mini" bindtap="returnBook" data-borrow_id="{{lendItem.borrowInfo.id}}">归还</button>
                   </view>

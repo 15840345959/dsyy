@@ -121,3 +121,15 @@
 .lend-success-label {
   width: 200rpx;
 }
+
+.lend-width-190{
+  width:190rpx;
+}
+
+.lend-width-330{
+  width:330rpx;
+}
+
+.lend-width-160{
+  width:160rpx;
+}
