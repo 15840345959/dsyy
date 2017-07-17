@@ -39,6 +39,9 @@ function qiniuUrlTool(img_url, type) {
       break;
     case "user_hi":  //头像
       qn_img_url = img_url + "?imageView2/1/w/200/h/200/interlace/1";
+
+      case "book_detail":  //图书详情页
+      qn_img_url = img_url + "?imageView2/1/w/141/h/216/interlace/1";
       break;
   }
 
@@ -53,6 +56,17 @@ function getRealImgUrl(img_url) {
   }
   var pos = img_url.indexOf("?");
   return img_url.substring(0, pos)
+}
+
+//是否还有本地图片
+function isLocalImg(img) {
+  if (judgeIsAnyNullStr(img)) {
+    return false;
+  }
+  if (img.indexOf("wxfile") >= 0) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -228,6 +242,26 @@ function getBookInfosByBarIdAndISBN(param, successCallback, errorCallback) {
 //借阅图书
 function borrowBook(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/borrowBook.do', param, "GET", successCallback, errorCallback);
+}
+
+//更新书吧信息
+function updateBarInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/updateBarInfo.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据ISBN和书吧id获取借出图书信息
+function getBorrowedOutInfoByBarIdAndISBN(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBorrowedOutInfoByBarIdAndISBN.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据book_id获取图书页面
+function getBookPageByBookId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getBookPageByBookId.do', param, "GET", successCallback, errorCallback);
+}
+
+//归还图书
+function returnBook(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/returnBook.do', param, "GET", successCallback, errorCallback);
 }
 
 /////////基本方法///////////////////////////////////////////
@@ -582,5 +616,9 @@ module.exports = {
   getBookInfosByBarIdAndISBN: getBookInfosByBarIdAndISBN,
   borrowBook: borrowBook,
   createTimeStamp: createTimeStamp,
-  randomString: randomString
+  randomString: randomString,
+  updateBarInfo: updateBarInfo,
+  getBorrowedOutInfoByBarIdAndISBN: getBorrowedOutInfoByBarIdAndISBN,
+  getBookPageByBookId: getBookPageByBookId,
+  returnBook: returnBook
 }

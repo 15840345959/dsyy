@@ -1,4 +1,5 @@
 var util = require('../../utils/util.js')
+const qiniuUploader = require("../../utils/qiniuUploader");
 var vm = null
 //获取应用实例
 var app = getApp()
@@ -6,7 +7,6 @@ Page({
   data: {
     title : "资料修改",
     nick_name : "",
-    passwd:"",
     avatar:"",
     phonenum:"",
     gender: "",
@@ -20,7 +20,6 @@ Page({
     wx.setNavigationBarTitle({ title: title })
     util.showLoading('加载数据');   //加载数据
     var nick_name = app.globalData.userInfo.nick_name;  //获取昵称
-    var passwd = app.globalData.userInfo.passwd;  //获取密码
     var avatar = app.globalData.userInfo.avatar;    //获取头像
     var phonenum = app.globalData.userInfo.phonenum;  //获取电话
     var gender = app.globalData.userInfo.gender;    //获取性别
@@ -58,8 +57,18 @@ Page({
     var phonenum = e.detail.value.phonenum == "" ? vm.data.phonenum : e.detail.value.phonenum
     var gender = e.detail.value.gender == "" ? vm.data.gender : e.detail.value.gender
     gender = gender=="男"?"1":"2"
-    var passwd = vm.data.passwd
     var avatar = vm.data.avatar
+    // console.log(avatar)
+    // console.log(util.isLocalImg(avatar))
+    // if(util.isLocalImg(avatar))
+    // {
+      qiniuUploader.upload(vm.data.avatar, (res) => {
+        console.log("qiniuUploader upload res:" + JSON.stringify(res));
+        avatar = util.getImgRealUrl(res.key)
+      }, (error) => {
+        console.error('error: ' + JSON.stringify(error));
+      })
+    // }
     var type = vm.data.type == "" ? "" : vm.data.type
     var token = app.globalData.userInfo.token
     vm.setData({
@@ -69,7 +78,6 @@ Page({
     })
     var param = {
       nick_name: nick_name,
-      passwd: passwd,
       avatar: avatar,
       phonenum: phonenum,
       gender: gender,
@@ -84,7 +92,6 @@ Page({
         var userInfo = app.globalData.userInfo
         console.log("获取缓存：" + JSON.stringify(userInfo))
         userInfo.nick_name = vm.data.nick_name
-        userInfo.passwd = vm.data.passwd
         userInfo.avatar = vm.data.avatar
         userInfo.phonenum = vm.data.phonenum
         userInfo.gender = vm.data.gender
@@ -100,10 +107,26 @@ Page({
     })
 
   },
+  //更改头像
+  changePhoto: function(e){
+    wx.chooseImage({
+      count: 1, 
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths
+        console.log("tempFilePaths：" + tempFilePaths)
+        vm.setData({
+          avatar: tempFilePaths
+        })
+      }
+    })
+  },
   toastChange: function (e) {
     vm.setData({
       toastHidden: true,
       notice_str: ""
     })
-  }
+  },
 })

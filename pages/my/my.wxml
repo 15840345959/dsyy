@@ -1,5 +1,5 @@
 <!--center.wxml-->
-<view class="page" wx:if="{{myNav.length>0&&myPhoto!=''}}">
+<view class="page" wx:if="{{myNav.length>0}}">
   <view style="height:20rpx;"></view>
   <view class="my-background margin-bottom-20" style="background:url('{{myBg}}');background-size:contain;">
     <view class="my-text" bindtap="editInfo">
@@ -7,7 +7,9 @@
       <view class="my-name">{{myName}}</view>
     </view>
   </view>
-  <view wx:if="{{myType==1}}" class="white-bg my-nav  margin-bottom-20">
+  <view wx:if="{{myType==1}}">
+    <view class="white-bg margin-bottom-20 my-bar">{{bar.barname}}</view>
+  <view class="white-bg my-nav margin-bottom-20">
     <view wx:for="{{myNav}}">
       <view class="my-nav-block margin-top-30 margin-left-30" data-url="{{item.url}}" bindtap="jumpUrl">
         <button class="my-nav-button">
@@ -18,6 +20,7 @@
         </button>
       </view>
     </view>
+  </view>
   </view>
   <view wx:else class="white-bg my-nav-member margin-bottom-20">
     <view wx:for="{{myNav}}">

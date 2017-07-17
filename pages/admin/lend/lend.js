@@ -9,7 +9,7 @@ Page({
     user_photo: "",   //借书用户头像
     user_name: "",   //借书用户姓名
     user_tel: "",   //借书用户电话
-    user_id: "1",   //借阅者id
+    user_id: "",   //借阅者id
     userHidden:true,    //隐藏
     token:"",     //token
     isbn:"",    //isbn
@@ -20,8 +20,11 @@ Page({
     bookObj:[],  //图书对象
     lend_id: "",   //借出的图书id
     system_height: "",   //设备高度
-    toastHidden: true,
-    notice_str: ""
+    lendingHidden: false,    //借阅模块隐藏与显示
+    oper_name:"",  //管理员name
+    time:"",   //当前时间
+    book_s_name: "",  //图书name（成功）
+    user_s_name: ""  //借阅者name（成功）
   },
   onLoad: function (options) {
     vm = this
@@ -31,6 +34,7 @@ Page({
     token = app.globalData.userInfo.token
     var bar_id = app.globalData.barDetail.barid
     var bar_name = app.globalData.barDetail.barname
+    var oper_name = app.globalData.userInfo.nick_name  //操作者name
     wx.getSystemInfo({
       success: function (res) {
         vm.setData({
@@ -42,6 +46,7 @@ Page({
       token: token,
       bar_id: bar_id,
       bar_name: bar_name,
+      oper_name: oper_name
     })
   },
   //判断借书码
@@ -51,6 +56,16 @@ Page({
     if (code.length==4)
     {
       vm.searchUser(code)
+    }
+    else
+    {
+      vm.setData({
+        user_photo: "",   //借书用户头像
+        user_name: "",   //借书用户姓名
+        user_tel: "",   //借书用户电话
+        user_id: "",   //借阅者id
+        userHidden: true,    //隐藏
+      })
     }
   },
   //根据借书码搜索用户
@@ -78,7 +93,8 @@ Page({
             user_name: ret.data.obj.nick_name,
             user_id: ret.data.obj.id,
             user_tel: ret.data.obj.phonenum,
-            userHidden: false,         
+            userHidden: false,
+            user_s_name: ret.data.obj.nick_name,  //借阅者name（成功）        
           })
         }
       }
@@ -137,7 +153,12 @@ Page({
           vm.setData({
             bookDetail: bookDetail,
             bookObj: bookObj,
-            searchHidden:true
+            searchHidden:true,
+            book_s_name: bookDetail.title  //借阅图书（成功）
+          })
+          var book_s_name = vm.data.bookObj.title
+          vm.setData({
+            book_s_name: book_s_name
           })
         }
       }
@@ -161,6 +182,7 @@ Page({
       lend_id: id   
     });
   },
+  //借出图书
   lendBook:function(){
     var user_id = vm.data.user_id  //借阅者id
     var book_obj_id = vm.data.lend_id  //借出的图书id
@@ -177,8 +199,6 @@ Page({
       if (ret.data.code=="200")
       {
         vm.setData({
-          toastHidden: false,
-          notice_str: "借阅成功",
           user_photo: "",   //借书用户头像
           user_name: "",   //借书用户姓名
           user_tel: "",   //借书用户电话
@@ -189,14 +209,30 @@ Page({
           bookDetail: [], //图书信息
           bookObj: [],  //图书对象
           lend_id: "",   //借出的图书id
+          lendingHidden:true,
         })
+        vm.lendSuccess()
       }
     })
   },
-  toastChange: function (e) {
+  lendSuccess:function(){
+    var time = vm.getNowTime()  //当前时间
     vm.setData({
-      toastHidden: true,
-      notice_str: ""
+      time:time
     })
+  },
+  //获取当前时间
+  getNowTime:function(){
+    var dtCur = new Date();
+    var yearCur = dtCur.getFullYear();
+    var monCur = dtCur.getMonth() + 1;
+    var dayCur = dtCur.getDate();
+    var hCur = dtCur.getHours();
+    var mCur = dtCur.getMinutes();
+    var sCur = dtCur.getSeconds();
+    var timeCur = yearCur + "-" + (monCur < 10 ? "0" + monCur : monCur) + "-"
+      + (dayCur < 10 ? "0" + dayCur : dayCur) + " " + (hCur < 10 ? "0" + hCur : hCur)
+      + ":" + (mCur < 10 ? "0" + mCur : mCur) + ":" + (sCur < 10 ? "0" + sCur : sCur);
+    return timeCur;
   }
 })

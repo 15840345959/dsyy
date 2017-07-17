@@ -1,0 +1,40 @@
+.book-img-detial{
+  width:283rpx;
+  height:433rpx;
+}
+
+.bar-num{
+  width:30rpx;
+  height:30rpx;
+  background:#36BE7A;
+  border-radius:100%;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: -0.58rpx;
+  line-height: 30rpx; 
+  text-align:center;
+  float:left;
+  
+}
+
+.display{
+  display:inline-block;
+}
+
+.book-shara-box{
+  width: 100%;
+  height: 90rpx;
+  position: absolute;
+  bottom: 0;
+  /*font-family: PingFang-SC-Medium;*/
+  font-size: 30rpx;
+  color: #464646;
+  letter-spacing: -0.34rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+.book-shara-background-green{
+  background: #36be7a;
+  color: #fff;
+  border-radius:0%;
+}

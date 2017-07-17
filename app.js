@@ -20,46 +20,65 @@ App({
     }
   },
   login: function (callBack) {
-
     wx.login({
       success: function (res) {
-        console.log("wx.login:" + JSON.stringify(res));
+        console.log("wx.login:" + JSON.stringify(res))
         if (res.code) {
           util.getOpenId({ code: res.code }, function (ret) {
-            console.log("getOpenId:" + JSON.stringify(ret));
-            var openId = ret.data.openid;
-            //获取用户基本信息
-            wx.getUserInfo({
-              success: function (res) {
-                console.log("wx.getUserInfo success:" + JSON.stringify(res));
-                var param = {
-                  nick_name: res.userInfo.nickName,
-                  avatar: res.userInfo.avatarUrl,
-                  gender: res.userInfo.gender,
-                  wx_id: openId
-                }
-                util.login(param, function (ret) {
-                  console.log("login:" + JSON.stringify(ret));
-                  vm.storeUserInfo(ret.data.obj);
-                }, null);
-              },
-              fail: function (res) {
-                console.log("wx.getUserInfo fail:" + JSON.stringify(res));
-                var param = {
-                  nick_name: "匿名",
-                  wx_id: openId
-                }
-                util.login(param, function (ret) {
-                  console.log("login:" + JSON.stringify(ret));
-                  vm.storeUserInfo(ret.data.obj);
-                }, null);
-              },
-              complete: function (res) {
-                console.log("wx.getUserInfo complete:" + JSON.stringify(res));
+            console.log("getOpenId:" + JSON.stringify(ret))
+            var openId = ret.data.openid
+            var param = {
+              wx_id: openId
+            }
+            util.login(param, function (ret) {
+              console.log("login:" + JSON.stringify(ret));
+              if (ret.data.code=="200")
+              {
+                vm.storeUserInfo(ret.data.obj)
+                //如果没有头像或者昵称，引导用户进行获取信息
+                // if (util.judgeIsAnyNullStr(vm.globalData.userInfo.nick_name)
+                //   || util.judgeIsAnyNullStr(vm.globalData.userInfo.avatar)) {
+                  vm.updateUserInfo(function (ret) {
+                   })
+                // }
               }
-            })
+            }, null);
           }, null);
         }
+      }
+    })
+  },
+  //更新用户信息
+  updateUserInfo: function (callBack) {
+    //获取用户基本信息
+    wx.getUserInfo({
+      //成功
+      success: function (res) {
+        console.log("wx.getUserInfo success:" + JSON.stringify(res))
+        var param = {
+          nick_name: res.userInfo.nickName,
+          avatar: res.userInfo.avatarUrl,
+          phonenum: vm.globalData.userInfo.phonenum,
+          gender: res.userInfo.gender,
+          type: vm.globalData.userInfo.type,
+        }
+        util.updateUserInfo(param, function (ret, err) {
+          console.log("updateUserInfo ret:" + JSON.stringify(ret))
+          //更新缓存及globalData
+          if (ret.data.code == "200") {
+            vm.storeUserInfo(ret.data.obj)
+          }
+        })
+        callBack()
+      },
+      //失败
+      fail: function (res) {
+        console.log("wx.getUserInfo fail:" + JSON.stringify(res))
+        //引导用户授权
+        vm.showModal()
+      },
+      complete: function (res) {
+        console.log("wx.getUserInfo complete:" + JSON.stringify(res))
       }
     })
   },
@@ -87,54 +106,31 @@ App({
       })
     }
   },
-  //如果是书吧管理员判断并选择书吧
-  getBarId: function () {
-    var param = {}
-    util.getBarListByUserId(param, function (ret) {
-      console.log("书吧：" + JSON.stringify(ret))
-      var barInfo_id = []
-      var barInfo_name = []
-      if (ret.data.code == "200") {
-        console.log(ret.data.obj.length)
-        if (ret.data.obj.length > 0) {
-          if (ret.data.obj.length > 1) {
-            for (var i = 0; i < ret.data.obj.length; i++) {
-              barInfo_id[i] = ret.data.obj[i].barInfo.id
-              barInfo_name[i] = ret.data.obj[i].barInfo.name
-            }
-            console.log("barInfo_id：" + JSON.stringify(barInfo_id))
-            console.log("barInfo_name：" + JSON.stringify(barInfo_name))
-            //选择书吧
-            wx.showActionSheet({
-              itemList: barInfo_name,
-              success: function (res) {
-                console.log("res: " + JSON.stringify(res))
-                console.log(res.tapIndex)
-                if (res.cancel) {
-                  vm.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
-                  vm.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
-                  console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
-                }
-                else {
-                  var bar_id = barInfo_id[res.tapIndex]
-                  var bar_name = barInfo_name[res.tapIndex]
-                  vm.globalData.barDetail.barid = bar_id
-                  vm.globalData.barDetail.barname = bar_name
-                  console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
-                }
-              },
-              fail: function (res) {
-                vm.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
-                vm.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
-                console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
-              }
-            })
-          }
-          else {
-            vm.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
-            vm.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
-            console.log("barDetail" + JSON.stringify(vm.globalData.barDetail))
-          }
+  //引导用户授权
+  showModal:function(){
+    wx.showModal({
+      title: '提示',
+      content: '若不授权获取用户信息，则读书有益的部分重要功能将无法使用；请点击【重新授权】——选中【用户信息】方可使用。',
+      showCancel: false,
+      confirmText: "重新授权",
+      success: function (res) {
+        if (res.confirm) {
+          vm.openSetting()
+        }
+      }
+    })
+  },
+  openSetting:function(){
+    wx.openSetting({
+      success: (res) => {
+        console.log("Result" + JSON.stringify(res))
+        if (!res.authSetting["scope.userInfo"]) {
+          vm.showModal()
+        }
+        else
+        {
+          vm.updateUserInfo(function (ret) {
+          })
         }
       }
     })

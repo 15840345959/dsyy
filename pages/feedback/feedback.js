@@ -1,4 +1,4 @@
-var util = require('../../../utils/util.js')
+var util = require('../../utils/util.js')
 var vm = null
 //获取应用实例
 var app = getApp()

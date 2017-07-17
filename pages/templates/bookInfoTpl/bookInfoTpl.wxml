@@ -15,7 +15,7 @@
 
 <!--该模板用于首页展示-->
 <template name="bookInfoIndex">
-  <view class="book border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25">
+  <view class="book border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25" bindtap="jumpBookInfo" data-bookid="{{bookInfo.id}}">
     <view class="book-img">
       <image src="{{bookInfo.images_large}}" class="book-img-sml" mode="aspectFill"></image>
     </view>

@@ -217,7 +217,14 @@ Page({
       address: address
     })
   },
-
+  //根据图书id获取图书
+  jumpBookInfo: function (e) {
+    console.log(JSON.stringify("bookid:" + e.currentTarget.dataset.bookid))
+    var bookid = e.currentTarget.dataset.bookid
+    wx.navigateTo({
+      url: '/pages/bookpage/bookpage?bookid=' + bookid
+    })
+  },
   //根据书吧id获取书吧页面
   bardetail: function (e) {
     console.log(JSON.stringify("barid:" + e.currentTarget.dataset.barid))

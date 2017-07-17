@@ -10,9 +10,11 @@ Page({
     myPhoto: "",   //微信头像
     myNav: [],    //模块导航
     myNotice: [],    //列表导航
-    myType: 0    //用户类型
+    myType: 0,   //用户类型
+    bar:""  //书吧
   },
   onLoad: function () {
+    
     vm=this
     console.log('onLoad')
     var user_id = app.globalData.userInfo.id;
@@ -48,18 +50,18 @@ Page({
         { img: "/images/admin_lend.png", title: "图书借出", url: "/pages/admin/lend/lend" },
         { img: "/images/admin_ret.png", title: "图书归还", url: "/pages/admin/return/return" },
         { img: "/images/admin_input.png", title: "图书录入", url: "/pages/admin/cbook/cbook" },
-        { img: "/images/admin_bar.png", title: "书吧管理", url: "" }
+        { img: "/images/admin_bar.png", title: "书吧管理", url: "/pages/admin/bar/bar" }
       ],
       myNotice: [
-        { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/admin/about/about" },
-        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/member/feedback/feedback" }
+        { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/about/about" },
+        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" }
       ]
     })
     var title = vm.data.title
     wx.setNavigationBarTitle({ title: title })
 
     //管理员选择书吧
-    app.getBarId()
+    vm.getBarId();
   },
   //非管理员
   getMember:function(){
@@ -72,8 +74,8 @@ Page({
       myNotice: [
         { img: "/images/admin_notice_about.png", title: "历史借阅", url: "" },
         { img: "/images/admin_notice_feedback.png", title: "会员卡", url: "" },
-        { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/admin/about/about" },
-        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/member/feedback/feedback" }
+        { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/about/about" },
+        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" }
       ]
     })
     var title = vm.data.title
@@ -93,5 +95,70 @@ Page({
     wx.navigateTo({
       url: url
     })
-  }
+  },
+  //如果是书吧管理员判断并选择书吧
+  getBarId: function () {
+    var param = {}
+    util.getBarListByUserId(param, function (ret) {
+      console.log("书吧：" + JSON.stringify(ret))
+      var barInfo_id = []
+      var barInfo_name = []
+      if (ret.data.code == "200") {
+        console.log(ret.data.obj.length)
+        if (ret.data.obj.length > 0) {
+          if (ret.data.obj.length > 1) {
+            for (var i = 0; i < ret.data.obj.length; i++) {
+              barInfo_id[i] = ret.data.obj[i].barInfo.id
+              barInfo_name[i] = ret.data.obj[i].barInfo.name
+            }
+            console.log("barInfo_id：" + JSON.stringify(barInfo_id))
+            console.log("barInfo_name：" + JSON.stringify(barInfo_name))
+            //选择书吧
+            wx.showActionSheet({
+              itemList: barInfo_name,
+              success: function (res) {
+                console.log("res: " + JSON.stringify(res))
+                console.log(res.tapIndex)
+                if (res.cancel) {
+                  app.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
+                  app.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
+                  console.log("barDetail" + JSON.stringify(app.globalData.barDetail))
+                  vm.setData({
+                    bar: app.globalData.barDetail
+                  })
+                }
+                else {
+                  var bar_id = barInfo_id[res.tapIndex]
+                  var bar_name = barInfo_name[res.tapIndex]
+                  app.globalData.barDetail.barid = bar_id
+                  app.globalData.barDetail.barname = bar_name
+                  console.log("barDetail" + JSON.stringify(app.globalData.barDetail))
+                  vm.setData({
+                    bar: app.globalData.barDetail
+                  })
+                  console.log(vm.data.bar)
+                }
+              },
+              fail: function (res) {
+                app.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
+                app.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
+                console.log("barDetail" + JSON.stringify(app.globalData.barDetail))
+                vm.setData({
+                  bar: app.globalData.barDetail
+                })
+              }
+            })
+          }
+          else {
+            app.globalData.barDetail.barid = ret.data.obj[0].barInfo.id
+            app.globalData.barDetail.barname = ret.data.obj[0].barInfo.name
+            console.log("barDetail" + JSON.stringify(app.globalData.barDetail))
+            vm.setData({
+              bar: app.globalData.barDetail
+            })
+          }
+        }
+      }
+    })
+  },
 })

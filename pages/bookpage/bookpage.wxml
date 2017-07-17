@@ -1,0 +1,29 @@
+<view class="page padding-top-20"  style="height:{{system_height-60}}px">
+  <view class="book padding-top-30 padding-bottom-30 white-bg padding-left-30 padding-right-30 margin-bottom-20">
+    <view class="book-img">
+      <image src="{{bookInfo.images_large}}" class="book-img-detial" mode="aspectFill"></image>
+    </view>
+    <view class="book-info">
+      <view class="text-oneline font-weight margin-bottom-10 book-title-font">{{bookInfo.title}}</view>
+      <view class="text-oneline margin-bottom-10 book-font">作者：{{bookInfo.author}}</view>
+      <view class="text-oneline margin-bottom-10 book-font">页数：{{bookInfo.pages}}页</view>
+      <view class="text-oneline margin-bottom-10 book-font">出版社：{{bookInfo.publisher}}</view>
+      <view class="text-threeline margin-bottom-10 book-font">简介：{{bookInfo.summary}}</view>
+    </view>
+  </view>
+  <view class="white-bg padding-left-30 padding-right-30 margin-bottom-20">
+    <view class="line-text font-weight border-bottom">附近拥有此书的书吧</view>
+    <view wx:for="{{barInfos}}" class="margin-bottom-10 book-font weui-flex">
+      <view class="weui-flex__item " bindtap="intoBar" data-barid="{{item.id}}">
+        <view class="bar-num display margin-top-20 margin-bottom-20 margin-right-10">{{index+1}}</view>
+        <view class="line-text display">{{item.name}}</view>
+      </view>
+      <view class="weui-flex__item text-right line-text">127m</view>
+    </view>
+  </view>
+  <view class="white-bg weui-flex book-shara-box ">
+      <view class="weui-flex__item" bindtap="getScan">借阅</view>
+      <view class="weui-flex__item">写读后感</view>
+      <button class="weui-flex__item book-shara-background-green"  bindtap="onShareAppMessage">分享</button>
+  </view>
+</view>

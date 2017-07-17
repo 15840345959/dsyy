@@ -67,9 +67,14 @@
     <view style="height:60rpx;"></view>
 
     <!--下方按钮-->
-    <view class="weui-footer weui-footer_fixed-bottom" bindtap="publishTW">
+    <view wx:if="{{bookInfo.title}}" class="weui-footer weui-footer_fixed-bottom" bindtap="publishTW">
       <view class="weui-flex text-center" style="width:100%;" class="padding-top-10 padding-bottom-10">
         <button class="weui-btn" style="margin-left:50px;margin-right:50px;" type="primary" bindtap="createBookObj">录入图书</button>
+      </view>
+    </view>
+    <view wx:else class="weui-footer weui-footer_fixed-bottom">
+      <view class="weui-flex text-center" style="width:100%;" class="padding-top-10 padding-bottom-10">
+        <button class="weui-btn" style="margin-left:50px;margin-right:50px;" type="default" disabled="true">录入图书</button>
       </view>
     </view>
 

@@ -1,4 +1,4 @@
-var util = require('../../../utils/util.js')
+var util = require('../../utils/util.js')
 
 //获取应用实例
 var app = getApp()
@@ -14,7 +14,7 @@ Page({
     title: "关于我们",
     aboutTitle: "读书有益",
     aboutSubtitle: "V1.0.1（2017）",
-    aboutIcon: "../../../images/admin_about_icon.png",
+    aboutIcon: "../../images/admin_about_icon.png",
     aboutArticle: [
       { title: "功能说明", url: "" },
       { title: "使用帮助", url: "" },
