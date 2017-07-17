@@ -95,6 +95,14 @@ Page({
       url: target_url
     })
   },
+  //根据图书id获取图书
+  jumpBookInfo: function (e) {
+    console.log(JSON.stringify("bookid:" + e.currentTarget.dataset.bookid))
+    var bookid = e.currentTarget.dataset.bookid
+    wx.navigateTo({
+      url: '/pages/bookpage/bookpage?bookid=' + bookid
+    })
+  },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮

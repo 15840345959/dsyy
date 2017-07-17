@@ -44,6 +44,7 @@ Page({
         })
       }
     })
+    
   },
   getScan:function(){
     wx.navigateTo({
@@ -60,12 +61,10 @@ Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log("转发："+res.target)
-      
+      console.log(res.target)
     }
-    console.log("转发：" + JSON.stringify(res))
     return {
-      title: 'navigationBarTitleText',
+      title: navigationBarTitleText,
       path: 'pages/bookpage/bookpage/bookid='+book_id,
       success: function (res) {
         // 转发成功
