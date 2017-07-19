@@ -5,7 +5,7 @@
       <view class="weui-cells_after-title user-view border-bottom">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            <view class="weui-label user-view-word">头像</view>
+            <view class="weui-label user-view-word">头像（*不可更改）</view>
           </view>
           <view class="weui-cell__bd text-right user-view-img">
             <image src="{{avatar}}" class="user-view-photo"></image>
@@ -15,10 +15,10 @@
       <view class="weui-cells_after-title user-list border-bottom">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            <view class="weui-label user-list-word">姓名</view>
+            <view class="weui-label user-list-word">姓名（*不可更改）</view>
           </view>
           <view class="weui-cell__bd text-right">
-            <input name="nick_name" class="weui-input" placeholder="{{nick_name==''?'请填写姓名':nick_name}}" />
+            <input name="nick_name" class="weui-input" placeholder="{{nick_name}}" disabled="true" />
           </view>
         </view>
       </view>
@@ -38,7 +38,7 @@
             <view class="weui-label user-list-word">性别</view>
           </view>
           <view class="weui-cell__bd text-right">
-            <input name="gender" class="weui-input" placeholder="{{gender==1?'男':'女'}}" />
+            <input name="gender" class="weui-input" placeholder="{{gender_f}}" />
           </view>
         </view>
       </view>

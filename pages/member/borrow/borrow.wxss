@@ -1,10 +1,8 @@
 .borrow-word{
   /*font-family: PingFang-SC-Regular;*/
-  width:100%;
   font-size: 32rpx;
   color: #323232;
   letter-spacing: -0.31rpx;
-  float:left;
   line-height: 60rpx;
   font-weight: bold;
 }

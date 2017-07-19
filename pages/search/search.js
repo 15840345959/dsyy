@@ -12,6 +12,8 @@ Page({
   data: {
     inputVal: "",
     bookInfos: [],
+    hotword:[],
+    bar_id:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -26,36 +28,21 @@ Page({
       console.log("barInfo String:"+options.barInfo)
       barInfo = JSON.parse(options.barInfo)
       console.log(barInfo)
+      vm.setData({
+        bar_id: barInfo.id
+      })
     }
     //初始化type
     vm.setData({
       hotword: getApp().globalData.bookTypeArr,
     })
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-
-  },
   //根据type查找书籍分类
   searchBookByType: function (e) {
+    console.log("搜索的分类："+JSON.stringify(e))
     var param = {
-      type: e.target.dataset.search,
-      bar_id: barInfo.id
+      type: e.target.dataset.style,
+      bar_id: vm.data.bar_id
     }
     //如果为零属于重新加载
     if (util.judgeIsAnyNullStr(vm.data.bookInfos)) {
@@ -64,17 +51,28 @@ Page({
     util.getBookInfosByType(param, function (ret) {
       console.log("输出：" + JSON.stringify(ret))
       if (ret.data.code == "200") {
+        //图片处理
+        for (var i = 0; i < ret.data.obj.length; i++) 
+        {
+          ret.data.obj[i].images_medium = util.qiniuUrlTool(ret.data.obj[i].images_medium, "folder_index")
+        }
         vm.setData({
           bookInfos: ret.data.obj,
         })
       }
     })
   },
+  getTitle:function(e){
+    console.log("输入框的文字：" + e.detail.value)
+    vm.setData({
+      inputVal: e.detail.value,
+    })
+  },
   //根据输入框中的值查找指定书籍
   searchBookByTitle: function (e) {
     var param = {
-      title: e.detail.value,
-      bar_id: barInfo.id
+      title: vm.data.inputVal,
+      bar_id: vm.data.bar_id
     }
     //如果为零属于重新加载
     if (util.judgeIsAnyNullStr(vm.data.bookInfos)) {
@@ -83,11 +81,23 @@ Page({
     util.getBookInfosByTitle(param, function (ret) {
       console.log("输出：" + JSON.stringify(ret))
       if (ret.data.code == "200") {
+        //图片处理
+        for (var i = 0; i < ret.data.obj.length; i++) {
+          ret.data.obj[i].images_medium = util.qiniuUrlTool(ret.data.obj[i].images_medium, "folder_index")
+        }
         vm.setData({
           bookInfos: ret.data.obj,
         })
       }
     })
-  }
+  },
+  //根据图书id获取图书
+  jumpBookInfo: function (e) {
+    console.log(JSON.stringify("bookid:" + e.currentTarget.dataset.bookid))
+    var bookid = e.currentTarget.dataset.bookid
+    wx.navigateTo({
+      url: '/pages/bookpage/bookpage?bookid=' + bookid
+    })
+  },
 
 })

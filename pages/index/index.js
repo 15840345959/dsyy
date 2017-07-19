@@ -76,6 +76,17 @@ Page({
   getIndexPage: function (e) {
     console.log(JSON.stringify(e))
     var param = {}
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        param={
+          lat: longitude,
+          lon: latitude
+        }
+      }
+    })
     console.log(JSON.stringify(param))
     util.showLoading("加载首页");
     util.getIndexPage(param, function (ret) {
@@ -166,12 +177,21 @@ Page({
     console.log(JSON.stringify(res))
     switch (nav_id) {
       case 0:
+        //图片处理
+        for (var i = 0; i < res.bookInfos.length; i++) {
+          res.bookInfos[i].bookInfo.images_medium = util.qiniuUrlTool(res.bookInfos[i].bookInfo.images_medium, "folder_index")
+        }
         vm.setData({
           indexPage: res
         })
         break
       case 1: //图书信息
         if (start_o == 0) { //0则重新加载
+        //图片处理
+          for (var i = 0; i < res.length;i++)
+          {
+            res[i].bookInfo.images_medium = util.qiniuUrlTool(res[i].bookInfo.images_medium, "folder_index")
+          }
           vm.setData({
             bookInfos: res
           })
@@ -273,5 +293,13 @@ Page({
     }
   },
 
-  
+  //滑动翻页
+  changeSwiper:function(e){
+    vm.setData({
+      currentNavbar: e.detail.current
+    })
+    if (vm.needLoadNewDataAfterSwiper()) {
+      vm.loadMoreDatas()
+    }
+  }
 })

@@ -21,22 +21,21 @@
     </view>
     <!--书吧信息-->
     <view class="white-bg margin-bottom-20">
-      <view class=" border-bottom margin-left-40 margin-right-40 padding-bottom-25 bar-text">
+      <view class=" border-bottom margin-left-40 margin-right-40 padding-bottom-30 bar-text">
         <text>书吧简介</text>
       </view>
       <view class="margin-left-40 margin-right-40 padding-top-30 padding-bottom-30">
-        <view class="text-oneline margin-bottom-10 bar-font">{{address}}</view>
-        <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{barInfo.phonenum}}">
+        <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{barInfo.phonenum}}">
           <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
-          <text class="margin-left-10">{{barInfo.phonenum}}</text>
+          <text class="margin-left-10 bar-text">{{barInfo.phonenum}}</text>
         </view>
-        <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
+        <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
           <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
-          <text class="margin-left-10">{{barInfo.address}}</text>
+          <text class="margin-left-10 bar-text">{{barInfo.address}}</text>
         </view>
-        <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;">
+        <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;">
           <image src="../../images/ic_distance.png" class="opt-icon-sma"></image>
-          <text class="margin-left-10">0.5米</text>
+          <text class="margin-left-10 bar-text">{{barInfo.distance}}米</text>
         </view>
       </view>
     </view>

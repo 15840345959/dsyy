@@ -74,7 +74,12 @@ Page({
       console.log(JSON.stringify(ret))
       if (ret.data.code == "200") {
         var img = ret.data.obj.barInfo.picture
-        ret.data.obj.barInfo.picture = util.qiniuUrlTool(ret.data.obj.barInfo.picture, "folder_index")
+        //图片处理
+        ret.data.obj.barInfo.picture = util.qiniuUrlTool(ret.data.obj.barInfo.picture, "bar_detail")
+        for (var i = 0; i < ret.data.obj.bookInfos.length;i++)
+        {
+          ret.data.obj.bookInfos[i].bookInfo.images_medium = util.qiniuUrlTool(ret.data.obj.bookInfos[i].bookInfo.images_medium, "folder_index")
+        }
         vm.setData({
           barInfo: ret.data.obj.barInfo,
           bookInfos: ret.data.obj.bookInfos,

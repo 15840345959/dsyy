@@ -57,6 +57,7 @@ Page({
           vm.setData({
             isbn: isbn
           })
+          vm.searchISBN()
         }
       }
     })
@@ -140,11 +141,12 @@ Page({
   },
   //还书
   returnBook: function(e){
-    console.log(JSON.stringify(e.target.dataset.borrow_id))
+    console.log(JSON.stringify(e.target.dataset))
     var borrow_id = e.target.dataset.borrow_id
+    var user_s_name = e.target.dataset.nick_name
     var param={
       token: vm.data.token,
-      borrow_id: borrow_id
+      borrow_id: borrow_id,
     }
     util.returnBook(param,function(ret){
       console.log("return ："+JSON.stringify(ret))
@@ -156,6 +158,7 @@ Page({
           bookDetail: [], //图书信息
           bookObj: [],  //图书对象
           lendBookObj: [],  //被借出的图书信息
+          user_s_name: user_s_name
         })
         vm.returnSuccess()
       }
@@ -180,5 +183,10 @@ Page({
       + (dayCur < 10 ? "0" + dayCur : dayCur) + " " + (hCur < 10 ? "0" + hCur : hCur)
       + ":" + (mCur < 10 ? "0" + mCur : mCur) + ":" + (sCur < 10 ? "0" + sCur : sCur);
     return timeCur;
+  },
+  back: function () {
+    wx.navigateTo({
+      url: '/pages/admin/return/return',
+    })
   }
 })

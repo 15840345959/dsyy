@@ -171,6 +171,10 @@ page {
   margin-bottom: 30rpx;
 }
 
+.margin-bottom-40 {
+  margin-bottom: 40rpx;
+}
+
 .margin-bottom-50 {
   margin-bottom: 50rpx;
 }
@@ -421,6 +425,15 @@ page {
   -webkit-box-orient: vertical;
   word-break: break-all;
   -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-fourline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  -webkit-line-clamp: 4;
   overflow: hidden;
   text-overflow: ellipsis;
 }

@@ -43,9 +43,11 @@ Page({
   },
   //管理员
   getAdmin:function(){
+    var myBg ="http://dsyy.isart.me/bg.png"
+    myBg = util.qiniuUrlTool(myBg, "user_bg")
     vm.setData({
       title: "管理员中心",
-      myBg: "/images/admin_bg.png",
+      myBg: myBg,
       myNav: [
         { img: "/images/admin_lend.png", title: "图书借出", url: "/pages/admin/lend/lend" },
         { img: "/images/admin_ret.png", title: "图书归还", url: "/pages/admin/return/return" },
@@ -54,7 +56,12 @@ Page({
       ],
       myNotice: [
         { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/about/about" },
-        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" }
+        { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" },
+
+        { img: "/images/member_scan.png", title: "我要借阅（会员我的模块测试）", url: "/pages/member/borrow/borrow" },
+        { img: "/images/admin_notice_history.png", title: "历史借阅（会员我的模块测试）", url: "" },
+        { img: "/images/admin_notice_member.png", title: "会员卡（会员我的模块测试）", url: "/pages/member/card/card" },
+        
       ]
     })
     var title = vm.data.title
@@ -64,16 +71,18 @@ Page({
     vm.getBarId();
   },
   //非管理员
-  getMember:function(){
+  getMember: function () {
+    var myBg = "http://dsyy.isart.me/bg.png"
+    myBg = util.qiniuUrlTool(myBg, "user_bg")
     vm.setData({
       title: "个人中心",
-      myBg: "/images/admin_bg.png",
+      myBg: myBg,
       myNav: [
         { img: "/images/member_scan.png", title: "我要借阅", url: "/pages/member/borrow/borrow" }
       ],
       myNotice: [
-        { img: "/images/admin_notice_about.png", title: "历史借阅", url: "" },
-        { img: "/images/admin_notice_feedback.png", title: "会员卡", url: "" },
+        { img: "/images/admin_notice_history.png", title: "历史借阅", url: "" },
+        { img: "/images/admin_notice_member.png", title: "会员卡", url: "/pages/member/card/card" },
         { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/about/about" },
         { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" }
       ]

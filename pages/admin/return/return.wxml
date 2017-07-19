@@ -3,7 +3,7 @@
   <view class="page" style="height:20rpx;"></view>
   <view class="margin-left-30 margin-right-30">
     <view class=" margin-top-30 margin-bottom-30">
-      <view class="return-word">借出图书</view>
+      <view class="return-word">归还图书</view>
       <view class="return-bar">（{{bar_name}}）</view>
     </view>
     <view class="clear"></view>
@@ -60,13 +60,18 @@
                 <view class="book-sale lend-width-160"></view>
               </view>
               <view wx:for="{{lendBookObj}}" wx:for-item="lendItem" class="weui-flex">
-                 <view wx:if="{{lendItem.borrowInfo.book_obj_id==item.id}}"> 
-                  <view class="text-oneline book-lend margin-right-10 lend-width-180">用户昵称占位</view>
+                <view wx:if="{{lendItem.borrowInfo.book_obj_id==item.id}}">
+                  <view class="text-oneline book-lend margin-right-10 lend-width-70">
+                    <image src="{{lendItem.userInfo.avatar}}" class="userInfo_img"></image>
+                  </view>
+                  <view class="text-oneline book-lend margin-right-10 lend-width-110">
+                    {{lendItem.userInfo.nick_name}}
+                  </view>
                   <view class="text-oneline book-lend-time margin-right-10 lend-width-330">借书时间：{{lendItem.borrowInfo.borrow_time}}</view>
                   <view class="book-sale lend-width-160">
-                    <button class="weui-btn mini-btn text-right return-unused-button" type="primary" size="mini" bindtap="returnBook" data-borrow_id="{{lendItem.borrowInfo.id}}">归还</button>
+                    <button class="weui-btn mini-btn text-right return-unused-button" type="primary" size="mini" bindtap="returnBook" data-borrow_id="{{lendItem.borrowInfo.id}}"  data-nick_name="{{lendItem.userInfo.nick_name}}">归还</button>
                   </view>
-                 </view> 
+                </view>
               </view>
             </view>
             <view class="clear"></view>
@@ -79,26 +84,27 @@
 <!--还书中_End-->
 <!-- 还书成功_Start -->
 <view hidden="{{!returningHidden}}" class="page">
-<view class="page" style="height:20rpx;"></view>
-<view class="white-bg return-success-flex padding-top-30 padding-bottom-30">
-  <view class="margin-left-30 margin-right-30 margin-top-30 text-center">
-    <icon type="success" size="60" />
+  <view class="page" style="height:20rpx;"></view>
+  <view class="white-bg return-success-flex padding-top-30 padding-bottom-30">
+    <view class="margin-left-30 margin-right-30 margin-top-30 text-center">
+      <icon type="success" size="60" />
+    </view>
+    <view class="return-success weui-flex">
+      <view class="weui-flex__item ">会员：{{user_s_name}}</view>
+    </view>
+    <view class="return-success weui-flex">
+      <view class="weui-flex__item">归还图书：《{{book_s_name}}》</view>
+    </view>
+    <view class="return-success weui-flex">
+      <view class="weui-flex__item">书吧：{{bar_name}}</view>
+    </view>
+    <view class="return-success weui-flex">
+      <view class="weui-flex__item">归还时间：{{time}}</view>
+    </view>
+    <view class="return-success weui-flex">
+      <view class="weui-flex__item">管理员：{{oper_name}}</view>
+    </view>
   </view>
-  <view class="return-success weui-flex">
-    <view class="weui-flex__item ">会员：{{user_s_name}}</view>
-  </view>
-  <view class="return-success weui-flex">
-    <view class="weui-flex__item">归还图书：《{{book_s_name}}》</view>
-  </view>
-  <view class="return-success weui-flex">
-    <view class="weui-flex__item">书吧：{{bar_name}}</view>
-  </view>
-  <view class="return-success weui-flex">
-    <view class="weui-flex__item">归还时间：{{time}}</view>
-  </view>
-  <view class="return-success weui-flex">
-    <view class="weui-flex__item">管理员：{{oper_name}}</view>
-  </view>
-</view>
+  <view class="return-button" bindtap="back">返回</view>
 </view>
 <!-- 还书成功_End -->

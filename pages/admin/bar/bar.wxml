@@ -1,4 +1,4 @@
-<view class="page padding-top-20">
+<view class="admin-bar-bg padding-top-20">
   <form bindsubmit="formSubmit">
     <view class="white-bg bar_base">
       <view class="padding-left-30 padding-right-30">
@@ -7,7 +7,7 @@
             <view class="weui-cell__hd">
               <view class="weui-label bar-view-word">图片</view>
             </view>
-            <view class="weui-cell__bd text-right bar-view-img">
+            <view class="weui-cell__bd text-right bar-view-img" catchtap="editImg">
               <image src="{{barInfo.picture}}" class="bar-view-photo"></image>
             </view>
           </view>
@@ -35,10 +35,20 @@
         <view class="weui-cells_after-title bar-list border-bottom">
           <view class="weui-cell weui-cell_input padding-0">
             <view class="weui-cell__hd">
-              <view class="weui-label bar-list-word">书吧ID</view>
+              <view class="weui-label bar-list-word">书吧ID（*不可更改）</view>
             </view>
             <view class="weui-cell__bd text-right">
               <input disabled="true" name="id" class="weui-input" placeholder="{{barInfo.id}}" />
+            </view>
+          </view>
+        </view>
+        <view class="weui-cells_after-title bar-list border-bottom">
+          <view class="weui-cell weui-cell_input padding-0">
+            <view class="weui-cell__hd">
+              <view class="weui-label bar-list-word">注册时间（*不可更改）</view>
+            </view>
+            <view class="weui-cell__bd text-right">
+              <input disabled="true" name="id" class="weui-input" placeholder="{{barInfo.t_date}}" />
             </view>
           </view>
         </view>

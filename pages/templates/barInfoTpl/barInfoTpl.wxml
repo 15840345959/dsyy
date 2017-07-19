@@ -17,7 +17,7 @@
       </view>
       <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/ic_distance.png" class="opt-icon-sma"></image>
-        <text class="margin-left-10">0.5米</text>
+        <text class="margin-left-10">{{distance}}米</text>
       </view>
     </view>
   </view>
@@ -25,16 +25,16 @@
 
 <!--该模板用于首页展（第二种）-->
 <template name="barInfoIndex2">
-  <view class="bar border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25 margin-top-30 index-bar-img" style="position:relative;" bindtap="bardetail" style="background:url('{{picture}}');background-position:top center; " data-barid="{{id}}">
+  <view class="bar border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25 margin-top-30 index-bar-img" style="position:relative;" bindtap="bardetail" style="background:url('{{picture}}');background-position:top center; background-size:100% 100%;  " data-barid="{{id}}">
     <view class="index-bar-text padding-left-20">
-      <view class="text-oneline margin-bottom-5 index-bar-title-font">{{name}}</view>
-      <view class="text-oneline margin-bottom-5 index-bar-font" style="display:flex;align-items:center;" >
+      <view class="text-oneline index-bar-title-font margin-top-10">{{name}}</view>
+      <view class="text-oneline index-bar-font" style="display:flex;align-items:center;margin-top:18rpx;" >
         <image src="../../images/index_bar_address.png" class="opt-icon-sma"></image>
         <text class="margin-left-10">{{address}}</text>
       </view>
-      <view class="text-oneline margin-bottom-5 index-bar-font" style="display:flex;align-items:center;" >
+      <view class="text-oneline margin-top-10 margin-bottom-10 index-bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/index_bar_distance.png" class="opt-icon-sma"></image>
-        <text class="margin-left-10">0.5米</text>
+        <text class="margin-left-10">{{distance}}米</text>
       </view>
     </view>
   </view>
@@ -58,7 +58,7 @@
       </view>
       <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="../../images/ic_distance.png" class="opt-icon-sma"></image>
-        <text class="margin-left-10">0.5米</text>
+        <text class="margin-left-10">{{distance}}米</text>
       </view>
     </view>
   </view>

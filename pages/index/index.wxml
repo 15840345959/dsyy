@@ -15,7 +15,7 @@
     <!--占位用80rpx-->
     <view style="height:100rpx;"></view>
 
-    <swiper class="swiper" current="{{currentNavbar}}" duration="300" style="height:{{systemInfo.windowHeight}}px">
+    <swiper bindchange="changeSwiper" class="swiper" current="{{currentNavbar}}" duration="300" style="height:{{systemInfo.windowHeight}}px">
       <!--推荐部分-->
       <swiper-item>
         <scroll-view class="hot-item-container" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="">

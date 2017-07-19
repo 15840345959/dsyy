@@ -9,7 +9,7 @@ var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 ///////七牛相关///////////////////////////////////
 //根据key值获取图片真实链接
 function getImgRealUrl(key_v) {
-  return "http://book.isart.me/" + key_v;
+  return "http://dsyy.isart.me/" + key_v;
 }
 
 
@@ -39,9 +39,10 @@ function qiniuUrlTool(img_url, type) {
       break;
     case "user_hi":  //头像
       qn_img_url = img_url + "?imageView2/1/w/200/h/200/interlace/1";
-
-      case "book_detail":  //图书详情页
-      qn_img_url = img_url + "?imageView2/1/w/141/h/216/interlace/1";
+    case "bar_detail":  //书吧详情页
+      qn_img_url = img_url + "?imageView2/1/w/750/h/384/interlace/1";
+    case "user_bg":  //我的背景
+      qn_img_url = img_url + "?imageView2/1/w/750/interlace/1";
       break;
   }
 
@@ -262,6 +263,11 @@ function getBookPageByBookId(param, successCallback, errorCallback) {
 //归还图书
 function returnBook(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/returnBook.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据isbn获取读后感列表信息
+function getTWDetailInfoByISBN(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getTWDetailInfoByISBN.do', param, "GET", successCallback, errorCallback);
 }
 
 /////////基本方法///////////////////////////////////////////
@@ -620,5 +626,6 @@ module.exports = {
   updateBarInfo: updateBarInfo,
   getBorrowedOutInfoByBarIdAndISBN: getBorrowedOutInfoByBarIdAndISBN,
   getBookPageByBookId: getBookPageByBookId,
-  returnBook: returnBook
+  returnBook: returnBook,
+  getTWDetailInfoByISBN: getTWDetailInfoByISBN
 }

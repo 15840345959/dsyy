@@ -35,12 +35,8 @@ App({
               if (ret.data.code=="200")
               {
                 vm.storeUserInfo(ret.data.obj)
-                //如果没有头像或者昵称，引导用户进行获取信息
-                // if (util.judgeIsAnyNullStr(vm.globalData.userInfo.nick_name)
-                //   || util.judgeIsAnyNullStr(vm.globalData.userInfo.avatar)) {
                   vm.updateUserInfo(function (ret) {
                    })
-                // }
               }
             }, null);
           }, null);
@@ -110,7 +106,7 @@ App({
   showModal:function(){
     wx.showModal({
       title: '提示',
-      content: '若不授权获取用户信息，则读书有益的部分重要功能将无法使用；请点击【重新授权】——选中【用户信息】方可使用。',
+      content: '若不授权获取用户信息，则读书有益的部分重要功能将无法使用；请点击【重新授权】——选中【用户信息】和【地理位置】方可使用。',
       showCancel: false,
       confirmText: "重新授权",
       success: function (res) {
@@ -124,7 +120,7 @@ App({
     wx.openSetting({
       success: (res) => {
         console.log("Result" + JSON.stringify(res))
-        if (!res.authSetting["scope.userInfo"]) {
+        if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
           vm.showModal()
         }
         else

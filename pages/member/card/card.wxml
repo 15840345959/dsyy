@@ -1,0 +1,16 @@
+<view class="card-bg">
+  <image src="{{bg}}" class="card-img"></image>
+  <view class="margin-left-30 margin-right-30 margin-top-20">
+    <view class="border-bottom card-word">选择会员</view>
+    <view>
+      <view wx:for="{{cards}}">
+        <button class="{{level_id==item.level_id?'card-button-hover':'card-button'}} margin-right-30 margin-top-30" bindtap="chooseCard" data-level="{{item.level_id}}">{{item.title}}</button>
+      </view>
+    </view>
+    <view class="clear"></view>
+    <view class="margin-top-50 card-text padding-left-20 padding-top-20 padding-right-20 padding-bottom-20">
+    {{text}}
+    </view>
+  </view>
+    <view class="card-confirm" bindtap="openMember">开通会员</view>
+</view>

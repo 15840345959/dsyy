@@ -19,7 +19,6 @@ Page({
     bookDetail:[], //图书信息
     bookObj:[],  //图书对象
     lend_id: "",   //借出的图书id
-    system_height: "",   //设备高度
     lendingHidden: false,    //借阅模块隐藏与显示
     oper_name:"",  //管理员name
     time:"",   //当前时间
@@ -35,13 +34,7 @@ Page({
     var bar_id = app.globalData.barDetail.barid
     var bar_name = app.globalData.barDetail.barname
     var oper_name = app.globalData.userInfo.nick_name  //操作者name
-    wx.getSystemInfo({
-      success: function (res) {
-        vm.setData({
-          system_height: res.screenHeight
-        })
-      }
-    })
+
     vm.setData({
       token: token,
       bar_id: bar_id,
@@ -113,6 +106,7 @@ Page({
           vm.setData({
             isbn: isbn
           })
+          vm.searchISBN()
         }
       }
     })
@@ -150,6 +144,8 @@ Page({
             bookObj[i].checked=false
           }
           console.log("图书对象：" + JSON.stringify(bookObj))
+          //图片处理
+          bookDetail.images_medium = util.qiniuUrlTool(bookDetail.images_medium, "folder_index")
           vm.setData({
             bookDetail: bookDetail,
             bookObj: bookObj,
@@ -234,5 +230,10 @@ Page({
       + (dayCur < 10 ? "0" + dayCur : dayCur) + " " + (hCur < 10 ? "0" + hCur : hCur)
       + ":" + (mCur < 10 ? "0" + mCur : mCur) + ":" + (sCur < 10 ? "0" + sCur : sCur);
     return timeCur;
+  },
+  back:function(){
+    wx.navigateTo({
+      url: '/pages/admin/lend/lend',
+    })
   }
 })

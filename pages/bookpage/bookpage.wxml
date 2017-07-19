@@ -1,29 +1,74 @@
-<view class="page padding-top-20"  style="height:{{system_height-75}}px">
+<view class="book-bg">
+  <view class="book-seize"></view>
   <view class="book padding-top-30 padding-bottom-30 white-bg padding-left-30 padding-right-30 margin-bottom-20">
     <view class="book-img">
-      <image src="{{bookInfo.images_large}}" class="book-img-detial" mode="aspectFill"></image>
+      <image src="{{bookInfo.images_medium}}" class="book-img-detial" mode="aspectFill"></image>
     </view>
     <view class="book-info">
       <view class="text-oneline font-weight margin-bottom-10 book-title-font">{{bookInfo.title}}</view>
       <view class="text-oneline margin-bottom-10 book-font">作者：{{bookInfo.author}}</view>
       <view class="text-oneline margin-bottom-10 book-font">页数：{{bookInfo.pages}}页</view>
       <view class="text-oneline margin-bottom-10 book-font">出版社：{{bookInfo.publisher}}</view>
-      <view class="text-threeline margin-bottom-10 book-font">简介：{{bookInfo.summary}}</view>
     </view>
   </view>
+  <view class="white-bg padding-left-30 padding-right-30">
+    <view class="line-text border-bottom">简介</view>
+    <view wx:for="{{barInfos}}" class="book-font weui-flex padding-top-30 padding-bottom-30">
+      {{bookInfo.summary}}
+    </view>
+  </view>
+  <view class="book-seize"></view>
   <view class="white-bg padding-left-30 padding-right-30 margin-bottom-20">
-    <view class="line-text font-weight border-bottom">附近拥有此书的书吧</view>
-    <view wx:for="{{barInfos}}" class="margin-bottom-10 book-font weui-flex">
+    <view class="line-text border-bottom">附近拥有此书的书吧</view>
+    <view wx:for="{{barInfos}}" class="margin-bottom-10 book-font weui-flex" style="height:70rpx;">
       <view class="weui-flex__item " bindtap="intoBar" data-barid="{{item.id}}">
-        <view class="bar-num display margin-top-20 margin-bottom-20 margin-right-10">{{index+1}}</view>
-        <view class="line-text display">{{item.name}}</view>
+        <view class="bar-num display margin-top-20 margin-bottom-20 margin-right-20">{{index+1}}</view>
+        <view class="line-text display margin-right-30">{{item.name}}</view>
+        <view class="line-text display bar-distance">{{item.distance}}m</view>
       </view>
-      <view class="weui-flex__item text-right line-text">127m</view>
+      <view class="weui-flex__item text-right line-text" style="width:100%;">
+        <view class="line-text display margin-right-30 book-bar-icon" bindtap="getMapPosition" data-lon="{{item.lon}}" data-lat="{{item.lat}}" data-name="{{item.name}}" data-address="{{item.address}}">
+          <image src="/images/bar-navigation.png" class="book-bar-img"></image>
+        </view>
+        <view class="line-text display book-bar-icon"  bindtap="callPhonenum" data-phonenum="{{item.phonenum}}">
+          <image src="/images/bar-tel.png" class="book-bar-img"></image>
+        </view>
+      </view>
     </view>
   </view>
-  <view class="white-bg weui-flex book-shara-box ">
-      <view class="weui-flex__item" bindtap="getScan">借阅</view>
-      <view class="weui-flex__item">写读后感</view>
-      <button class="weui-flex__item book-shara-background-green"  open-type="share">分享</button>
+  <view class="book-seize"></view>
+  <view class="clear"></view>
+  <view wx:if="{{reaction.length==0}}" class="white-bg padding-left-30 padding-right-30">
+    <view class="line-text border-bottom">读后感</view>
+    <view class="text-center padding-top-40 padding-bottom-40">
+      <image src="{{img}}" class="book-reaction-no-img"></image>
+      <view class="book-reaction-no-word">
+        暂时木有读后感，快来写一条吧…
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+
+  </view>
+  <view class="book-seat"></view>
+  <view class="white-bg weui-flex book-shara-box border-top">
+    <view class="book-share1" bindtap="getScan">
+      <image src="/images/book-borrow.png" class="share-img margin-right-50"></image>
+    </view>
+    <view class="book-share2" bindtap="getScan">
+      借阅
+    </view>
+    <view class="book-share3">
+      <image src="/images/book-reaction.png" class="share-img"></image>
+    </view>
+    <view class="book-share4">
+      写读后感
+    </view>
+    <button class="book-share5 book-shara-background-green" open-type="share">
+      <image src="/images/book-share.png" class="share-img"></image>
+    </button>
+    <button class="book-share6 book-shara-background-green" open-type="share">
+      分享
+    </button>
   </view>
 </view>
