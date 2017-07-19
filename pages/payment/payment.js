@@ -21,24 +21,15 @@ Page({
     }
     util.wxPrepay(param, function (ret) {
       console.log(JSON.stringify(ret))
-
-      var nonceStr = util.randomString()
-      var prepay_id = ret.data.obj.prepay_id
-      var timeStamp = util.createTimeStamp()
-
-
-      var stringSignTemp = "appId=&nonceStr=" + nonceStr + "&package=prepay_id=" + prepay_id + "&signType=MD5&timeStamp=" + timeStamp + "&key="
-      console.log("stringSignTemp:" + stringSignTemp)
-      var sign = md5.hexMD5(stringSignTemp).toUpperCase()
-
-      console.log("sign:" + sign)
+      var msgObj = ret.data.obj
+      console.log("msgObj:" + JSON.stringify(msgObj))
 
       wx.requestPayment({
-        timeStamp: timeStamp,
-        nonceStr: nonceStr,
-        package: "prepay_id=" + prepay_id,
+        timeStamp: msgObj.timeStamp + "",
+        nonceStr: msgObj.nonceStr,
+        package: msgObj.package,
         signType: "MD5",
-        paySign: sign,
+        paySign: msgObj.paySign,
         success: function (ret) {
           // success  
           console.log("sucess:" + JSON.stringify(ret))
