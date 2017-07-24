@@ -9,18 +9,18 @@
   </view>
   <view wx:if="{{myType==1}}">
     <view class="white-bg margin-bottom-20 my-bar">{{bar.barname}}</view>
-  <view class="white-bg my-nav margin-bottom-20">
-    <view wx:for="{{myNav}}">
-      <view class="my-nav-block margin-top-30 margin-left-30" data-url="{{item.url}}" bindtap="jumpUrl">
-        <button class="my-nav-button">
+    <view class="white-bg my-nav margin-bottom-20">
+      <view wx:for="{{myNav}}">
+        <view class="my-nav-block margin-top-30 margin-left-30" data-url="{{item.url}}" bindtap="jumpUrl">
+          <button class="my-nav-button">
           <image src="{{item.img}}" class="my-nav-button-img float-left"></image>
           <view class="float-left">
             {{item.title}}
           </view>
         </button>
+        </view>
       </view>
     </view>
-  </view>
   </view>
   <view wx:else class="white-bg my-nav-member margin-bottom-20">
     <view wx:for="{{myNav}}">

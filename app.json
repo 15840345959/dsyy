@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/read/read",
     "pages/my/my",
+    "pages/read/read",
     "pages/user/user",
     "pages/admin/cbook/cbook",
     "pages/templates/bookInfoTpl/bookInfoTpl",
@@ -15,10 +15,14 @@
     "pages/admin/lend/lend",
     "pages/admin/bar/bar",
     "pages/member/borrow/borrow",
+    "pages/member/recharge/recharge",
+    "pages/member/upgrade/upgrade",
     "pages/member/card/card",
+    "pages/member/cancellation/cancellation",
     "pages/payment/payment",
-
-    "pages/bookpage/bookpage"
+    "pages/addreaction/addreaction",
+    "pages/bookpage/bookpage",
+    "pages/member/center/center"
   ],
   "window": {
     "backgroundTextStyle": "light",

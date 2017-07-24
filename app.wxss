@@ -179,6 +179,10 @@ page {
   margin-bottom: 50rpx;
 }
 
+.margin-bottom-100 {
+  margin-bottom: 100rpx;
+}
+
 .padding-left-5 {
   padding-left: 5rpx;
 }
@@ -340,6 +344,10 @@ page {
   border-top: 1px solid #d0d0d0;
 }
 
+.border-t{
+  border-top: 1px solid #f0f0f0;
+}
+
 .border-left {
   border-left: 1px solid #d0d0d0;
 }
@@ -387,6 +395,10 @@ page {
 
 .text-right{
   text-align: right;
+}
+
+.text-left{
+  text-align:left;
 }
 
 .white-font {

@@ -87,11 +87,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths[0]
         console.log("tempFilePaths:" + JSON.stringify(tempFilePaths))
-        // var barInfo = vm.data.barInfo
-        // barInfo.picture = tempFilePaths
-        // vm.setData({
-        //   barInfo: barInfo
-        // })
+
         util.showLoading("正在上传")
         var param = {}
         //获取七牛上传token
@@ -114,12 +110,11 @@ Page({
               util.hideLoading()
               console.log("更改后的书吧信息1：" + JSON.stringify(vm.data.barInfo))
             }, (error) => {
-              util.hideLoading()
               console.error('error: ' + JSON.stringify(error));
             })
           }
         }, null);
-
+        util.hideLoading()
       }
     })
   },

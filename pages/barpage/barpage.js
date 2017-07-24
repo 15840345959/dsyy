@@ -19,6 +19,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title:"",  //标题
     barInfo: [],
     bookInfos: []
   },
@@ -83,6 +84,7 @@ Page({
         vm.setData({
           barInfo: ret.data.obj.barInfo,
           bookInfos: ret.data.obj.bookInfos,
+          title: bar_name
         })
         bar_name = ret.data.obj.barInfo.name
         wx.setNavigationBarTitle({ title: bar_name })
@@ -114,7 +116,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: navigationBarTitleText,
+      title: bar_name,
       path: '/pages/barpage/barpage?barid=' + bar_id,
       success: function (res) {
 

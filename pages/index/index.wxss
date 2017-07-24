@@ -76,3 +76,8 @@
   box-sizing:border-box;
   z-index:1;
 }
+.more{
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}

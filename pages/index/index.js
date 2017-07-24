@@ -23,7 +23,9 @@ Page({
     swipers: [],  //广告图信息
     indexPage: {},  //首页数据
     bookInfos: [], //图书列表
-    barInfos: [] //书吧列表
+    barInfos: [], //书吧列表
+    lat:0,
+    lon:0
   },
   //加载
   onLoad: function () {
@@ -81,6 +83,10 @@ Page({
       success: function (res) {
         var latitude = res.latitude
         var longitude = res.longitude
+        vm.setData({
+          lat: longitude,
+          lon: latitude
+        })
         param={
           lat: longitude,
           lon: latitude
@@ -130,8 +136,8 @@ Page({
     var param = {
       start: start_a,
       num: num_a,
-      lat: "0",
-      lon: "0"
+      lat: vm.data.lat,
+      lon: vm.data.lon
     }
     loading_flag_a = true //避免下拉时重复加载
     console.log(JSON.stringify(param))
@@ -301,5 +307,5 @@ Page({
     if (vm.needLoadNewDataAfterSwiper()) {
       vm.loadMoreDatas()
     }
-  }
+  },
 })

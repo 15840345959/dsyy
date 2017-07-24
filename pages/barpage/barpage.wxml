@@ -14,7 +14,7 @@
             <text class="index-search-font">搜索你喜欢的书籍</text>
           </view>
           <view class="bar-img weui-flex__item text-right padding-top-5">
-            <image src="../../images/search_icon.png" class="opt-icon-sma"></image>
+            <image src="/images/search_icon.png" class="opt-icon-sma"></image>
           </view>
         </view>
       </view>
@@ -26,15 +26,15 @@
       </view>
       <view class="margin-left-40 margin-right-40 padding-top-30 padding-bottom-30">
         <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{barInfo.phonenum}}">
-          <image src="../../images/ic_tel.png" class="opt-icon-sma"></image>
+          <image src="/images/ic_tel.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.phonenum}}</text>
         </view>
         <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
-          <image src="../../images/ic_address.png" class="opt-icon-sma"></image>
+          <image src="/images/ic_address.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.address}}</text>
         </view>
         <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;">
-          <image src="../../images/ic_distance.png" class="opt-icon-sma"></image>
+          <image src="/images/ic_distance.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.distance}}米</text>
         </view>
       </view>

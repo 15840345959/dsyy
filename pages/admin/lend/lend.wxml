@@ -31,7 +31,7 @@
         <view class="weui-flex padding-top-30">
           <view>
             <view class="placeholder">
-              <image src="../../../images/ewm_icon.png" class="opt-icon-28 margin-left-10" bindtap="scanBook"></image>
+              <image src="/images/ewm_icon.png" class="opt-icon-28 margin-left-10" bindtap="scanBook"></image>
             </view>
           </view>
           <view class="weui-flex__item border-bottom">
@@ -41,7 +41,7 @@
           </view>
           <view class="border-bottom">
             <view class="placeholder">
-              <image src="../../../images/search_icon.png" class="opt-icon-nor margin-right-15" bindtap="searchISBN"></image>
+              <image src="/images/search_icon.png" class="opt-icon-nor margin-right-15" bindtap="searchISBN"></image>
             </view>
           </view>
         </view>

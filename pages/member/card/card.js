@@ -11,15 +11,17 @@ Page({
       { "level_id": 1, "title": "单本借书卡50元" },
       { "level_id": 2, "title": "三本借书卡100元" }
     ],
-    text:"开通会员，立即享受免费借阅特权，如果你无法比阿达自己的想法，大幅度复古风蛋糕分手的分手的分手大师的方式地方立即享受免费借阅特权，如果你无法比立即享受免费借阅特权，如果你无法比",
-    level_id:2,
+    text:"开通会员，立即享受免费借阅特权，充值50元会员卡，每次可免费借书一本，充值100元可同时借书3本，规定时间内归还图书可退会员卡费用",
+    level_id:1,
+    recommend_id:2,
+    showModal:true
   },
   onLoad: function (options) {
     vm = this
     var title = vm.data.title
     wx.setNavigationBarTitle({ title: title })
 
-    var bg = "http://dsyy.isart.me/bg.png"
+    var bg = "http://dsyy.isart.me/banner_pay.png"
     bg = util.qiniuUrlTool(bg, "user_bg")
     console.log(bg)
     vm.setData({
@@ -27,6 +29,14 @@ Page({
     })
 
     token = app.globalData.userInfo.token
+    //判断是否已经是会员
+    var level = app.globalData.userInfo.level
+    if(level!=0)
+    {
+      vm.setData({
+        showModal: false
+      })
+    }
   },
   //选择会员类型
   chooseCard:function(e){
@@ -35,38 +45,23 @@ Page({
       level_id: level_id
     })
   },
+  //确认充值
+  recharge:function(){
+    var level_id = vm.data.level_id
+    wx.navigateTo({
+      url: '/pages/member/recharge/recharge?levelid=' + level_id,
+    })
+  },
   //开通会员
-  openMember:function(){
-    var param={
-      token: token,
-      level_id: vm.data.level_id,
-    }
-    util.wxPrepay(param, function (ret) {
-      console.log("wxPrepay："+JSON.stringify(ret))
-      if(ret.data.code=="200")
-      {
-        var obj = ret.data.obj
-        console.log("pay param：" + JSON.stringify(obj))
-        wx.requestPayment({
-          'timeStamp': obj.timeStamp+"",
-          'nonceStr': obj.nonceStr,
-          'package': obj.package,
-          'signType': obj.signType,
-          'paySign': obj.paySign,
-          'success': function (res) {
-            console.log("pay success："+JSON.stringify(res))
-            var userInfo = app.globalData.userInfo
-            userInfo.level = vm.data.level_id
-            app.storeUserInfo(userInfo)  //更新缓存
-            wx.navigateTo({
-              url: '/pages/member/borrow/borrow',
-            })
-          },
-          'fail': function (res) {
-            console.log("pay fail" + JSON.stringify(res))
-          }
-        })
-      }
+  clickOpen:function(){
+    vm.setData({
+      showModal: false
+    })
+  },
+  //不开通会员
+  clickClose:function(){
+    wx.navigateBack({
+      delta:2
     })
   }
 })

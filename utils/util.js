@@ -270,6 +270,21 @@ function getTWDetailInfoByISBN(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getTWDetailInfoByISBN.do', param, "GET", successCallback, errorCallback);
 }
 
+//根据isbn获取读后感列表信息
+function createTWBaseInfo(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/createTWBaseInfo.do', param, "POST", successCallback, errorCallback);
+}
+
+//根据读书感名称搜索图文列表
+function getTWDetailInfoBySearchWord(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getTWDetailInfoBySearchWord.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据读书感名称搜索图文列表
+function getTWDetailInfoByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getTWDetailInfoByCon.do', param, "GET", successCallback, errorCallback);
+}
+
 /////////基本方法///////////////////////////////////////////
 //跳转到inputText页面
 
@@ -627,5 +642,8 @@ module.exports = {
   getBorrowedOutInfoByBarIdAndISBN: getBorrowedOutInfoByBarIdAndISBN,
   getBookPageByBookId: getBookPageByBookId,
   returnBook: returnBook,
-  getTWDetailInfoByISBN: getTWDetailInfoByISBN
+  getTWDetailInfoByISBN: getTWDetailInfoByISBN,
+  createTWBaseInfo: createTWBaseInfo,
+  getTWDetailInfoBySearchWord: getTWDetailInfoBySearchWord,
+  getTWDetailInfoByCon: getTWDetailInfoByCon
 }
