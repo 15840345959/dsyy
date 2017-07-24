@@ -22,7 +22,8 @@
     "pages/payment/payment",
     "pages/addreaction/addreaction",
     "pages/bookpage/bookpage",
-    "pages/member/center/center"
+    "pages/member/center/center",
+    "pages/member/history/history"
   ],
   "window": {
     "backgroundTextStyle": "light",

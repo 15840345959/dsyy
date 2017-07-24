@@ -285,6 +285,11 @@ function getTWDetailInfoByCon(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getTWDetailInfoByCon.do', param, "GET", successCallback, errorCallback);
 }
 
+//根据用户id获取借阅详情
+function getDetailBorrowInfoByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getDetailBorrowInfoByUserId.do', param, "GET", successCallback, errorCallback);
+}
+
 /////////基本方法///////////////////////////////////////////
 //跳转到inputText页面
 
@@ -645,5 +650,6 @@ module.exports = {
   getTWDetailInfoByISBN: getTWDetailInfoByISBN,
   createTWBaseInfo: createTWBaseInfo,
   getTWDetailInfoBySearchWord: getTWDetailInfoBySearchWord,
-  getTWDetailInfoByCon: getTWDetailInfoByCon
+  getTWDetailInfoByCon: getTWDetailInfoByCon,
+  getDetailBorrowInfoByUserId: getDetailBorrowInfoByUserId
 }

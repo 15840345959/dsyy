@@ -59,7 +59,7 @@ Page({
         { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" },
 
         { img: "/images/member_scan.png", title: "我要借阅（会员我的模块测试）", url: "/pages/member/borrow/borrow" },
-        { img: "/images/admin_notice_history.png", title: "历史借阅（会员我的模块测试）", url: "" },
+        { img: "/images/admin_notice_history.png", title: "历史借阅（会员我的模块测试）", url: "/pages/member/history/history" },
         { img: "/images/admin_notice_member.png", title: "会员卡（会员我的模块测试）", url: "/pages/member/center/center" },
         
       ]
@@ -81,7 +81,7 @@ Page({
         { img: "/images/member_scan.png", title: "我要借阅", url: "/pages/member/borrow/borrow" }
       ],
       myNotice: [
-        { img: "/images/admin_notice_history.png", title: "历史借阅", url: "" },
+        { img: "/images/admin_notice_history.png", title: "历史借阅", url: "/pages/member/history/history" },
         { img: "/images/admin_notice_member.png", title: "会员卡", url: "/pages/member/center/center" },
         { img: "/images/admin_notice_about.png", title: "关于我们", url: "/pages/about/about" },
         { img: "/images/admin_notice_feedback.png", title: "意见反馈", url: "/pages/feedback/feedback" }

@@ -2,7 +2,8 @@ var util = require('../../../utils/util.js')
 var vm = null
 var level_image=""
 var current_level_image=""
-var future_level_image=""
+var future_level_image = ""
+var show_recharge = ""
 var show_upgrade = ""
 var show_cancellation = ""
 //获取应用实例
@@ -37,6 +38,7 @@ Page({
       level_image = ""
       current_level_image = ""
       future_level_image = ""
+      show_recharge=true
       show_upgrade = false
       show_cancellation = false
     }
@@ -45,6 +47,7 @@ Page({
       level_image = "/images/level_one.png"
       current_level_image ="/images/leve_one_to_two.png"
       future_level_image ="/images/level_two.png"
+      show_recharge = false
       show_upgrade = true
       show_cancellation = true
     }
@@ -53,12 +56,14 @@ Page({
       level_image = "/images/level_two.png"
       current_level_image = ""
       future_level_image = ""
+      show_recharge = false
       show_upgrade = false
       show_cancellation = true
     }
     var notice = vm.data.notice
     notice[1].current_level_image = current_level_image
     notice[1].future_level_image = future_level_image
+    notice[0].show = show_recharge
     notice[1].show = show_upgrade
     notice[2].show = show_cancellation
     vm.setData({
