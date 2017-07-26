@@ -91,18 +91,18 @@ Page({
           lat: longitude,
           lon: latitude
         }
-      }
-    })
-    console.log(JSON.stringify(param))
-    util.showLoading("加载首页");
-    util.getIndexPage(param, function (ret) {
-      console.log(JSON.stringify(ret))
-      if (ret.data.code == "200") {
-        //整理书吧图片
-         vm.setDataWithRes(0, ret.data.obj)
+        console.log(JSON.stringify(param))
+        util.showLoading("加载首页");
+        util.getIndexPage(param, function (ret) {
+          console.log(JSON.stringify(ret))
+          if (ret.data.code == "200") {
+            //整理书吧图片
+            vm.setDataWithRes(0, ret.data.obj)
 
-      } else {
+          } else {
 
+          }
+        })
       }
     })
   },
@@ -139,13 +139,16 @@ Page({
       lat: vm.data.lat,
       lon: vm.data.lon
     }
+    if (loading_flag_a) {
+      return;
+    }
     loading_flag_a = true //避免下拉时重复加载
     console.log(JSON.stringify(param))
     //如果为零属于重新加载
     if (vm.data.barInfos.length == 0) {
       util.showLoading('加载书吧');
     }
-    //进行图书加载
+    //进行书吧加载
     util.getBarInfoByPos(param, function (ret) {
       if (ret.data.code == "200") {
         vm.setDataWithRes(2, ret.data.obj)
@@ -208,14 +211,14 @@ Page({
         }
         break
       case 2:
-        if (start_o == 0) { //0则重新加载
+        if (start_a == 0) { //0则重新加载
           vm.setData({
             barInfos: res
           })
         } else {
-          vm.setData({
-            barInfos: vm.data.barInfos.concat(res)
-          })
+          // vm.setData({
+          //   barInfos: vm.data.barInfos.concat(res)
+          // })
         }
         break
     }

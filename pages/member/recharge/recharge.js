@@ -50,8 +50,9 @@ Page({
           'success': function (res) {
             console.log("pay success：" + JSON.stringify(res))
             var userInfo = app.globalData.userInfo
-            userInfo.level = vm.data.level_id
+            userInfo.level = level_id
             app.storeUserInfo(userInfo)  //更新缓存
+            console.log("更新缓存：" + JSON.stringify(app.globalData.userInfo))
             vm.setData({
               show: false
             })

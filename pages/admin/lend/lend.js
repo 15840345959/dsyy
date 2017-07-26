@@ -235,5 +235,5 @@ Page({
     wx.navigateTo({
       url: '/pages/admin/lend/lend',
     })
-  }
+  },
 })

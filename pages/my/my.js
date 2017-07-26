@@ -14,8 +14,7 @@ Page({
     bar:""  //书吧
   },
   onLoad: function () {
-    
-    vm=this
+    vm = this
     console.log('onLoad')
     var user_id = app.globalData.userInfo.id;
     // var user_id=17  //测试

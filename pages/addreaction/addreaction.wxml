@@ -11,7 +11,7 @@
     <view class="white-bg margin-top-20 weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入读后感" value="{{intro}}" bindinput="catchIntro" name="intro" style="height: 300rpx;" maxlength="-1" />
+          <textarea class="weui-textarea" placeholder="请输入内容" value="{{intro}}" bindinput="catchIntro" name="intro" style="height: 300rpx;" maxlength="-1" />
         </view>
       </view>
     </view>

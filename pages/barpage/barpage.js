@@ -19,7 +19,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:"",  //标题
+    title: "",  //标题
     barInfo: [],
     bookInfos: []
   },
@@ -65,31 +65,41 @@ Page({
 
   // 请求数据
   loadBarPage: function () {
-    var param = {
-      start: start_b,
-      num: num_b,
-      bar_id: bar_id
-    }
-    console.log(JSON.stringify(param))
-    util.getBarPageByBarId(param, function (ret) {
-      console.log(JSON.stringify(ret))
-      if (ret.data.code == "200") {
-        var img = ret.data.obj.barInfo.picture
-        //图片处理
-        ret.data.obj.barInfo.picture = util.qiniuUrlTool(ret.data.obj.barInfo.picture, "bar_detail")
-        for (var i = 0; i < ret.data.obj.bookInfos.length;i++)
-        {
-          ret.data.obj.bookInfos[i].bookInfo.images_medium = util.qiniuUrlTool(ret.data.obj.bookInfos[i].bookInfo.images_medium, "folder_index")
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var lon = res.latitude
+        var lat = res.longitude
+        var param = {
+          start: start_b,
+          num: num_b,
+          bar_id: bar_id,
+          lat: lat,
+          lon: lon
         }
-        vm.setData({
-          barInfo: ret.data.obj.barInfo,
-          bookInfos: ret.data.obj.bookInfos,
-          title: bar_name
-        })
-        bar_name = ret.data.obj.barInfo.name
-        wx.setNavigationBarTitle({ title: bar_name })
+        console.log(JSON.stringify(param))
+        util.getBarPageByBarId(param, function (ret) {
+          console.log(JSON.stringify(ret))
+          if (ret.data.code == "200") {
+            var img = ret.data.obj.barInfo.picture
+            //图片处理
+            ret.data.obj.barInfo.picture = util.qiniuUrlTool(ret.data.obj.barInfo.picture, "bar_detail")
+            for (var i = 0; i < ret.data.obj.bookInfos.length; i++) {
+              ret.data.obj.bookInfos[i].bookInfo.images_medium = util.qiniuUrlTool(ret.data.obj.bookInfos[i].bookInfo.images_medium, "folder_index")
+            }
+            vm.setData({
+              barInfo: ret.data.obj.barInfo,
+              bookInfos: ret.data.obj.bookInfos,
+              title: bar_name
+            })
+            bar_name = ret.data.obj.barInfo.name
+            wx.setNavigationBarTitle({ title: bar_name })
+          }
+        });
       }
-    });
+    })
+
+
   },
   searchBook: function () {
     var barInfo = vm.data.barInfo

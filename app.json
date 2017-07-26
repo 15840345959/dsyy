@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my",
     "pages/read/read",
     "pages/user/user",
+    "pages/my/my",
     "pages/admin/cbook/cbook",
     "pages/templates/bookInfoTpl/bookInfoTpl",
     "pages/logs/logs",

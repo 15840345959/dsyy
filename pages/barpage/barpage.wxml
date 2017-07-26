@@ -21,8 +21,8 @@
     </view>
     <!--书吧信息-->
     <view class="white-bg margin-bottom-20">
-      <view class=" border-bottom margin-left-40 margin-right-40 padding-bottom-30 bar-text">
-        <text>书吧简介</text>
+      <view wx:if="{{barInfo.intro&&barInfo.intro!='undefined'}}" class=" border-bottom margin-left-40 margin-right-40 padding-bottom-30 bar-text">
+        <text>{{barInfo.intro}}</text>
       </view>
       <view class="margin-left-40 margin-right-40 padding-top-30 padding-bottom-30">
         <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;" bindtap="callPhonenum" data-phonenum="{{barInfo.phonenum}}">
@@ -33,7 +33,7 @@
           <image src="/images/ic_address.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.address}}</text>
         </view>
-        <view class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;">
+        <view wx:if="{{barInfo.distance}}" class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;">
           <image src="/images/ic_distance.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.distance}}米</text>
         </view>

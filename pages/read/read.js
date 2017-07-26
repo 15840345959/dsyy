@@ -10,7 +10,7 @@ var bookInfo = []
 var book_id = ""
 Page({
   data: {
-    title: "读后感",  //页面标题
+    title: "书友圈",  //页面标题
     scrollTop: 0,
     scrollHeight: 0,
     reactions: [],

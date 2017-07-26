@@ -10,8 +10,15 @@
           <view class="text-oneline margin-bottom-10 book-font">{{item.bookInfo.bookInfo.subtitle}}</view>
           <view class="text-oneline margin-bottom-10 book-font">作者： {{item.bookInfo.bookInfo.author}}</view>
           <view class="text-oneline margin-bottom-10 book-font">出版社：{{item.bookInfo.bookInfo.publisher}}</view>
-          <view class="text-oneline margin-bottom-10 book-font">包装：{{item.bookInfo.bookInfo.binding}}</view>
           <view class="text-oneline margin-bottom-10 book-font">借阅日期：{{item.borrowInfo.borrow_time}}</view>
+          <view class="text-oneline margin-bottom-10 book-font">
+            <view wx:if="{{item.borrowInfo.status>0}}" style="color:green">
+                已归还
+            </view>
+            <view wx:else style="color:red">
+                未归还
+            </view>
+          </view>
         </view>
       </view>
     </block>

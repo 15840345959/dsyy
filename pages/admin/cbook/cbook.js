@@ -152,7 +152,7 @@ Page({
       user_id: app.globalData.userInfo.id,
       token: app.globalData.userInfo.token,
       book_id: vm.data.bookInfo.id,
-      owner_id: 2,
+      owner_id: app.globalData.barDetail.barid,
       owner_type: '0',
       book_code: vm.data.bookObj.book_code,
       o_n: vm.data.bookObj.o_n,

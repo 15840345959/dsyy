@@ -9,7 +9,8 @@ Page({
     bg: "",   //背景
     money: "",
     showModal:false,
-    show:true
+    show:true,
+    count:0  //判断有多少本未还图书
   },
   onLoad: function () {
     vm = this
@@ -20,7 +21,7 @@ Page({
     vm.setData({
       bg: bg,
     })
-    //对升级会员进行判断
+    //对会员等级进行判断
     var level_id = app.globalData.userInfo.level;
     if (level_id == 0) {
       money="0"
@@ -34,6 +35,8 @@ Page({
     vm.setData({
       money:money
     })
+
+    vm.judge()  //判断会员是否有未还的书
   },
   //跳转页面
   apply: function () {
@@ -56,6 +59,28 @@ Page({
   complete: function () {
     wx.navigateBack({
       delta: 2
+    })
+  },
+  //判断会员是否有未还的书
+  judge:function(){
+    var param={}
+    util.getDetailBorrowInfoByUserId(param, function (ret) {
+      console.log("历史借阅：" + JSON.stringify(ret))
+      if (ret.data.code = "200")
+      {
+        var bookInfos = ret.data.obj
+        var count=0
+        for (var i = 0; i < bookInfos.length; i++) {
+          var status=bookInfos[i].borrowInfo.status
+          if (status==0)
+          {
+            count++
+          }
+        }
+        vm.setData({
+          count:count
+        })
+      }
     })
   }
 })

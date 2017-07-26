@@ -4,9 +4,6 @@
 .padding-0{
   padding:0;
 }
-.bar_base{
-  /* width:100%; */
-}
 .bar-view{
   height:164rpx;
 }
@@ -39,12 +36,15 @@
   float:left;
 }
 .bar-button{
+  width: 100%;
   background: #36BE7A;
   /*font-family: PingFang-SC-Medium;*/
   font-size: 32rpx;
   color: #FFFFFF;
   line-height: 80rpx;
   border-radius: 0%;
+  bottom:0px;
+  position: absolute;
 }
 .bar-intro{
   height:249rpx;
@@ -69,10 +69,5 @@ textarea {
 height:127rpx;
 display:block;
 position:relative;
-}
-.weui-label {
-  width: 116px;
-  word-wrap: break-word;
-  word-break: break-all;
 }
 

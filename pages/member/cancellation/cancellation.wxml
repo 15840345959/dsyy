@@ -7,13 +7,16 @@
       </view>
     </view> 
      <view class="white-bg cancellation-notice margin-top-20">
-      <view class="margin-left-30 margin-right-30 cancellation-notice-list" bindtap="apply">
+      <view wx:if="{{count==0}}" class="margin-left-30 margin-right-30 cancellation-notice-list" bindtap="apply">
         <view class="float-left">
           我要退卡
         </view>
         <view class="float-right">
           <image src="/images/more.png" class="more"></image>
         </view>
+      </view>
+      <view wx:else  class="margin-left-30 margin-right-30 cancellation-notice-list" >
+        您还有{{count}}本书尚未归还，请归还图书后才能办理退卡
       </view>
     </view> 
   </view> 
@@ -26,7 +29,7 @@
         借书卡充值金额将在1-7个工作日到账，退还给您后您将无法借书。确认要退卡吗？
       </view>
       <view class="cancellation-box-button">
-        <view class="cancellation-box-button-close float-left" bindtap="clickCancellation">退卡</view>
+        <view class="cancellation-box-button-close float-left" bindtap="clickCancellation">退卡{{count}}</view>
         <view class="cancellation-box-button-open float-right" bindtap="clickRetain">继续用</view>
       </view>
     </view>

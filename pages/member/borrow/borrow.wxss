@@ -48,8 +48,6 @@
   height:37.1rpx;
 }
 .borrow-text{
-  width:380rpx;
-  height:80rpx;
   text-align: center;
   /*font-family: PingFang-SC-Regular;*/
   font-size: 26rpx;
@@ -57,4 +55,75 @@
   letter-spacing: 0.93rpx;
   line-height: 40rpx;
   margin:0 auto;
+}
+
+.keyword{
+  display:inline;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+
+.ban-borrow{
+  height:100%;
+}
+.ban-borrow-img{
+  text-align:center;
+  margin-top:170rpx;
+}
+.ban-borrow-image{
+  width:235rpx; 
+  height:197rpx;
+}
+.ban-borrow-title{
+  height:56rpx;
+  line-height:56rpx;
+  text-align: center;
+}
+.ban-borrow-title-money{
+  /* font-family: PingFang-SC-Regular; */
+  font-size: 40rpx;
+  color: #FF6149;
+  letter-spacing: -0.96rpx;
+  display:inline;
+}
+.ban-borrow-title-yes{
+  /* font-family: PingFang-SC-Regular; */
+  font-size: 40rpx;
+  color: #000000;
+  letter-spacing: -0.77rpx;
+  line-height: 56rpx;
+  display:inline;
+}
+.ban-borrow-prompt{
+  /* font-family: PingFang-SC-Regular; */
+  font-size: 28rpx;
+  color: #787878;
+  letter-spacing: -0.68rpx;
+  text-align: center;
+}
+.ban-borrow-button{
+  width:540rpx;
+  height:76rpx;
+  margin: 20px auto;
+  line-height: 76rpx;
+  text-align: center;
+  font-size: 30rpx;
+  letter-spacing: 1rpx;
+}
+.ban-borrow-button-back{
+  width:50%;
+  background: #EAEAEA;
+  border-radius: 69rpx 0 0 69rpx;
+  /* font-family: PingFang-SC-Medium; */
+  color: #787878;
+  float:left;
+}
+.ban-borrow-button-upgrade{
+  width:50%;
+  background: #36BE7A;
+  border-radius: 0 69rpx 69rpx 0;
+  /* font-family: PingFang-SC-Medium; */
+  color: #FFFFFF;
+  float:right;
 }

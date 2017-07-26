@@ -48,17 +48,25 @@ Page({
     console.log("from ：" + JSON.stringify(e.detail.value))
     var token = app.globalData.userInfo.token
     var name = e.detail.value.name == "" ? vm.data.barInfo.name : e.detail.value.name
-    var address = e.detail.value.address == "" ? vm.data.barInfo.address : e.detail.value.address
+    var address = vm.data.barInfo.address
     var picture = vm.data.barInfo.picture
     console.log("更改的书吧图片：" + JSON.stringify(vm.data.barInfo.picture));
     var phonenum = e.detail.value.phonenum == "" ? vm.data.barInfo.phonenum : e.detail.value.phonenum
+    var lat = vm.data.barInfo.lat
+    var lon = vm.data.barInfo.lon
+    var intro = e.detail.value.intro == "" ? vm.data.barInfo.intro : e.detail.value.intro
+    var service = e.detail.value.service == "" ? vm.data.barInfo.service : e.detail.value.service
     var param={
       token: token,
       bar_id: bar_id,
       name: name,
       address: address,
+      lat:lat,
+      lon:lon,
       picture: picture,
-      phonenum: phonenum
+      phonenum: phonenum,
+      intro: intro,
+      service: service
     }
     util.updateBarInfo(param,function(ret){
       console.log(JSON.stringify(ret))
@@ -108,7 +116,7 @@ Page({
                 barInfo: barInfo
               })
               util.hideLoading()
-              console.log("更改后的书吧信息1：" + JSON.stringify(vm.data.barInfo))
+              
             }, (error) => {
               console.error('error: ' + JSON.stringify(error));
             })
@@ -118,4 +126,23 @@ Page({
       }
     })
   },
+  //选择位置
+  chooseLocation:function(){
+    wx.chooseLocation({
+      success: function (res){
+        console.log("address：" + JSON.stringify(res))
+        var address = res.address
+        var lat = res.longitude
+        var lon = res.latitude
+
+        var barInfo=vm.data.barInfo
+        barInfo.address = address
+        barInfo.lat = lat
+        barInfo.lon = lon
+        vm.setData({
+          barInfo: barInfo
+        })
+      }
+    })
+  }
 })

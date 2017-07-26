@@ -56,7 +56,7 @@ App({
           avatar: res.userInfo.avatarUrl,
           phonenum: vm.globalData.userInfo.phonenum,
           gender: res.userInfo.gender,
-          type: vm.globalData.userInfo.type,
+          // type: vm.globalData.userInfo.type,
         }
         util.updateUserInfo(param, function (ret, err) {
           console.log("updateUserInfo ret:" + JSON.stringify(ret))

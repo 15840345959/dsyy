@@ -18,7 +18,7 @@ function initQiniu() {
 
 Page({
   data: {
-    title: "创建读后感",  //页面标题
+    title: "发布",  //页面标题
     files: [],
     isbn: "",  //isbn
     bookDetail: [],  //图书详情
@@ -159,7 +159,7 @@ Page({
       }
     })
   },
-  //添加读后感
+  //发布信息
   formSubmit: function (e) {
     console.log('form submit：', e.detail.value)
     var title = e.detail.value.title
@@ -199,7 +199,7 @@ Page({
         wx.showModal({
           title: '提示',
           showCancel: false,
-          content: '创建读后感成功',
+          content: '发布信息成功',
           success: function (res) {
             if (res.confirm) {
               vm.setData({
@@ -221,7 +221,7 @@ Page({
       else {
         wx.showModal({
           title: '提示',
-          content: '创建读后感失败',
+          content: '发布信息失败',
           showCancel: false,
           success: function (res) {
             if (res.confirm) {

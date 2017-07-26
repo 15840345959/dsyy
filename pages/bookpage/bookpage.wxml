@@ -32,7 +32,7 @@
       <view class="weui-flex__item " bindtap="intoBar" data-barid="{{item.id}}">
         <view class="bar-num display margin-top-20 margin-bottom-20 margin-right-20">{{index+1}}</view>
         <view class="line-text display margin-right-30">{{item.name}}</view>
-        <view class="line-text display bar-distance">{{item.distance}}m</view>
+        <view wx:if="{{item.distance}}" class="line-text display bar-distance">{{item.distance}}m</view>
       </view>
       <view class="weui-flex__item text-right line-text">
         <view class="line-text display margin-right-30 book-bar-icon" bindtap="getMapPosition" data-lon="{{item.lon}}" data-lat="{{item.lat}}" data-name="{{item.name}}" data-address="{{item.address}}">

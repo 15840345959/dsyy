@@ -12,7 +12,7 @@ Page({
       { "level_id": 2, "title": "三本借书卡100元" }
     ],
     text:"开通会员，立即享受免费借阅特权，充值50元会员卡，每次可免费借书一本，充值100元可同时借书3本，规定时间内归还图书可退会员卡费用",
-    level_id:1,
+    level_id:2,
     recommend_id:2,
     showModal:true
   },
@@ -61,7 +61,7 @@ Page({
   //不开通会员
   clickClose:function(){
     wx.navigateBack({
-      delta:2
+      delta:1
     })
   }
 })

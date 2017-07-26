@@ -16,7 +16,7 @@
           </view>
           <view class="lend-user-info">
             <view>{{user_name}}</view>
-            <view>{{user_tel}}</view>
+            <view>{{user_tel==''||user_tel=='undefined'?'未设置电话号码':user_tel}}</view>
           </view>
           <view class="clear"></view>
         </view>

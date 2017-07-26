@@ -7,11 +7,14 @@ Page({
   data: {
     title: "会员升级",  //页面标题
     bg: "",   //图片
-    text: "您当前为一级会员，再充值50元可升级为二级会员，升级二级会员可同时借书3本，按规定时间内归还图书可退全部会员卡费用，包含第一次充值加升级充值费用",
     userInfo:[],
     level_id:"",
     current_level:"",  //当前等级(大写)
-    current_level_image:""  //当前等级的图片
+    future_level:"",   //未来等级（大写）
+    current_level_image:"",  //当前等级的图片
+    current_count: "",  //当前可借阅数目
+    future_count: "",  //未来可借阅数目
+    upgrade_money:""  //升级金额
   },
   onLoad: function (options) {
     vm = this
@@ -34,7 +37,11 @@ Page({
     {
       vm.setData({
         current_level: "一",  //当前等级(大写)
-        current_level_image: "/images/level_one.png"  //当前等级的图片
+        future_level: "二",  //未来等级（大写）
+        current_level_image: "/images/level_one.png",  //当前等级的图片
+        current_count: 1,  //当前可借阅数目
+        future_count: 3,  //未来可借阅数目
+        upgrade_money: 100  //升级金额
       })
     }
     else
