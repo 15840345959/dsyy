@@ -26,6 +26,7 @@
           </view>
         </view>
       </view>
+      <view wx:if="{{noBook}}" class="text-center">此书吧中没有找到这本书</view>
     </view>
     <!-- 有信息 -->
     <view hidden="{{!searchHidden}}">
@@ -69,7 +70,7 @@
                   </view>
                   <view class="text-oneline book-lend-time margin-right-10 lend-width-330">借书时间：{{lendItem.borrowInfo.borrow_time}}</view>
                   <view class="book-sale lend-width-160">
-                    <button class="weui-btn mini-btn text-right return-unused-button" type="primary" size="mini" bindtap="returnBook" data-borrow_id="{{lendItem.borrowInfo.id}}"  data-nick_name="{{lendItem.userInfo.nick_name}}">归还</button>
+                    <button class="weui-btn mini-btn text-right return-unused-button" type="primary" size="mini" bindtap="returnBook" data-borrow_id="{{lendItem.borrowInfo.id}}" data-nick_name="{{lendItem.userInfo.nick_name}}">归还</button>
                   </view>
                 </view>
               </view>
@@ -90,19 +91,74 @@
       <icon type="success" size="60" />
     </view>
     <view class="return-success weui-flex">
-      <view class="weui-flex__item ">会员：{{user_s_name}}</view>
+      <view class="weui-flex__item ">
+        <view class="weui-cells_after-title user-list">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label user-list-word">会员：</view>
+            </view>
+            <view class="weui-cell__bd text-right">
+              <input name="nick_name" class="weui-input" value="{{user_s_name}}" placeholder="{{user_s_name}}" disabled="true" />
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
     <view class="return-success weui-flex">
-      <view class="weui-flex__item">归还图书：《{{book_s_name}}》</view>
+      <view class="weui-flex__item">
+        <view class="weui-cells_after-title user-list">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label user-list-word">归还图书：</view>
+            </view>
+            <view class="weui-cell__bd text-right">
+              <input name="book_name" class="weui-input" value="{{book_s_name}}" placeholder="《{{book_s_name}}》" disabled="true" />
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
     <view class="return-success weui-flex">
-      <view class="weui-flex__item">书吧：{{bar_name}}</view>
+      <view class="weui-flex__item">
+        <view class="weui-cells_after-title user-list">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label user-list-word">书吧：</view>
+            </view>
+            <view class="weui-cell__bd text-right">
+              <input name="bar_name" class="weui-input" value="{{bar_name}}" placeholder="{{bar_name}}" disabled="true" />
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
     <view class="return-success weui-flex">
-      <view class="weui-flex__item">归还时间：{{time}}</view>
+      <view class="weui-flex__item">
+        <view class="weui-cells_after-title user-list">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label user-list-word">归还时间：</view>
+            </view>
+            <view class="weui-cell__bd text-right">
+              <input name="time" class="weui-input" value="{{time}}" placeholder="{{time}}" disabled="true" />
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
     <view class="return-success weui-flex">
-      <view class="weui-flex__item">管理员：{{oper_name}}</view>
+      <view class="weui-flex__item">
+        <view class="weui-cells_after-title user-list">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label user-list-word">管理员：</view>
+            </view>
+            <view class="weui-cell__bd text-right">
+              <input name="oper_name" class="weui-input" value="{{oper_name}}" placeholder="{{oper_name}}" disabled="true" />
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
   <view class="return-button" bindtap="back">返回</view>

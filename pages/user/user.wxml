@@ -28,7 +28,7 @@
             <view class="weui-label user-list-word">电话</view>
           </view>
           <view class="weui-cell__bd text-right">
-            <input name="phonenum" class="weui-input" placeholder="{{phonenum==''?'请填写电话':phonenum}}" />
+            <input name="phonenum" class="weui-input" placeholder="{{phonenum==''||phonenum=='undefined'?'请填写电话':phonenum}}" />
           </view>
         </view>
       </view>

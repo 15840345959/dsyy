@@ -85,7 +85,6 @@
 
 .return-success-flex {
   width: 100%;
-  height: 600rpx;
 }
 
 .return-success {

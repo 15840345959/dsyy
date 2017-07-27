@@ -33,7 +33,7 @@
           <image src="/images/ic_address.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.address}}</text>
         </view>
-        <view wx:if="{{barInfo.distance}}" class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;">
+        <view wx:if="{{barInfo.distance}}" class="text-oneline margin-bottom-10 bar-font" style="display:flex;align-items:center;" bindtap="getMapPosition" data-lon="{{barInfo.lon}}" data-lat="{{barInfo.lat}}" data-name="{{barInfo.name}}" data-address="{{barInfo.address}}">
           <image src="/images/ic_distance.png" class="opt-icon-sma"></image>
           <text class="margin-left-10 bar-text">{{barInfo.distance}}米</text>
         </view>

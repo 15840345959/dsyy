@@ -15,7 +15,7 @@ Page({
   },
   onLoad: function () {
     vm = this
-    console.log('onLoad')
+    vm.updateCache()  //更新缓存
     var user_id = app.globalData.userInfo.id;
     // var user_id=17  //测试
     var user_name = app.globalData.userInfo.nick_name;  //获取昵称
@@ -169,4 +169,20 @@ Page({
       }
     })
   },
+  //更新缓存
+  updateCache:function(){
+    var token = app.globalData.userInfo.token;
+    var param={
+      token:token
+    }
+    util.getUserDetailInfoById(param,function(ret){
+      console.log("更新："+JSON.stringify(ret))
+      if(ret.data.code=="200")
+      {
+        app.globalData.userInfo = ret.data.obj
+        app.storeUserInfo(ret.data.obj)
+        
+      }
+    })
+  }
 })

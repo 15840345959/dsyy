@@ -29,7 +29,7 @@
         借书卡充值金额将在1-7个工作日到账，退还给您后您将无法借书。确认要退卡吗？
       </view>
       <view class="cancellation-box-button">
-        <view class="cancellation-box-button-close float-left" bindtap="clickCancellation">退卡{{count}}</view>
+        <view class="cancellation-box-button-close float-left" bindtap="clickCancellation">退卡</view>
         <view class="cancellation-box-button-open float-right" bindtap="clickRetain">继续用</view>
       </view>
     </view>

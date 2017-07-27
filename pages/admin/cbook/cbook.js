@@ -164,7 +164,7 @@ Page({
     util.createBookObj(param, function (ret) {
       console.log(JSON.stringify(ret))
       if (ret.data.code == '200') {
-        util.showModal('TIP', '录入图书成功', function (ret) { }, function (ret) { })
+        util.showModal('提示', '录入图书成功', function (ret) { }, function (ret) { })
         vm.setData({
           bookInfo: {}
         })

@@ -26,6 +26,11 @@
   float: left;
 }
 
+.book-summary{
+  width:100%;
+  overflow-x:hidden;
+}
+
 .bar-distance {
   /* font-family: PingFangSC-Regular; */
   font-size: 24rpx;

@@ -5,6 +5,9 @@ var SERVER_URL = "https://isart.me/DSYYServer";
 var DEBUG_URL = "http://localhost/DSYYServer";
 var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 
+//模板消息
+var TEMPLATE_URL ="https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=1DE555501CD44833BB790E1C75404265";
+
 
 ///////七牛相关///////////////////////////////////
 //根据key值获取图片真实链接
@@ -288,6 +291,26 @@ function getTWDetailInfoByCon(param, successCallback, errorCallback) {
 //根据用户id获取借阅详情
 function getDetailBorrowInfoByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getDetailBorrowInfoByUserId.do', param, "GET", successCallback, errorCallback);
+}
+
+//会员退办
+function refundMember(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/refundMember.do', param, "GET", successCallback, errorCallback);
+}
+
+//获取会员列表
+function getMemberLevels(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getMemberLevels.do', param, "GET", successCallback, errorCallback);
+}
+
+//根据借书码获取用户
+function getUserDetailInfoById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getUserDetailInfoById.do', param, "GET", successCallback, errorCallback);
+}
+
+//获取模板消息
+function getTemplate(param, successCallback, errorCallback) {
+  wxRequest(TEMPLATE_URL, param, "POST", successCallback, errorCallback);
 }
 
 /////////基本方法///////////////////////////////////////////
@@ -651,5 +674,9 @@ module.exports = {
   createTWBaseInfo: createTWBaseInfo,
   getTWDetailInfoBySearchWord: getTWDetailInfoBySearchWord,
   getTWDetailInfoByCon: getTWDetailInfoByCon,
-  getDetailBorrowInfoByUserId: getDetailBorrowInfoByUserId
+  getDetailBorrowInfoByUserId: getDetailBorrowInfoByUserId,
+  refundMember: refundMember,
+  getMemberLevels: getMemberLevels,
+  getUserDetailInfoById: getUserDetailInfoById,
+  getTemplate: getTemplate
 }

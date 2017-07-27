@@ -22,9 +22,13 @@
     </view>
     <view class="recharge-success-title margin-top-50">
       <view class="recharge-success-title-money margin-right-20">{{money}}元</view>
-      <view class="recharge-success-title-yes">充值成功</view>
+      <view wx:if="{{upgrade}}" class="recharge-success-title-yes">升级成功</view>
+      <view wx:else class="recharge-success-title-yes">充值成功</view>
     </view>
-    <view class="recharge-success-prompt margin-top-20">充值成功啦，去借书吧，用知识武装自己</view>
+    <view wx:if="{{upgrade}}" class="recharge-success-prompt margin-top-20" style="font-size:20rpx;">
+        我们会在1-7个工作日内把升级前的会员卡费用退还到您的账户,请注意查收
+    </view>
+    <view wx:else class="recharge-success-prompt margin-top-20">充值成功啦，去借书吧，用知识武装自己</view>
     <view class="recharge-success-button" bindtap="borrowBook">去借书</view>
 </view>
 <!--充值成功_End-->

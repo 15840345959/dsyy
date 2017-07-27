@@ -216,9 +216,9 @@ Page({
             barInfos: res
           })
         } else {
-          // vm.setData({
-          //   barInfos: vm.data.barInfos.concat(res)
-          // })
+          vm.setData({
+            barInfos: vm.data.barInfos.concat(res)
+          })
         }
         break
     }

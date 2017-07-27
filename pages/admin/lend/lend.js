@@ -23,7 +23,8 @@ Page({
     oper_name:"",  //管理员name
     time:"",   //当前时间
     book_s_name: "",  //图书name（成功）
-    user_s_name: ""  //借阅者name（成功）
+    user_s_name: "",  //借阅者name（成功）
+    noBook: false   //没有搜索到图书的时候为true
   },
   onLoad: function (options) {
     vm = this
@@ -147,6 +148,7 @@ Page({
           //图片处理
           bookDetail.images_medium = util.qiniuUrlTool(bookDetail.images_medium, "folder_index")
           vm.setData({
+            noBook: false,
             bookDetail: bookDetail,
             bookObj: bookObj,
             searchHidden:true,
@@ -155,6 +157,12 @@ Page({
           var book_s_name = vm.data.bookObj.title
           vm.setData({
             book_s_name: book_s_name
+          })
+        }
+        else
+        {
+          vm.setData({
+            noBook: true,
           })
         }
       }
@@ -236,4 +244,32 @@ Page({
       url: '/pages/admin/lend/lend',
     })
   },
+  //借阅成功，返回并发送模板信息
+  submit:function(e){
+    var param={
+      // "touser": "OPENID",
+      "touser": "ouXIJ0cLh1EhXD_n9iv5me-V8cQQ",
+      "template_id": "HEiWfBdk3z3jWgPHIWiOOZjRf6C-Hzg0GLqmwf0mCMI",
+      "page": "index",
+      "form_id": "FORMID",
+      "data": {
+        "keyword1": {
+          "value": e.detail.value.book_name,
+        },
+        "keyword2": {
+          "value": e.detail.value.time,
+        },
+        "keyword3": {
+          "value": e.detail.value.bar_name,
+        },
+        "keyword4": {
+          "value": "1本",
+        }
+      }
+    }
+
+    util.getTemplate(param, function (ret) {
+      console.log("模板消息：" + JSON.stringify(ret))
+    })
+  }
 })

@@ -150,6 +150,9 @@
   color: #FFFFFF;
   width:50%;
 }
+.display{
+  display:inline;
+}
 
 
 

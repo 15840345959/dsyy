@@ -7,11 +7,7 @@ Page({
   data: {
     title: "会员充值",  //页面标题
     bg:"",   //图片
-    cards:[
-      { "level_id": 1, "title": "单本借书卡50元" },
-      { "level_id": 2, "title": "三本借书卡100元" }
-    ],
-    text:"开通会员，立即享受免费借阅特权，充值50元会员卡，每次可免费借书一本，充值100元可同时借书3本，规定时间内归还图书可退会员卡费用",
+    cards:[],
     level_id:2,
     recommend_id:2,
     showModal:true
@@ -37,6 +33,7 @@ Page({
         showModal: false
       })
     }
+    vm.getMember()  //获取会员
   },
   //选择会员类型
   chooseCard:function(e){
@@ -62,6 +59,19 @@ Page({
   clickClose:function(){
     wx.navigateBack({
       delta:1
+    })
+  },
+  //获取会员
+  getMember:function(){
+    var param={}
+    util.getMemberLevels(param,function(ret){
+      console.log("获取会员类型："+JSON.stringify(ret))
+      if(ret.data.code=="200")
+      {
+        vm.setData({
+          cards: ret.data.obj
+        })
+      }
     })
   }
 })

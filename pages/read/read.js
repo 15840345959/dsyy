@@ -4,7 +4,8 @@ var vm = null
 var app = getApp()
 //图书列表相关加载参数
 var start_r = 0
-var num_r = 2000
+var num_r = 6
+var loading_flag_r = false
 var page = 0
 var bookInfo = []
 var book_id = ""
@@ -45,6 +46,10 @@ Page({
       num: num_r,
       style: "all"
     }
+    if (loading_flag_r) {
+      return;
+    }
+    loading_flag_r = true //避免下拉时重复加载
     util.getTWDetailInfoByCon(param, function (ret) {
       if (ret.data.code == "200") {
         var reactions = ret.data.obj
@@ -84,11 +89,20 @@ Page({
           }
         }
         console.log("加入字段后：" + JSON.stringify(bookInfo))
-        vm.setData({
-          reactions: reactions,
+        if (start_r == 0) { //0则重新加载
+          vm.setData({
+            reactions: reactions,
           hidden: true,
-        })
+          })
+        } else {
+          vm.setData({
+            reactions: vm.data.reactions.concat(reactions),
+            hidden: true,
+          })
+        }
       }
+      start_r = start_r + num_r
+      loading_flag_r = false  //避免下拉时重复加载
     })
   },
   //////数组元素去重

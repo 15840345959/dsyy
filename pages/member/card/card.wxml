@@ -5,24 +5,27 @@
     <view class="border-bottom card-word">选择会员</view>
     <view>
       <view wx:for="{{cards}}">
-        <view wx:if="{{recommend_id==item.level_id}}">
+        <view wx:if="{{recommend_id==item.id}}">
           <view>
-            <view class="{{level_id==item.level_id?'card-button-hover-recommend':'card-button-recommend'}} margin-top-30" bindtap="chooseCard" data-level="{{item.level_id}}">
-              {{item.title}}
+            <view class="{{level_id==item.id?'card-button-hover-recommend':'card-button-recommend'}} margin-top-30" bindtap="chooseCard" data-level="{{item.id}}">
+              {{item.name}}
             </view>
             <view class="button-recommend margin-right-30 margin-top-30">推荐</view>
           </view>
         </view>
         <view wx:else>
-          <view class="{{level_id==item.level_id?'card-button-hover':'card-button'}} margin-right-30 margin-top-30" bindtap="chooseCard" data-level="{{item.level_id}}">
-            {{item.title}}
+          <view class="{{level_id==item.id?'card-button-hover':'card-button'}} margin-right-30 margin-top-30" bindtap="chooseCard" data-level="{{item.id}}">
+            {{item.name}}
           </view>
         </view>
       </view>
     </view>
     <view class="clear"></view>
     <view class="margin-top-50 card-text padding-left-20 padding-top-20 padding-right-20 padding-bottom-20">
-      {{text}}
+      开通会员，立即享受免费借阅特权：
+      <view wx:for="{{cards}}" class="display">
+        充值{{item.name}}，{{item.description}}；
+      </view>
     </view>
   </view>
   <view class="card-confirm" bindtap="recharge">开通会员</view>

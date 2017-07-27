@@ -58,6 +58,15 @@ Page({
           count_borrow: ret.data.obj.left_num
         })
       }
+      else if (ret.data.code == "401")
+      {
+        vm.setData({
+          code: "您还不是会员，请先办理会员",
+        })
+        wx.redirectTo({
+          url: '/pages/member/card/card',
+        })
+      }
       else if (ret.data.code == "402")
       {
         vm.setData({

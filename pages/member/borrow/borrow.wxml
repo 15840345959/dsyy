@@ -8,14 +8,14 @@
     <view class="clear"></view>
     <view class="borrow-prompt">
       <image src="{{image}}" class="borrow-prompt-image margin-top-50"></image>
-      <view class="borrow-text">
-        将本码展示给店员进行图书借阅
-      </view>
-      <view class="borrow-text">
-        每生成一个借阅码只能借一本图书
-      </view>
-      <view class="borrow-text">
-        您可以同时借阅<view class="keyword">{{count}}</view>本书，已借阅<view class="keyword">{{count-count_borrow}}</view>本书，还可以借阅<view class="keyword">{{count_borrow}}</view>本书
+      <view class="margin-right-30 margin-left-30 card-text padding-left-20 padding-top-20 padding-right-20 padding-bottom-20">
+        <view>将本码展示给店员进行图书借阅</view>
+        <view>每生成一个借阅码只能借一本图书。</view>
+        <view>
+          您可以同时借阅<view class="keyword">{{count}}</view>本书，
+          已借阅<view class="keyword">{{count-count_borrow}}</view>本书，
+          还可以借阅<view class="keyword">{{count_borrow}}</view>本书
+        </view>
       </view>
     </view>
   </view>

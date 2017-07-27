@@ -23,19 +23,7 @@ Page({
     })
     //对会员等级进行判断
     var level_id = app.globalData.userInfo.level;
-    if (level_id == 0) {
-      money="0"
-    }
-    else if (level_id == 1) {
-      money="50"
-    }
-    else {
-      money = "100"
-    }
-    vm.setData({
-      money:money
-    })
-
+    vm.getMember(level_id)  //获取会员
     vm.judge()  //判断会员是否有未还的书
   },
   //跳转页面
@@ -50,9 +38,23 @@ Page({
       showModal: false
     })
   },
+  //点击退卡
   clickCancellation:function(){
-    vm.setData({
-      show: false
+    var param={
+      token: app.globalData.userInfo.token
+    }
+    util.refundMember(param,function(ret){
+      console.log("refundMember："+JSON.stringify(ret))
+      if(ret.data.code=="200")
+      {
+        var userInfo = app.globalData.userInfo
+        userInfo.level = 0
+        app.globalData.userInfo = userInfo
+        app.storeUserInfo(userInfo)  //更新缓存
+        vm.setData({
+          show: false
+        })
+      }
     })
   },
   //退卡完成
@@ -79,6 +81,26 @@ Page({
         }
         vm.setData({
           count:count
+        })
+      }
+    })
+  },
+  //获取会员
+  getMember: function (level_id) {
+    var param = {}
+    util.getMemberLevels(param, function (ret) {
+      console.log("获取会员类型：" + JSON.stringify(ret))
+      if (ret.data.code == "200") {
+        var cards = ret.data.obj
+        for (var i = 0; i < cards.length; i++) {
+          if (level_id == cards[i].id) {
+            vm.setData({
+              money: cards[i].price
+            })
+          }
+        }
+        vm.setData({
+          cards: ret.data.obj
         })
       }
     })

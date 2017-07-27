@@ -7,21 +7,21 @@
     <view class="book-info">
       <view class="text-oneline font-weight margin-bottom-10 book-title-font">{{bookInfo.title}}</view>
       <view class="text-oneline margin-bottom-10 book-font">{{bookInfo.subtitle}}</view>
-      <view class="text-oneline margin-bottom-10 book-font">作者：{{bookInfo.author}}</view>
-      <view class="text-oneline margin-bottom-10 book-font">页数：{{bookInfo.pages}}页</view>
-      <view class="text-oneline margin-bottom-10 book-font">出版社：{{bookInfo.publisher}}</view>
-      <view class="text-oneline margin-bottom-10 book-font">包装：{{bookInfo.binding}}</view>
-      <view class="text-oneline margin-bottom-10 book-font">出版日期：{{bookInfo.pubdate}}</view>
+      <view wx:if="{{bookInfo.author}}" class="text-oneline margin-bottom-10 book-font">作者：{{bookInfo.author}}</view>
+      <view wx:if="{{bookInfo.pages}}" class="text-oneline margin-bottom-10 book-font">页数：{{bookInfo.pages}}页</view>
+      <view wx:if="{{bookInfo.publisher}}" class="text-oneline margin-bottom-10 book-font">出版社：{{bookInfo.publisher}}</view>
+      <view wx:if="{{bookInfo.binding}}" class="text-oneline margin-bottom-10 book-font">包装：{{bookInfo.binding}}</view>
+      <view wx:if="{{bookInfo.pubdate}}" class="text-oneline margin-bottom-10 book-font">出版日期：{{bookInfo.pubdate}}</view>
     </view>
   </view>
-  <view class="white-bg padding-left-30 padding-right-30">
+  <view wx:if="{{bookInfo.summary}}" class="white-bg padding-left-30 padding-right-30">
     <view class="line-text border-bottom">简介</view>
-    <view class="book-font weui-flex padding-top-30 padding-bottom-30">
+    <view class="book-font padding-top-30 padding-bottom-30 book-summary" >
       {{bookInfo.summary}}
     </view>
   </view>
-  <view class="book-seize"></view>
-  <view class="white-bg padding-left-30 padding-right-30">
+  <view wx:if="{{bookInfo.summary}}" class="book-seize"></view>
+  <view wx:if="{{barInfos.length>0}}" class="white-bg padding-left-30 padding-right-30">
     <view class="line-text border-bottom weui-flex">
       <view class="weui-flex__item">附近拥有此书的书吧</view>
       <view class="weui-flex__item text-right">
@@ -44,7 +44,7 @@
       </view>
     </view>
   </view>
-  <view class="book-seize"></view>
+  <view wx:if="{{barInfos.length>0}}" class="book-seize"></view>
   <view wx:if="{{reaction.length==0}}" class="white-bg padding-left-30 padding-right-30">
     <view class="line-text border-bottom">读后感</view>
     <view class="text-center padding-top-40 padding-bottom-40">

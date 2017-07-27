@@ -18,7 +18,8 @@ Page({
     oper_name: "",  //管理员name
     time: "",   //当前时间
     book_s_name: "",  //图书name（成功）
-    user_s_name: ""  //借阅者name（成功）
+    user_s_name: "",  //借阅者name（成功）
+    noBook:false   //没有搜索到图书的时候为true
   },
   onLoad: function (options) {
     vm = this
@@ -94,6 +95,7 @@ Page({
           }
           console.log("图书对象：" + JSON.stringify(bookObj))
           vm.setData({
+            noBook: false,
             bookDetail: bookDetail,
             bookObj: bookObj,
             searchHidden: true,
@@ -102,6 +104,12 @@ Page({
           var book_s_name = vm.data.bookObj.title
           vm.setData({
             book_s_name: book_s_name
+          })
+        }
+        else
+        {
+          vm.setData({
+            noBook: true,
           })
         }
       }

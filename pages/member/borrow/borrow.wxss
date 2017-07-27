@@ -127,3 +127,10 @@
   color: #FFFFFF;
   float:right;
 }
+.card-text{
+  background: #ECF8F1;
+  /* font-family: PingFangSC-Regular; */
+  font-size: 24rpx;
+  color: #969696;
+  letter-spacing: -0.27rpx;
+}
