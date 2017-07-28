@@ -15,7 +15,7 @@
           <image src="/images/more.png" class="more"></image>
         </view>
       </view>
-      <view wx:else class="margin-left-30 margin-right-30 cancellation-notice-list">
+      <view wx:else class="margin-left-30 margin-right-30 cancellation-notice-list-f">
         您还有{{count}}本书尚未归还，请归还图书后才能办理退卡
       </view>
     </view>

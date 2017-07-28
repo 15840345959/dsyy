@@ -37,6 +37,15 @@
   letter-spacing: -0.41rpx;
 }
 
+.cancellation-notice-list-f {
+  height: 102rpx;
+  line-height: 102rpx;
+  /* font-family: PingFangSC-Regular; */
+  font-size: 26rpx;
+  color: #323232;
+  letter-spacing: -0.41rpx;
+}
+
 .level-image {
   width: 61rpx;
   height: 27rpx;
