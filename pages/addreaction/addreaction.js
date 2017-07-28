@@ -189,7 +189,7 @@ Page({
       twInfo: twInfo,
       twStepInfos: twStepInfos
     }
-    util.createTWBaseInfoJSON(param, function (ret) {
+    util.createTWBaseInfo(param, function (ret) {
       console.log("createTWBaseInfo：" + JSON.stringify(ret))
       if (ret.data.code == "200") {
         vm.setData({
