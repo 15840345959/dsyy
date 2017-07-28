@@ -12,6 +12,7 @@ Page({
     level:0,
     msg:"",  //信息
     show:true,  //是否显示借阅码
+    buttonshow:true,  //是否显示升级按钮
   },
   onLoad: function (options) {
     vm=this
@@ -71,13 +72,15 @@ Page({
       {
         vm.setData({
           msg: "借阅图书的数量已经超出您当前会员等级的限额",
-          show:false
+          show:false,
+          buttonshow: true,  //是否显示升级按钮
         })
       }
       else if (ret.data.code == "403") {
         vm.setData({
           msg: "借阅图书的数量已经超出您当前会员等级的限额",
-          show: false
+          show: false,
+          buttonshow: false,  //是否显示升级按钮
         })
       }
     })

@@ -119,6 +119,14 @@
   color: #787878;
   float:left;
 }
+.ban-borrow-button-back-f{
+  width:100%;
+  background: #EAEAEA;
+  border-radius: 69rpx;
+  /* font-family: PingFang-SC-Medium; */
+  color: #787878;
+  float:left;
+}
 .ban-borrow-button-upgrade{
   width:50%;
   background: #36BE7A;
