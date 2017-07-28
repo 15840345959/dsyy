@@ -25,10 +25,14 @@
       <image src="/images/no.png" class="ban-borrow-image"></image>
     </view>
     <view class="ban-borrow-prompt margin-top-20">{{msg}}</view>
-    <view class="ban-borrow-prompt margin-top-20">如果还想借阅，请先还书，或者进行会员升级</view>
-    <view class="ban-borrow-button">
+    <view wx:if="{{buttonshow}}" class="ban-borrow-prompt margin-top-20">如果还想借阅，请先还书，或者进行会员升级</view>
+    <view wx:else class="ban-borrow-prompt margin-top-20">如果还想借阅，请先还书</view>
+    <view wx:if="{{buttonshow}}" class="ban-borrow-button">
       <view class="ban-borrow-button-back" bindtap="back">返回</view>
       <view class="ban-borrow-button-upgrade" bindtap="upGrade">去升级</view>
+    </view>
+    <view wx:else class="ban-borrow-button">
+      <view class="ban-borrow-button-back-f" bindtap="back">返回</view>
     </view>
   </view> 
 </view>
