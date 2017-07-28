@@ -1,4 +1,4 @@
-var TESTMODE = false;
+var TESTMODE = true;
 
 //服务器地址
 var SERVER_URL = "https://isart.me/DSYYServer";
@@ -108,7 +108,7 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     }
     param.token = getApp().globalData.userInfo.token;
   }
-  console.log("param："+JSON.stringify(param))
+  console.log("param：" + JSON.stringify(param))
   wx.request({
     url: url,
     data: param,
@@ -270,9 +270,19 @@ function getTWDetailInfoByISBN(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getTWDetailInfoByISBN.do', param, "GET", successCallback, errorCallback);
 }
 
-//根据isbn获取读后感列表信息
+//编辑读后感接口
 function createTWBaseInfo(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/createTWBaseInfo.do', param, "POST", successCallback, errorCallback);
+}
+
+//编辑读后感接口JSON版
+function createTWBaseInfoJSON(param, successCallback, errorCallback) {
+  console.log("createTWBaseInfoJSON param before:" + JSON.stringify(param))
+  param = {
+    info: JSON.stringify(param)
+  }
+  console.log("createTWBaseInfoJSON param after:" + JSON.stringify(param))
+  wxRequest(SERVER_URL + '/APP/createTWBaseInfoJSON.do', param, "GET", successCallback, errorCallback);
 }
 
 //根据读书感名称搜索图文列表
@@ -664,6 +674,7 @@ module.exports = {
   returnBook: returnBook,
   getTWDetailInfoByISBN: getTWDetailInfoByISBN,
   createTWBaseInfo: createTWBaseInfo,
+  createTWBaseInfoJSON: createTWBaseInfoJSON,
   getTWDetailInfoBySearchWord: getTWDetailInfoBySearchWord,
   getTWDetailInfoByCon: getTWDetailInfoByCon,
   getDetailBorrowInfoByUserId: getDetailBorrowInfoByUserId,
