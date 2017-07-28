@@ -1,4 +1,4 @@
-var TESTMODE = true;
+var TESTMODE = false;
 
 //服务器地址
 var SERVER_URL = "https://isart.me/DSYYServer";
