@@ -62,7 +62,7 @@ Page({
               current_level_image: "/images/level_"+(i+1)+".png",  //当前等级的图片
               current_description: cards[i].description,  //当前可借阅数目
               future_description: cards[i+1].description,  //未来可借阅数目
-              upgrade_money: cards[i + 1].price  //升级金额
+              upgrade_money: cards[i + 1].price/100  //升级金额
             })
           }
         }

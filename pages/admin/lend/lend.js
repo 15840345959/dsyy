@@ -244,32 +244,5 @@ Page({
       url: '/pages/admin/lend/lend',
     })
   },
-  //借阅成功，返回并发送模板信息
-  submit:function(e){
-    var param={
-      // "touser": "OPENID",
-      "touser": "ouXIJ0cLh1EhXD_n9iv5me-V8cQQ",
-      "template_id": "HEiWfBdk3z3jWgPHIWiOOZjRf6C-Hzg0GLqmwf0mCMI",
-      "page": "index",
-      "form_id": "FORMID",
-      "data": {
-        "keyword1": {
-          "value": e.detail.value.book_name,
-        },
-        "keyword2": {
-          "value": e.detail.value.time,
-        },
-        "keyword3": {
-          "value": e.detail.value.bar_name,
-        },
-        "keyword4": {
-          "value": "1本",
-        }
-      }
-    }
-
-    util.getTemplate(param, function (ret) {
-      console.log("模板消息：" + JSON.stringify(ret))
-    })
-  }
+  
 })

@@ -90,7 +90,7 @@
 <!-- 借阅成功_Start -->
 <view hidden="{{!lendingHidden}}" class="page">
   <view class="page" style="height:20rpx;"></view>
-  <form bindsubmit="submit" report-submit='true' id="lend" >
+  <form >
   <view class="white-bg lend-success-flex padding-top-30 padding-bottom-30">
     <view class="margin-left-30 margin-right-30 margin-top-30 text-center">
       <icon type="success" size="60" />
@@ -167,7 +167,6 @@
     </view>
   </view>
    <button class="lend-button" bindtap="back"  form-type="submit">确定</button> 
-  <!-- <button class="lend-button"  form-type="submit">确定</button> -->
   </form>
 </view>
 <!-- 借阅成功_End -->

@@ -10,7 +10,8 @@ Page({
     money: "",  //确认金额
     show: true,
     cards:[],  //获取会员类型
-    upgrade:false  //是否是升级
+    upgrade:false,  //是否是升级
+    arrhythmia:false   //退卡失常时为true
   },
   onLoad: function (options) {
     if (util.judgeIsAnyNullStr(options.levelid)) {
@@ -64,11 +65,24 @@ Page({
               }
               util.refundMember(param, function (ret) {
                 console.log("refundMember：" + JSON.stringify(ret))
+                if (ret.data.code=="200")
+                {
+                    vm.setData({
+                      arrhythmia: false   //退卡失常时为true
+                    })
+                }
+                else
+                {
+                  vm.setData({
+                    arrhythmia: true   //退卡失常时为true
+                  })
+                }
               })
             }
           },
           'fail': function (res) {
             console.log("pay fail" + JSON.stringify(res))
+            
           }
         })
       }
@@ -88,8 +102,9 @@ Page({
         var cards = ret.data.obj
         for (var i = 0; i < cards.length; i++) {
           if (level_id == cards[i].id) {
+            var money = cards[i].price/100
             vm.setData({
-              money: cards[i].price
+              money: money
             })
           }
         }

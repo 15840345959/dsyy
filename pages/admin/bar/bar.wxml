@@ -28,7 +28,8 @@
               <view class="weui-label bar-list-word">地址</view>
             </view>
             <view class="weui-cell__bd text-right">
-              <input name="address" class="weui-input" disabled="true" placeholder="{{barInfo.address}}" />
+            {{barInfo.address}}
+              <!-- <input name="address" class="weui-input" disabled="true" placeholder="{{barInfo.address}}" bindinput="chooseLocation" /> -->
             </view>
           </view>
         </view>

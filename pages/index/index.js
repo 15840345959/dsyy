@@ -28,7 +28,7 @@ Page({
     lon:0
   },
   //加载
-  onLoad: function () {
+  onShow: function () {
     console.log('onLoad')
     vm = this
     //初始化sysInfo

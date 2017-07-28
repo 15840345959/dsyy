@@ -1,12 +1,12 @@
 <view wx:if="{{show}}" class="page">
-   <view>
-     <view class="cancellation-background" style="background:url('{{bg}}');background-size:contain;">
+  <view>
+    <view class="cancellation-background" style="background:url('{{bg}}');background-size:contain;">
       <view class="cancellation-text">
         <view class="cancellation-money">{{money}}元</view>
         <view class="cancellation-name margin-top-20">借书卡金额</view>
       </view>
-    </view> 
-     <view class="white-bg cancellation-notice margin-top-20">
+    </view>
+    <view class="white-bg cancellation-notice margin-top-20">
       <view wx:if="{{count==0}}" class="margin-left-30 margin-right-30 cancellation-notice-list" bindtap="apply">
         <view class="float-left">
           我要退卡
@@ -15,22 +15,32 @@
           <image src="/images/more.png" class="more"></image>
         </view>
       </view>
-      <view wx:else  class="margin-left-30 margin-right-30 cancellation-notice-list" >
+      <view wx:else class="margin-left-30 margin-right-30 cancellation-notice-list">
         您还有{{count}}本书尚未归还，请归还图书后才能办理退卡
       </view>
-    </view> 
-  </view> 
+    </view>
+  </view>
   <!--申请退卡_Start-->
   <view wx:if="{{showModal}}">
     <view class="cancellation-cover"></view>
     <view class="cancellation-box white-bg">
       <image src="/images/cover_banner.png" class="cover-banner"></image>
-      <view class="cancellation-box-text margin-bottom-100">
-        借书卡充值金额将在1-7个工作日到账，退还给您后您将无法借书。确认要退卡吗？
+      <view wx:if="{{normal}}">
+        <view class="cancellation-box-text margin-bottom-100">
+          借书卡充值金额将在1-7个工作日到账，退还给您后您将无法借书。确认要退卡吗？
+        </view>
+        <view class="cancellation-box-button">
+          <view class="cancellation-box-button-close float-left" bindtap="clickCancellation">退卡</view>
+          <view class="cancellation-box-button-open float-right" bindtap="clickRetain">继续用</view>
+        </view>
       </view>
-      <view class="cancellation-box-button">
-        <view class="cancellation-box-button-close float-left" bindtap="clickCancellation">退卡</view>
-        <view class="cancellation-box-button-open float-right" bindtap="clickRetain">继续用</view>
+      <view wx:else>
+        <view class="cancellation-box-text margin-bottom-10">
+          退款失败，请联系系统管理员
+        </view>
+        <view class="cancellation-box-button">
+          <view class="cancellation-box-button-open" style="width:100%;" bindtap="close">确定</view>
+        </view>
       </view>
     </view>
   </view>

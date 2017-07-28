@@ -10,7 +10,8 @@ Page({
     money: "",
     showModal:false,
     show:true,
-    count:0  //判断有多少本未还图书
+    count:0,  //判断有多少本未还图书
+    normal: true  //退款失败时为false
   },
   onLoad: function () {
     vm = this
@@ -26,10 +27,11 @@ Page({
     vm.getMember(level_id)  //获取会员
     vm.judge()  //判断会员是否有未还的书
   },
-  //跳转页面
+  //显示弹窗
   apply: function () {
     vm.setData({
-      showModal: true
+      showModal: true,
+      normal: true  //退款失败时为false
     })
   },
   //点击继续用
@@ -52,7 +54,14 @@ Page({
         app.globalData.userInfo = userInfo
         app.storeUserInfo(userInfo)  //更新缓存
         vm.setData({
-          show: false
+          show: false,
+          normal: true  //退款失败时为false
+        })
+      }
+      else
+      {
+        vm.setData({
+          normal: false  //退款失败时为false
         })
       }
     })
@@ -61,6 +70,14 @@ Page({
   complete: function () {
     wx.navigateBack({
       delta: 2
+    })
+  },
+  //退卡失败点击关闭
+  close:function(){
+    vm.setData({
+      showModal: false,
+      show: true,
+      normal: true  //退款失败时为false
     })
   },
   //判断会员是否有未还的书
@@ -94,8 +111,9 @@ Page({
         var cards = ret.data.obj
         for (var i = 0; i < cards.length; i++) {
           if (level_id == cards[i].id) {
+            var money = cards[i].price/100
             vm.setData({
-              money: cards[i].price
+              money: money
             })
           }
         }

@@ -96,7 +96,12 @@ Page({
         var tempFilePaths = res.tempFilePaths[0]
         console.log("tempFilePaths:" + JSON.stringify(tempFilePaths))
 
-        util.showLoading("正在上传")
+        wx.showLoading({
+          title: '正在上传',
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
         var param = {}
         //获取七牛上传token
         util.getQnToken(param, function (res) {
@@ -115,14 +120,14 @@ Page({
               vm.setData({
                 barInfo: barInfo
               })
-              util.hideLoading()
+              // util.hideLoading()
               
             }, (error) => {
               console.error('error: ' + JSON.stringify(error));
             })
           }
         }, null);
-        util.hideLoading()
+        // util.hideLoading()
       }
     })
   },

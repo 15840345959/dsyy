@@ -125,7 +125,7 @@ button::after {
 }
 
 .book-share4 {
-  width: 179rpx;
+  width: 190rpx;
   margin-left: 10rpx;
 }
 
