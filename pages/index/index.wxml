@@ -79,7 +79,7 @@
                         <view class="weui-uploader__files">
                           <block wx:for="{{item.twStepInfos}}" wx:for-item="pic">
                             <view class="weui-uploader__file">
-                              <image class="weui-uploader__img" src="{{pic.img}}" mode="aspectFill" />
+                              <image class="weui-uploader__img_self" src="{{pic.img}}" mode="aspectFill" />
                             </view>
                           </block>
                         </view>
