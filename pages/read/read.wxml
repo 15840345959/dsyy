@@ -69,32 +69,4 @@
       加载中...
     </loading>
   </view>
-
-  <!-- <view class="margin-top-20 white-bg padding-left-30 padding-right-30">
-    <view class="border-bottom">
-      <view class="read-user-img float-left margin-top-30 margin-bottom-30 margin-right-30">
-        <image src="/images/admin_bg.png" class="read-photo" mode="aspectFill"></image>
-      </view>
-      <view class="read-user-word float-left">昵称</view>
-      <view class="read-user-time float-right">刚刚</view>
-      <view class="clear"></view>
-    </view>
-    <view class="padding-top-30 padding-bottom-30">
-      <view class="text-oneline font-weight margin-bottom-10 book-title-font">寻找维尼读后感</view>
-      <view class="book-font weui-flex padding-top-30 padding-bottom-30 border-bottom">
-        这本书非常好看，内容跌宕起伏，环环相扣，超级精彩。这本书非常好看，内容跌宕起伏，环环相扣， 超级精彩这本书非常好看，内容跌宕起伏，环环相扣，超级精彩容跌宕起伏，环环相扣， 超级精彩容跌宕起伏超级精彩容跌宕起伏，环环相超级精彩容跌宕起伏，环环相扣， 超级精彩容书非常好看书非常好看。超级精彩容跌宕起伏
-      </view>
-      <view class="white-bg margin-top-20 add-book-detail padding-top-20 padding-bottom-20">
-        <view class="book-img">
-          <image src="/images/admin_bg.png" class="book-img-detial" mode="aspectFill"></image>
-        </view>
-        <view class="book-info">
-          <view class="text-oneline font-weight margin-bottom-10 book-title-font">图书标题</view>
-          <view class="text-threeline margin-bottom-10 book-font">图书简介</view>
-        </view>
-      </view>
-      <view class="clear"></view>
-    </view>
-  </view>  -->
-
 </view>
