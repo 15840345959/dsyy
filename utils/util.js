@@ -315,6 +315,11 @@ function getUserDetailInfoById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/APP/getUserDetailInfoById.do', param, "GET", successCallback, errorCallback);
 }
 
+//根据id获取读后感详情
+function getTWDetailInfoById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/APP/getTWDetailInfoById.do', param, "GET", successCallback, errorCallback);
+}
+
 /////////基本方法///////////////////////////////////////////
 //跳转到inputText页面
 
@@ -680,5 +685,6 @@ module.exports = {
   getDetailBorrowInfoByUserId: getDetailBorrowInfoByUserId,
   refundMember: refundMember,
   getMemberLevels: getMemberLevels,
-  getUserDetailInfoById: getUserDetailInfoById
+  getUserDetailInfoById: getUserDetailInfoById,
+  getTWDetailInfoById: getTWDetailInfoById
 }

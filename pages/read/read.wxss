@@ -1,4 +1,3 @@
-/**index.wxss**/
 .book-seize {
   height: 20rpx;
   background-color: #f8f8f8;

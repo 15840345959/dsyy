@@ -81,3 +81,8 @@
   height: 30rpx;
   vertical-align: middle;
 }
+.book-font{
+ /*font-family: .PingFang-SC-Regular;*/
+  font-size: 30rpx;
+  color: #646464;
+}

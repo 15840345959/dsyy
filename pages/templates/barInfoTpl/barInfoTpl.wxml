@@ -28,7 +28,7 @@
   <view class="bar border-bottom margin-left-40 margin-right-40 padding-top-25 padding-bottom-25 margin-top-30 index-bar-img" style="position:relative;" bindtap="bardetail" style="background:url('{{picture}}');background-position:top center; background-size:100% 100%;  " data-barid="{{id}}">
     <view class="index-bar-text padding-left-20">
       <view class="text-oneline index-bar-title-font margin-top-10">{{name}}</view>
-      <view class="text-oneline index-bar-font" style="display:flex;align-items:center;margin-top:18rpx;" >
+      <view class="text-oneline index-bar-font" style="display:flex;align-items:center;margin-top:10rpx;" >
         <image src="/images/index_bar_address.png" class="opt-icon-sma"></image>
         <text class="text-oneline margin-left-10">{{address}}</text>
       </view>

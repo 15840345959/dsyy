@@ -61,7 +61,7 @@
   border-radius: 8px; 
   border:#DCDCDC 1rpx solid;
   /* font-family: PingFang-SC-Regular; */
-  font-size: 22rpx;
+  font-size: 30rpx;
   color: #B4B4B4;
   letter-spacing: -0.68rpx;
 }
@@ -69,5 +69,8 @@ textarea {
 height:127rpx;
 display:block;
 position:relative;
+font-size: 30rpx;
+color: #000;
+letter-spacing: -0.41rpx;
 }
 

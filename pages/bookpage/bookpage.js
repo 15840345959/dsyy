@@ -106,7 +106,7 @@ Page({
     }
     return {
       title: vm.data.title,
-      path: 'pages/bookpage/bookpage/bookid='+book_id,
+      path: '/pages/bookpage/bookpage?bookid=' + book_id,
       success: function (res) {
         // 转发成功
       },

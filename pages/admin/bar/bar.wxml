@@ -29,7 +29,6 @@
             </view>
             <view class="weui-cell__bd text-right">
             {{barInfo.address}}
-              <!-- <input name="address" class="weui-input" disabled="true" placeholder="{{barInfo.address}}" bindinput="chooseLocation" /> -->
             </view>
           </view>
         </view>

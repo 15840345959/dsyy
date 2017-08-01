@@ -12,10 +12,9 @@
 }
 .feedback-word{
   /*font-family: PingFang-SC-Regular;*/
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #787878;
   letter-spacing: -0.68rpx;
-  font-weight: bold;
 }
 .feedback-input{
   background-color:#F7F7F7; 

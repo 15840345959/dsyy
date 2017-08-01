@@ -208,5 +208,12 @@ Page({
       url: '/pages/bookpage/bookpage?bookid=' + bookid
     })
   },
-
+  //根据id获取读后感详情
+  jumpReadInfo: function (e) {
+    console.log(JSON.stringify("readid:" + e.currentTarget.dataset.readid))
+    var readid = e.currentTarget.dataset.readid
+    wx.navigateTo({
+      url: '/pages/readpage/readpage?readid=' + readid
+    })
+  },
 })

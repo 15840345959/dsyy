@@ -38,7 +38,7 @@
 
 .book-font{
  /*font-family: .PingFang-SC-Regular;*/
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #646464;
   letter-spacing: -0.68rpx;
 }

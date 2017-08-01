@@ -24,7 +24,8 @@
       <view class="text-oneline margin-bottom-10 book-font">作者： {{bookInfo.author}}</view>
       <view class="text-oneline margin-bottom-10 book-font">页数：{{bookInfo.pages}}页</view>
       <view class="text-oneline margin-bottom-10 book-font">出版社：{{bookInfo.publisher}}</view>
-      <view class="text-fourline margin-bottom-10 book-font">简介：{{bookInfo.summary}}</view>
+      <view class="text-oneline margin-bottom-10 book-font">图书分类：{{bookInfo.type}}</view>
+      <!-- <view class="text-fourline margin-bottom-10 book-font">简介：{{bookInfo.summary}}</view> -->
     </view>
   </view>
 </template>
@@ -40,7 +41,8 @@
       <view class="text-oneline margin-bottom-10 book-font">作者： {{author}}</view>
       <view class="text-oneline margin-bottom-10 book-font">页数：{{pages}}页</view>
       <view class="text-oneline margin-bottom-10 book-font">出版社：{{publisher}}</view>
-      <view class="text-fourline margin-bottom-10 book-font">简介：{{summary}}</view>
+      <view class="text-oneline margin-bottom-10 book-font">图书分类：{{type}}</view>
+      <!-- <view class="text-fourline margin-bottom-10 book-font">简介：{{summary}}</view> -->
     </view>
   </view>
 </template>

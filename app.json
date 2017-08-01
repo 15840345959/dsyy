@@ -23,6 +23,7 @@
     "pages/payment/payment",
     "pages/addreaction/addreaction",
     "pages/bookpage/bookpage",
+    "pages/readpage/readpage",
     "pages/member/history/history"
   ],
   "window": {

@@ -19,8 +19,8 @@
           <view class="clear"></view>
         </view>
         <view class="padding-top-30 padding-bottom-30">
-          <view class="text-oneline font-weight margin-bottom-10 book-title-font">{{item.twInfo.title}}</view>
-          <view class="{{item.twInfo.see?'':'text-fourline'}} book-font weui-flex padding-top-30 margin-bottom-30">
+          <view class="text-oneline font-weight margin-bottom-10 book-title-font" bindtap="jumpReadInfo"  data-readid="{{item.twInfo.id}}">{{item.twInfo.title}}</view>
+          <view class="{{item.twInfo.see?'':'text-fourline'}} book-font weui-flex padding-top-30 margin-bottom-30" bindtap="jumpReadInfo" data-readid="{{item.twInfo.id}}">
             {{item.twInfo.intro}}
           </view>
           <view wx:if="{{item.twInfo.intro.length>120}}">
@@ -28,7 +28,7 @@
             <view wx:else class="text-oneline look-font" bindtap="transformationTrue" data-id="{{item.twInfo.id}}" data-index="{{index}}">查看</view>
           </view>
           <view wx:if="{{item.twStepInfos.length>0}}">
-            <view class="book-font weui-flex padding-top-30">
+            <view class="book-font weui-flex padding-top-30"  bindtap="jumpReadInfo" data-readid="{{item.twInfo.id}}">
               <view class="weui-uploader__bd">
                 <view class="weui-uploader__files">
                   <block wx:for="{{item.twStepInfos}}" wx:for-item="pic">
