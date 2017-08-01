@@ -388,7 +388,7 @@ Page({
           })
         }
       }
-      start_r = start_r + num_r
+      // start_r = start_r + num_r
       loading_flag_r = false  //避免下拉时重复加载
     })
   },

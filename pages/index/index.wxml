@@ -53,7 +53,7 @@
               </block>
             </view>
           </view>
-          <view wx:if="{{reactions}}" class="margin-top-20">
+          <view wx:if="{{reactions}}" class="margin-top-20 list">
             <view class="item" wx:for="{{reactions}}">
               <view class="white-bg padding-left-30 padding-right-30 margin-bottom-20">
                 <view class="border-bottom">
