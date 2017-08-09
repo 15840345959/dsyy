@@ -19,6 +19,21 @@ App({
       console.log("vm.globalData.userInfo:" + JSON.stringify(vm.globalData.userInfo));
     }
   },
+  //监听小程序打开
+  onShow: function () {
+    //获取用户地理位置
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var userLocation = [];
+        userLocation.lat = longitude;
+        userLocation.lon = latitude;
+        vm.globalData.userLocation = userLocation
+      }
+    })
+  },
   login: function (callBack) {
     wx.login({
       success: function (res) {
@@ -135,6 +150,10 @@ App({
   globalData: {
     userInfo: null,
     systemInfo: null,
+    userLocation: {
+      lat: "",
+      lon: ""
+    },
     bookTypeArr: ['儿童读物', '历史文化', '文学小说', '考试教育', '医疗养生', '心灵鸡汤'],
     barDetail: {
       barid:"",

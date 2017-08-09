@@ -45,11 +45,11 @@
   </view>
   <view wx:if="{{barInfos.length>0}}" class="book-seize"></view>
   <view wx:if="{{reaction.length==0}}" class="white-bg padding-left-30 padding-right-30">
-    <view class="line-text border-bottom">读后感</view>
+    <view class="line-text border-bottom">书评</view>
     <view class="text-center padding-top-40 padding-bottom-40">
       <image src="{{img}}" class="book-reaction-no-img"></image>
       <view class="book-reaction-no-word">
-        暂时木有读后感，快来写一条吧…
+        暂时木有书评，快来写一条吧…
       </view>
     </view>
   </view>
@@ -91,7 +91,7 @@
       <image src="/images/book-reaction.png" class="share-img"></image>
     </view>
     <view class="book-share4" bindtap="addReaction">
-      写读后感
+      写书评
     </view>
     <button class="book-share5 book-shara-background-green" open-type="share">
       <image src="/images/book-share.png" class="share-img"></image>

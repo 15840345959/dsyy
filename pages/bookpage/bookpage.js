@@ -32,19 +32,10 @@ Page({
   //获取图书信息
   loadbookPage:function(){
     var param={
-      book_id:book_id
+      book_id:book_id,
+      lat: app.globalData.userLocation.lat,
+      lon: app.globalData.userLocation.lon
     }
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        param = {
-          lat: longitude,
-          lon: latitude
-        }
-      }
-    })
     util.getBookPageByBookId(param,function(ret){
       console.log("bookInfo :"+JSON.stringify(ret))
       if(ret.data.code=="200")

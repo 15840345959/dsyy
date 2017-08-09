@@ -65,7 +65,7 @@
       <image src="/images/book-reaction.png" class="share-img"></image>
     </view>
     <view class="book-share4" bindtap="addReaction">
-      我也要发布
+      书评
     </view>
     <button class="book-share5 book-shara-background-green" open-type="share">
       <image src="/images/book-share.png" class="share-img"></image>

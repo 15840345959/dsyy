@@ -32,9 +32,6 @@ Page({
     indexPage: {},  //首页数据
     bookInfos: [], //图书列表
     barInfos: [], //书吧列表
-    lat:0,
-    lon:0,
-
     reactions: [],  //读后感部分所需变量
     hidden: true,  //读后感部分所需变量
     bookInfo: [],  //读后感部分所需变量
@@ -51,6 +48,7 @@ Page({
         systemInfo: res
       })
     })
+    console.log('地理信息：' + JSON.stringify(app.globalData.userLocation))
     //获取广告轮播图
     vm.setADSwiper()
     //获取首页作品数据
@@ -92,34 +90,22 @@ Page({
   //获取首页数据
   getIndexPage: function (e) {
     console.log(JSON.stringify(e))
-    var param = {}
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        vm.setData({
-          lat: longitude,
-          lon: latitude
-        })
-        param={
-          lat: longitude,
-          lon: latitude
-        }
-        console.log(JSON.stringify(param))
-        util.showLoading("加载首页");
-        util.getIndexPage(param, function (ret) {
-          console.log(JSON.stringify(ret))
-          if (ret.data.code == "200") {
-            //整理书吧图片
-            vm.setDataWithRes(0, ret.data.obj)
-
-          } else {
-
-          }
-        })
+    var param = {
+        lat: app.globalData.userLocation.lat,
+        lon: app.globalData.userLocation.lon
       }
-    })
+      console.log(JSON.stringify(param))
+      util.showLoading("加载首页");
+      util.getIndexPage(param, function (ret) {
+        console.log(JSON.stringify(ret))
+        if (ret.data.code == "200") {
+          //整理书吧图片
+          vm.setDataWithRes(0, ret.data.obj)
+
+        } else {
+
+        }
+      })
   },
   //获取图书列表
   getBookInfos: function (e) {
@@ -151,8 +137,8 @@ Page({
     var param = {
       start: start_a,
       num: num_a,
-      lat: vm.data.lat,
-      lon: vm.data.lon
+      lat: app.globalData.userLocation.lat,
+      lon: app.globalData.userLocation.lon
     }
     if (loading_flag_a) {
       return;

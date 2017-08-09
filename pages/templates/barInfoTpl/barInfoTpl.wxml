@@ -29,12 +29,16 @@
     <view class="index-bar-text padding-left-20">
       <view class="text-oneline index-bar-title-font margin-top-10">{{name}}</view>
       <view class="text-oneline index-bar-font" style="display:flex;align-items:center;margin-top:10rpx;" >
-        <image src="/images/index_bar_address.png" class="opt-icon-sma"></image>
-        <text class="text-oneline margin-left-10">{{address}}</text>
+        <view class="index-bar-icon"><image src="/images/index_bar_address.png" class="opt-icon-sma"></image></view>
+        <view class="index-bar-icon" style="margin-top:-10rpx;"><view class="text-oneline margin-left-10">{{address}}</view></view>
       </view>
-      <view wx:if="{{distance}}" class="text-oneline margin-top-10 margin-bottom-10 index-bar-font" style="display:flex;align-items:center;" >
+      <view wx:if="{{distance}}" class="text-oneline margin-bottom-10 index-bar-font" style="display:flex;align-items:center;" >
         <image src="/images/index_bar_distance.png" class="opt-icon-sma"></image>
         <text class="text-oneline margin-left-10">{{distance}}米</text>
+      </view>
+      <view wx:else class="text-oneline margin-bottom-10 index-bar-font" style="display:flex;align-items:center;"  >
+        <image src="/images/index_bar_tel.png" class="opt-icon-sma"></image>
+        <text class="text-oneline margin-left-10">{{phonenum}}</text>
       </view>
     </view>
   </view>
@@ -47,14 +51,14 @@
     </view>
     <view class="bar-info">
       <view class="text-oneline font-weight margin-bottom-10 bar-title-font">{{name}}</view>
-      <view class="text-oneline margin-bottom-10 bar-font">{{address}}</view>
+      <view wx:if="{{service}}" class="text-oneline margin-bottom-10 bar-font">{{service}}</view>
       <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="/images/ic_tel.png" class="opt-icon-sma"></image>
         <text class="text-oneline margin-left-10">{{phonenum}}</text>
       </view>
       <view class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
-        <image src="/images/ic_address.png" class="opt-icon-sma"></image>
-        <text class="text-oneline margin-left-10">{{address}}</text>
+        <view class="index-bar-icon margin-top-10"><image src="/images/ic_address.png" class="opt-icon-sma"></image></view>
+        <view class="index-bar-icon" style="margin-top:-10rpx;"><text class="text-oneline margin-left-10" style="over-flow:hidden">{{address}}</text></view>
       </view>
       <view wx:if="{{distance}}" class="text-oneline margin-bottom-5 bar-font" style="display:flex;align-items:center;" >
         <image src="/images/ic_distance.png" class="opt-icon-sma"></image>

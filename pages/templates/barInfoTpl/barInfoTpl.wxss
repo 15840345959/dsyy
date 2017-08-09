@@ -62,3 +62,7 @@
   width:336rpx;
   margin-top:114rpx;
 }
+
+.index-bar-icon{
+  display:inline;
+}
