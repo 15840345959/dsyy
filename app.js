@@ -4,7 +4,9 @@ const util = require('./utils/util.js')
 var vm = null
 
 App({
-  onLaunch: function () {
+  //监听小程序打开
+  onShow: function (option) {
+    ///////////////////////////////
     //获取vm
     vm = this
     //获取用户缓存数据
@@ -18,9 +20,7 @@ App({
       vm.globalData.userInfo = wx.getStorageSync("userInfo");
       console.log("vm.globalData.userInfo:" + JSON.stringify(vm.globalData.userInfo));
     }
-  },
-  //监听小程序打开
-  onShow: function () {
+    ///////////////////////////
     //获取用户地理位置
     wx.getLocation({
       type: 'wgs84',
@@ -33,6 +33,25 @@ App({
         vm.globalData.userLocation = userLocation
       }
     })
+
+    //////////////////////////
+    //判断是否通过微信群进入
+    // if(option.scene==1044)
+    // {
+    // console.log(JSON.stringify("shareTicket：" + option.shareTicket))
+    // //通过调用 wx.getShareInfo 函数，获取到目标微信群（加密过后的）ID 
+    // wx.getShareInfo({
+    //   shareTicket: option.shareTicket,
+    //   complete(res) {
+    //     res.errMsg; // 执行信息
+    //     res.encryptedData; // 解密后为一个 JSON 结构（openGId  群对当前小程序的唯一 ID）
+    //     res.iv; // 加密算法的初始向量
+    //     ///之后转向后端进行解密回调出群ID和群名称
+    //     ///为了保证用户隐私安全，微信特意将微信群 ID 进行了非常复杂的加密。当加密数据直接发到服务器后，服务器还需要再进行一步解码，才能正常使用微信群信息。
+    //     ///如果你之前做过小程序中用户数据的解码，那么你可以将同样的代码套用到解码微信群数据上，因为二者的加密算法是一模一样的。
+    //   }
+    // })
+    // }
   },
   login: function (callBack) {
     wx.login({

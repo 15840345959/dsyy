@@ -20,6 +20,10 @@ Page({
 
   },
   onLoad: function (options) {
+    // wx.showShareMenu({
+    //   withShareTicket: true
+    // })
+
     if (util.judgeIsAnyNullStr(options.bookid)) {
       return;
     }
